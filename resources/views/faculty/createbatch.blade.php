@@ -7,7 +7,7 @@
         @csrf
         <div class="input-group mb-2">
             <div class="input-group-prepend">
-                <span class="input-group-text font-weight-bold">Batch Name</span></div>
+                <span class="input-group-text font-weight-bold">Class Name</span></div>
                 <input type="text" class="form-control @error('batch_name') is-invalid @enderror" id="batch_name"  name="batch_name" value="" >
                 @error('batch_name')
                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
 
         </table>
         </div>
-        <button type="submit" name="nameupdate" class="btn btn-danger btn-sm">Create New Batch</button>
+        <button type="submit" name="nameupdate" class="btn btn-danger btn-sm">Create New Class</button>
         <button type="button" onclick="add_batch_enrollment_field()" class="btn btn-sm btn-danger">Add Enrollemnt Field</button>
         <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
     </form>

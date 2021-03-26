@@ -17,7 +17,7 @@
         <tbody class="table-bordered" style="font-size: 14px;">
 
         <tr>
-        <th scope="col">Batch Name</th>
+        <th scope="col">Class Name</th>
             <th scope="col">
                 <div class="form-group">
                     @if (@$batch_name != '')

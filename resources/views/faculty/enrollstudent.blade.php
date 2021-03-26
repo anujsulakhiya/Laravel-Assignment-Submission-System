@@ -3,13 +3,13 @@
 @section('content')
 <x-facultysidebar breadcumb="Enroll Student" breadcumb1="" />
 
-    <a href="/createbatch" class="btn btn-danger btn-sm mb-3">Create New Batch</a>
+    <a href="/createbatch" class="btn btn-danger btn-sm mb-3">Create New Class</a>
 
     @if (! empty($batchdetail[0]->id))
         <table class='table text-center '>
             <thead class='thead-light'>
                 <th>No.</th>
-                <th>Batch Name</th>
+                <th>Class Name</th>
                 <th></th>
             </thead>
             <tbody class=' table-bordered'>
@@ -34,7 +34,7 @@
         </table>
     @else
         <div class="alert alert-warning">
-            <strong></strong> No Batch Created !        </div>
+            <strong></strong> No Class Created !        </div>
 
     @endif
 
