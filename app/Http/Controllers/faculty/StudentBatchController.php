@@ -54,7 +54,7 @@ class StudentBatchController extends Controller
             }
         }
 
-        $batchdetail = Batch_detail::select('*')->where( 'creater_email', $req->email )->get();
+        $batchdetail = Batch_detail::select('*')->where( 'creater_email', $req->email )->where( 'is_deleted', '0' )->get();
         return view('faculty.enrollstudent' , compact('batchdetail')) ;
 
 
