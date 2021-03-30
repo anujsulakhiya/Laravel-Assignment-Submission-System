@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
-use Illuminate\Support\Facades\Auth;
-use App\Assignment;
-use App\Assignment_question;
-use App\Batch_detail;
+    use Illuminate\Support\Facades\Auth;
+    use App\Assignment;
+    use App\Assignment_question;
+    use App\Batch_detail;
 
 class AssignmentController extends Controller
 {

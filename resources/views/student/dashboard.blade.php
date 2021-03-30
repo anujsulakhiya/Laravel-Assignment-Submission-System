@@ -1,13 +1,14 @@
-
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<x-studentsidebar studentbreadcumb="" studentbreadcumb="" />
+
+<div  style="padding-right:0px; padding-left: 0px;" class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12 mt-5" id="maincontent">
             <div class="card">
-                <div class="card-header">{{ __('student dashboard
-                    ') }}</div>
+                <div class="card-header">{{ __('Student Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

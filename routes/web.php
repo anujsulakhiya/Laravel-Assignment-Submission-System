@@ -63,18 +63,17 @@ Route::get('/dassignment/{id}', 'faculty\AssignmentController@  ');
 
 
 
-
-
-
-
-
-
-
 //***********************************   Student Routes   ***********************************//
 
 Route::group(['as'=>'student.','prefix' => 'student','namespace'=>'Student','middleware'=>['auth','student']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
+
+//Student Routes --> Submission Routes
+Route::get('submitassignment', 'student\SubmissionController@submissionpage');
+Route::get('/viewassignmentquestions/{id}', 'student\SubmissionController@showassignmentquestion');
+
+Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
 
 //***********************************   Admin Routes   ***********************************//
 

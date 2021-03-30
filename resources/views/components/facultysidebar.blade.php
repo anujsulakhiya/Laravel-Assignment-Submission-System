@@ -16,7 +16,7 @@
 
       <a href="/myassignment" class="list-group-item list-group-item-action bg-light"><i class="fa fa-book mr-2"></i>My Assignment</a>
 
-      <a href="/submitassignment" class="list-group-item list-group-item-action bg-light"><i class="fa fa-file-text mr-2"></i>Submit Assignment</a>
+      {{-- <a href="/submitassignment" class="list-group-item list-group-item-action bg-light"><i class="fa fa-file-text mr-2"></i>Submit Assignment</a> --}}
 
       <a href="/deletedassignment" class="list-group-item list-group-item-action bg-light"><i class="fa fa-recycle  mr-2"></i>Recycle Bin</a>
 

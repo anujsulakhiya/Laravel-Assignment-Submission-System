@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <x-facultysidebar breadcumb="Batch Assignment" breadcumb1="" />
 
-@if (! empty($batchassignmentdetail['id']))
+@if (! empty($batchassignmentdetail[0]->id))
+
     <table class="text-center table table-bordered">
         <thead class="thead-light">
             <tr>
@@ -19,10 +21,10 @@
         <tbody style="font-size: 14px;">
             @foreach ($batchassignmentdetail as $assignmentdetail)
             <tr>
-                    <th>{{$assignmentdetail->assignment_name}}</th>
-                    <th>{{$assignmentdetail->subject_name}}</th>
-                    <th>{{date( 'F d, Y' , strtotime($assignmentdetail->created_at))}}</th>
-                    <th>{{date( 'F d, Y' , strtotime($assignmentdetail->last_submission_date))}}</th>
+                    <th>{{ $assignmentdetail->assignment_name }}</th>
+                    <th>{{ $assignmentdetail->subject_name }}</th>
+                    <th>{{ date( 'F d, Y' , strtotime($assignmentdetail->created_at)) }}</th>
+                    <th>{{ date( 'F d, Y' , strtotime($assignmentdetail->last_submission_date)) }}</th>
                 <th>
                 <a href="" class="btn btn-sm btn-danger">View Submissions</a>
 
