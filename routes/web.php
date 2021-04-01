@@ -18,65 +18,71 @@ Route::get('/', function () {
      return view('welcome');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Profile Routes
-Route::get('/profile', 'ProfileController@profile');
-Route::get('/updateprofile', 'ProfileController@userprofile');
-Route::post('/updateuserprofile', 'ProfileController@updateprofile');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group( ['middleware' => 'auth' ], function()
+{
+
+    //***********************************   Public Routes   ***********************************//
+
+    //Profile Routes
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'ProfileController@profile');
+    Route::get('/updateprofile', 'ProfileController@userprofile');
+    Route::post('/updateuserprofile', 'ProfileController@updateprofile');
 
 
-//***********************************   Faculty Routes   ***********************************//
-
-Route::group(['as'=>'faculty.','prefix' => 'faculty','namespace'=>'Faculty','middleware'=>['auth','faculty']], function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-});
-
-//Faculty Routes --> Enroll Student Routes
-Route::get('enrollstudent', 'faculty\StudentBatchController@enrollstudent');
-Route::get('createbatch', 'faculty\StudentBatchController@createbatchpage');
-Route::post('/createbatch', 'faculty\StudentBatchController@createbatch');
-Route::get('/viewbatch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
-Route::get('/dbatch/{batch_id}', 'faculty\StudentBatchController@deletebatch');
-Route::get('/dstudent/{enrollment}', 'faculty\StudentBatchController@deletestudent');
-
-
-
-//Faculty Routes --> Create Assignment Routes
-Route::get('createassignment', 'faculty\AssignmentController@createassignmentpage');
-Route::post('createnewassignment', 'faculty\AssignmentController@createassignment');
-Route::get('createassignmentdetails', 'faculty\AssignmentController@createassignmentdetails');
-Route::get('/createbatchassignment/{batch_id}', 'faculty\AssignmentController@viewperticulerbatch');
-
-//Faculty Routes --> My Assignment Routes
-Route::get('myassignment', 'faculty\AssignmentController@viewmyassignment');
-Route::get('/viewbatchassignment/{batch_id}', 'faculty\AssignmentController@viewbatchassignment');
-Route::get('batchassignmentdetails/{id}', 'faculty\AssignmentController@viewbatchassignmentdetails');
-Route::get('/dassignment/{id}', 'faculty\AssignmentController@  ');
+    Route::get('joinclass/{batch_id}', 'faculty\StudentBatchController@joinclass');
+    Route::get('sendjoningrequest/{batch_id}', 'faculty\StudentBatchController@joinclassrequest');
 
 
 
+    //***********************************   Facu    lty Routes   ***********************************//
 
-//***********************************   Student Routes   ***********************************//
+    Route::group(['as'=>'faculty.','prefix' => 'faculty','namespace'=>'Faculty','middleware'=>['auth','faculty']], function () {
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    });
 
-Route::group(['as'=>'student.','prefix' => 'student','namespace'=>'Student','middleware'=>['auth','student']], function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-});
+    //Faculty Routes --> Enroll Student Routes
+    Route::get('enrollstudent', 'faculty\StudentBatchController@enrollstudent');
+    Route::get('createbatch', 'faculty\StudentBatchController@createbatchpage');
+    Route::post('/createbatch', 'faculty\StudentBatchController@createbatch');
+    Route::get('/viewbatch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
+    Route::get('/dbatch/{batch_id}', 'faculty\StudentBatchController@deletebatch');
+    Route::get('/dstudent/{enrollment}', 'faculty\StudentBatchController@deletestudent');
+    Route::get('/classjoiningrequest/{batch_id}', 'faculty\StudentBatchController@viewbatch');
 
-//Student Routes --> Submission Routes
-Route::get('submitassignment', 'student\SubmissionController@submissionpage');
-Route::get('/viewassignmentquestions/{id}', 'student\SubmissionController@showassignmentquestion');
 
-Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
+    //Faculty Routes --> Create Assignment Routes
+    Route::get('createassignment', 'faculty\AssignmentController@createassignmentpage');
+    Route::post('createnewassignment', 'faculty\AssignmentController@createassignment');
+    Route::get('createassignmentdetails', 'faculty\AssignmentController@createassignmentdetails');
+    Route::get('/createbatchassignment/{batch_id}', 'faculty\AssignmentController@viewperticulerbatch');
 
-//***********************************   Admin Routes   ***********************************//
+    //Faculty Routes --> My Assignment Routes
+    Route::get('myassignment', 'faculty\AssignmentController@viewmyassignment');
+    Route::get('/viewbatchassignment/{batch_id}', 'faculty\AssignmentController@viewbatchassignment');
+    Route::get('batchassignmentdetails/{id}', 'faculty\AssignmentController@viewbatchassignmentdetails');
+    Route::get('/dassignment/{id}', 'faculty\AssignmentController@classjoiningrequest  ');
 
-Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    //***********************************   Student Routes   ***********************************//
+
+    Route::group(['as'=>'student.','prefix' => 'student','namespace'=>'Student','middleware'=>['auth','student']], function () {
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    });
+
+    //Student Routes --> Submission Routes
+    Route::get('submitassignment', 'student\SubmissionController@submissionpage');
+    Route::get('/viewassignmentquestions/{id}', 'student\SubmissionController@showassignmentquestion');
+
+    Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
+    Route::post('/submitans', 'student\SubmissionController@submitquestion');
+
+
+    //***********************************   Admin Routes   ***********************************//
+
+    Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function () {
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    });
+
 });

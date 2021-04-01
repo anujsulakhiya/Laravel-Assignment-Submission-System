@@ -73,8 +73,18 @@ class SubmissionController extends Controller
 
         $user = Auth::user();
 
-        $createdassignmentquestion = Assignment_question::select('*')->where( 'assignment_id', $req->id )->where( 'is_deleted', '0' )->get();
+        $createdassignmentquestion = Assignment_question::select('*')->where( 'id', $req->id )->where( 'is_deleted', '0' )->get();
 
         return view('student.submitquestion' , compact('user','createdassignmentquestion'));
+    }
+
+    public function submitanswer(Request $req){
+
+        $req->validate(['qanswer' => 'required'] , ['question_id' => 'required']);
+
+        $user = Auth::user();
+        $createdassignmentquestion = Assignment_question::select('*')->where( 'id', $req->id )->where( 'is_deleted', '0' )->get();
+
+        return view('student.submitassignment' , compact('user','createdassignmentquestion'));
     }
 }

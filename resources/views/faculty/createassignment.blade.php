@@ -7,6 +7,7 @@
 <form class="" action="createnewassignment" method="POST">
     @csrf
     <input type="hidden" name="email" value="{{ $user->email}}">
+    
     <table class="table" style="overflow-x:auto;">
         <thead class="thead-light">
             <tr>

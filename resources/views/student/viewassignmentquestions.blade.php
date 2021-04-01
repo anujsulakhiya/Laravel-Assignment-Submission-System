@@ -22,13 +22,13 @@
 
                 <tr>
                     <th>Q{{ $i }} - {{ $assignmentdetail->questions }} </th>
-
-                        {{-- <th class="text-center text-success text-uppercase">Submitted</th> --}}
-                                <th class=""><a href="/submitquestion/{{ $assignmentdetail->id}}" class="btn btn-sm btn-danger">Submit</a></th>
+                    {{-- <th class="text-center text-success text-uppercase">Submitted</th> --}}
+                    <th class="text-center"><a href="/submitquestion/{{ $assignmentdetail->id}}" class="btn btn-sm btn-danger">Submit</a></th>
+                    <th></th>
 
                 </tr>
                 <?php $i++; ?>
-                @endforeach
+            @endforeach
     </tbody>
     </table>
 

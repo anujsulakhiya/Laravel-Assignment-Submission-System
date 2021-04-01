@@ -4,40 +4,48 @@
 
 <x-studentsidebar studentbreadcumb="Submit Assignment" studentbreadcumb1="" />
 
-{{-- {{dd($studentassignmentdetail[0]->id)}} --}}
+{{-- {{dd($createdassignmentquestion)}} --}}
 
-@if (! empty($createdassignmentquestion[0]->id))
-
-    <table class="table table-bordered ">
+<form class="" action="submitans" method="POST">
+    @csrf
+    <table class="table table-bordered" style="overflow-x:auto;">
         <thead class="thead-light">
-            <tr class="text-center">
-                <th scope="col">Questions</th>
-                <th scope="col "></th>
-                <th>Status</th>
+            <tr>
+                <th scope="col">Question</th>
             </tr>
         </thead>
         <tbody style="font-size: 14px;">
-            <?php $i=1 ?>
-            @foreach ($createdassignmentquestion as $assignmentdetail)
+            <tr>
+                <th>
+                    Q . {{ $createdassignmentquestion->first()->questions }}
+                    <input type="hidden" name="question_id" value="{{ $createdassignmentquestion->first()->questions }}">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div>
 
-                <tr>
-                    <th>Q.{{$i}} - {{ $assignmentdetail->questions }} </th>
+                        <label for="">ANSWER</label>
+                        <textarea  type="text" id="qanswer" name="qanswer" rows="6" class="form-control" oncopy="return false" onpaste="return false" oncut="return false"></textarea>
+                        <label for="">Only Pdf</label>
+                        <input type="file" name="myfile" class="mt-2" value="">
 
-                    <th class="text-center"><a href="" class="btn btn-sm btn-danger">Submit</a></th>
-                    {{-- <th class="text-center text-success text-uppercase">Submitted</th> --}}
-                    <th></th>
-
-                </tr>
-                <?php $i++ ?>
-            @endforeach
-    </tbody>
+                    </div>
+                </th>
+            </tr>
+        </tbody>
     </table>
-@else
-    <div class="alert alert-warning">
-        <strong></strong> No Question Created For this Assignment .
-    </div>
 
-@endif
+
+    <div class="mb-2 mx-3">
+    <button class="btn btn-danger btn-sm" type="submit" name="submitanswer">Submit</button>
+    <a href="" class="btn btn-secondary btn-sm">Back</a>
+    </div>
+    {{-- <input type="hidden" name="question_id" value=""> --}}
+    <input type="hidden" name="assignment_id" value="">
+    <input type="hidden" name="email" value="{{ $user->email}}">
+
+</form>
 
 
 </div>

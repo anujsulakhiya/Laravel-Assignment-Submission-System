@@ -93,6 +93,7 @@ class AssignmentController extends Controller
         $user = Auth::user();
         $batchdetail = Batch_detail::select('id','batch_name')->where( 'creater_email', $user->email )->where( 'is_deleted', '0' )->get();
         return view('faculty.myassignment' , compact('user','batchdetail'));
+
     }
 
     public function viewbatchassignment(Request $req){
