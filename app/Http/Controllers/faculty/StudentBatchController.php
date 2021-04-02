@@ -87,39 +87,47 @@ class StudentBatchController extends Controller
         Studentbatch::where( 'enrollment', $req->enrollment )->update(["is_deleted" => '1']);
         return redirect()->back() ;
     }
-
-    public function joinclass(Request $req){
-
-        $user = Auth::user();
-
-        $batch_detail = Batch_detail::select('*')->where( 'id', $req->batch_id )->first();
-
-        $faculty_name = User::select('name')->where( 'email', $batch_detail->creater_email )->first();
-
-        return view('common.batchjoiningrequest' , compact('user' , 'batch_detail' , 'faculty_name')) ;
-    }
-
-    public function joinclassrequest(Request $req){
-
-        $user = Auth::user();
-
-        $joinclass = new Batch_joining_request;
-        $joinclass->name = $user->name;
-        $joinclass->email = $user->email;
-        $joinclass->batch_id  = $req->batch_id;
-        $joinclass->status  = "P";
-        $joinclass->save();
-
-        return redirect()->back()->with('message', 'Joining Request Sent Successfully !');
-    }
-
     public function classjoiningrequest(Request $req){
 
         $user = Auth::user();
 
-        $Batch_joining_request = Batch_joining_request::select('*')->where( 'batch_id', $req->batch_id )->first();
+        $Batch_joining_request = Batch_joining_request::select('*')->where( 'batch_id', $req->batch_id )->where( 'status', 'P' )->get();
 
-        return view('common.classjoiningrequest' , compact('user' , 'Batch_joining_request')) ;
+        $batch_detail = Batch_detail::select('batch_name','id')->where( 'id', $req->batch_id )->first();
+
+
+        return view('faculty.classjoiningrequest' , compact('user' , 'Batch_joining_request', 'batch_detail')) ;
     }
+
+    public function approvestudent(Request $req){
+
+        $user = Auth::user();
+
+        $Batch_joining_request = Batch_joining_request::select('*')->where( 'id', $req->id )->first();
+        // dd($Batch_joining_request);
+        $batch_detail = Batch_detail::select('batch_name','id')->where( 'id', $Batch_joining_request->batch_id )->first();
+
+        $batchdetails = new Studentbatch;
+        $batchdetails->creater_email = $user->email;
+        $batchdetails->batch_id = $Batch_joining_request->batch_id;
+        $batchdetails->batch_name = $batch_detail->batch_name;
+        $batchdetails->enrollment  = $Batch_joining_request->email;
+        $batchdetails->save();
+
+        Batch_joining_request::where( 'id', $req->id )->update(["status" => 'A']);
+        $msg = "$Batch_joining_request->name ( $Batch_joining_request->email ) is now Approved ";
+        return redirect()->back()->with('message', $msg) ;
+    }
+
+    public function rejectstudent(Request $req){
+
+        Batch_joining_request::where( 'id', $req->id )->update(["status" => 'R']);
+
+        $Batch_joining_request = Batch_joining_request::select('*')->where( 'id', $req->id )->first();
+
+        $msg = "$Batch_joining_request->name ( $Batch_joining_request->email ) is Rejected ";
+
+        return redirect()->back()->with('rmessage', $msg) ;    }
+
 
 }

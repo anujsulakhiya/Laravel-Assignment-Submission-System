@@ -2,7 +2,7 @@
 
 @section('content')
 
-<x-studentsidebar studentbreadcumb="Submit Assignment" studentbreadcumb1="" />
+<x-studentsidebar studentbreadcumb="Submit Question " studentbreadcumb1="" />
 
 {{-- {{dd($createdassignmentquestion)}} --}}
 

@@ -32,8 +32,7 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::post('/updateuserprofile', 'ProfileController@updateprofile');
 
 
-    Route::get('joinclass/{batch_id}', 'faculty\StudentBatchController@joinclass');
-    Route::get('sendjoningrequest/{batch_id}', 'faculty\StudentBatchController@joinclassrequest');
+
 
 
 
@@ -50,7 +49,10 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('/viewbatch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
     Route::get('/dbatch/{batch_id}', 'faculty\StudentBatchController@deletebatch');
     Route::get('/dstudent/{enrollment}', 'faculty\StudentBatchController@deletestudent');
-    Route::get('/classjoiningrequest/{batch_id}', 'faculty\StudentBatchController@viewbatch');
+    Route::get('/classjoiningrequest/{batch_id}', 'faculty\StudentBatchController@classjoiningrequest');
+    Route::get('/approvestudent/{id}', 'faculty\StudentBatchController@approvestudent');
+    Route::get('/rejectstudent/{id}', 'faculty\StudentBatchController@rejectstudent');
+
 
 
     //Faculty Routes --> Create Assignment Routes
@@ -70,6 +72,10 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::group(['as'=>'student.','prefix' => 'student','namespace'=>'Student','middleware'=>['auth','student']], function () {
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     });
+
+    //Student Routes --> Class Joining Routes
+    Route::get('joinclass/{batch_id}', 'student\ClassController@joinclass');
+    Route::get('sendjoningrequest/{batch_id}', 'student\ClassController@joinclassrequest');
 
     //Student Routes --> Submission Routes
     Route::get('submitassignment', 'student\SubmissionController@submissionpage');

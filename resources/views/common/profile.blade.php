@@ -8,7 +8,7 @@
 
     @elseif ($user->role_id == '2')
 
-        <x-studentsidebar studentbreadcumb="Profile" studentbreadcumb1="" />
+        <x-studentsidebar studentbreadcumb="Profile " studentbreadcumb1="" />
 
     @endif
 

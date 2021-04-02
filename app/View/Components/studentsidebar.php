@@ -5,15 +5,18 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 
 class studentsidebar extends Component
-{
+{   
+    public $studentbreadcumb;
+    public $studentbreadcumb1;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($studentbreadcumb,$studentbreadcumb1)
     {
-        //
+        $this->studentbreadcumb = $studentbreadcumb;
+        $this->studentbreadcumb1 = $studentbreadcumb1;
     }
 
     /**
