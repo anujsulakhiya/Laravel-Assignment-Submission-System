@@ -3,7 +3,7 @@
 <div class="d-flex" id="wrapper" >
     <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
-      <!-- <div class="sidebar-heading bg-danger text-light font-weight-bold">Assignment Submitter </div> -->
+      <!-- <div class="sidebar-heading bg-primary text-light font-weight-bold">Assignment Submitter </div> -->
     <div class="list-group list-group-flush">
 
         <a href="/home" class="list-group-item list-group-item-action bg-light"><i class="fa fa-tachometer mr-2"></i>Dashboard</a>
@@ -30,11 +30,11 @@
         <div class="row">
             <nav style="padding: 0px;" class="container-fluid mb-3" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a class="text-danger" href="home"><i class="fa fa-home text-danger"></i> Home</a><i class="dot fa fa-circle"></i> </li>
+                    <li><a class="text-primary" href="home"><i class="fa fa-home text-primary"></i> Home</a><i class="dot fa fa-circle"></i> </li>
                     @if (!empty($studentbreadcumb1))
 
                         <li>
-                            <a class="text-danger" href="">{{ @$studentbreadcumb  }}</a>
+                            <a class="text-primary" href="">{{ @$studentbreadcumb  }}</a>
                             <i class="dot fa fa-circle"></i>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ @$studentbreadcumb1 }}</li>
@@ -50,7 +50,7 @@
         <div class="col-md-12">
             <nav class="mt-2" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a class="text-danger" href="dashboard"><i class="fa fa-home text-danger"></i> Home</a><i class="dot fa fa-circle"></i> </li>
+                    <li><a class="text-primary" href="dashboard"><i class="fa fa-home text-primary"></i> Home</a><i class="dot fa fa-circle"></i> </li>
                     <li class="breadcrumb-item active" aria-current="page">My Assignment</li>
                 </ol>
             </nav>

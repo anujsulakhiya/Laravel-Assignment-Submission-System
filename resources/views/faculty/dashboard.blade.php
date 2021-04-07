@@ -1,7 +1,10 @@
-@extends('layouts.app')
+
+{{-- <x-facultysidebar breadcumb="" breadcumb1="" /> --}}
+
+@extends('layouts.facultylayout')
 
 @section('content')
-<x-facultysidebar breadcumb="" breadcumb1="" />
+
 
 <div  style="padding-right:0px; padding-left: 0px;" class="container">
     <div class="row justify-content-center">

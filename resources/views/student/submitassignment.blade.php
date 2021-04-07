@@ -29,7 +29,7 @@
                     <th>{{ $assignmentdetail->subject_name }}</th>
                     <th>{{ date( 'F d, Y' , strtotime($assignmentdetail->last_submission_date)) }}</th>
 
-                <th class=""><a href="viewassignmentquestions/{{$assignmentdetail->id}}" class="btn btn-sm btn-danger">View Questions </a></th>
+                <th class=""><a href="viewassignmentquestions/{{$assignmentdetail->id}}" class="btn btn-sm btn-primary">View Questions </a></th>
 
 
 

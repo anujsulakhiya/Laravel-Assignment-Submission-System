@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
-<x-facultysidebar breadcumb="Enroll Student" breadcumb1="" />
+{{-- <x-facultysidebar breadcumb="Enroll Student" breadcumb1="" /> --}}
 
-    <a href="/createbatch" class="btn btn-danger btn-sm mb-3">Create New Class</a>
+    <a href="/createbatch" class="btn btn-primary btn-sm mb-3">Create New Class</a>
 
     @if (! empty($batchdetail[0]->id))
         <table class='table text-center '>
@@ -21,9 +21,9 @@
                     <td>Name</td>
                     <td>{{ @$batch->batch_name }}</td>
                     <td>
-                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-danger btn-sm">View Class</a>
-                        <a href="/classjoiningrequest/{{$batch->id}}" class="btn btn-danger btn-sm"> Joining Request</a>
-                        {{-- <a href="/createbatchassignment/{{$batch->id}}" class="btn btn-danger btn-sm">Create Assignment</a> --}}
+                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-primary btn-sm">View Class</a>
+                        <a href="/classjoiningrequest/{{$batch->id}}" class="btn btn-primary btn-sm"> Joining Request</a>
+                        {{-- <a href="/createbatchassignment/{{$batch->id}}" class="btn btn-primary btn-sm">Create Assignment</a> --}}
                         <button class="btn btn-secondary btn-sm " onclick="return confirm('Are you sure? This Will Delete Your All Assgnments Cretated For this Batch');"><a class="text-white" href="/dbatch/{{$batch->id}}">Delete</a></button>
 
                     </td>

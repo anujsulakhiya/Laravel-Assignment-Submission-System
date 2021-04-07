@@ -12,7 +12,7 @@
             <th class="col-md-2">Class Details</th>
 
             <th>
-            {{-- <a href="" class="btn btn-sm btn-danger mr-2">Edit</a> --}}
+            {{-- <a href="" class="btn btn-sm btn-primary mr-2">Edit</a> --}}
             </th>
 
         </tr>
@@ -53,7 +53,7 @@
     </div>
 @else
 
-<a href="/sendjoningrequest/{{@$batch_detail->id}}" class="btn btn-danger btn-sm">Send Joining Request</a>
+<a href="/sendjoningrequest/{{@$batch_detail->id}}" class="btn btn-primary btn-sm">Send Joining Request</a>
 
 @endif
 

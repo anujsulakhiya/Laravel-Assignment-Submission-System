@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 mx-5">
             <div class="card">
-                <div class="card-header text-center text-white bg-danger"><i class="fa fa-user-secret mr-2 "></i>{{ __('Admin Register') }}</div>
+                <div class="card-header text-center text-white bg-primary"><i class="fa fa-user-secret mr-2 "></i>{{ __('Admin Register') }}</div>
 
                 <div class="card-body shadow-lg p-2">
                     <form method="POST" class="mt-3" action="{{ route('register') }}">
@@ -56,12 +56,12 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <div class="alert alert-warning text-danger ml-3">Notice : You are Sending Request for Admin Login
+                        <div class="alert alert-warning text-primary ml-3">Notice : You are Sending Request for Admin Login
                             <input type="hidden" name="role" class="form-control" required value="pending_admin"  id="role">
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-danger mt-3 btn-block shadow-sm font-weight-bold">
+                                <button type="submit" class="btn btn-primary mt-3 btn-block shadow-sm font-weight-bold">
                                     {{ __('Send Request') }}
                                 </button>
                             </div>

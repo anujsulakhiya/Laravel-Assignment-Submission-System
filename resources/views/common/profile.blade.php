@@ -30,7 +30,7 @@
         </tbody>
     </table>
 
-        <a href="/updateprofile" class="btn btn-danger btn-sm mt-3">Update Profile</a>
+        <a href="/updateprofile" class="btn btn-primary btn-sm mt-3">Update Profile</a>
         <a href="/changepassword" class="btn btn-secondary btn-sm mt-3">Change Password</a>
 </div>
 

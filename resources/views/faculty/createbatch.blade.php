@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
-<x-facultysidebar breadcumb="Enroll Student" breadcumb1="Create New Batch" />
+{{-- <x-facultysidebar breadcumb="Enroll Student" breadcumb1="Create New Batch" /> --}}
 
-    <form class="" action="createbatch" method="POST">
+    {{ Form::open(array('url' => 'createbatch')) }}
+
+    {{-- <form class="" action="createbatch" method="POST"> --}}
+
         @csrf
         <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -52,10 +55,11 @@
 
         </table>
         </div>
-        <button type="submit" name="nameupdate" class="btn btn-danger btn-sm">Create New Class</button>
-        <button type="button" onclick="add_batch_enrollment_field()" class="btn btn-sm btn-danger">Add Enrollemnt Field</button>
+        <button type="submit" name="nameupdate" class="btn btn-primary btn-sm">Create New Class</button>
+        <button type="button" onclick="add_batch_enrollment_field()" class="btn btn-sm btn-primary">Add Enrollemnt Field</button>
         <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-    </form>
+    {{-- </form> --}}
+    {{ Form::close() }}
 </div>
 
 </div>

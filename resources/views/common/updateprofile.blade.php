@@ -32,7 +32,7 @@
             </tr>
         </tbody>
     </table>
-    <button type="submit" name="nameupdate" class="btn btn-danger btn-sm mt-3">Update</button>
+    <button type="submit" name="nameupdate" class="btn btn-primary btn-sm mt-3">Update</button>
     </form>
 </div>
 </div>

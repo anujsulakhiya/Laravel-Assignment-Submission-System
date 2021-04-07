@@ -29,6 +29,7 @@
     <div class="bg-light container-fluid">
         <div class="row">
             <nav style="padding: 0px;" class="container-fluid mb-3" aria-label="breadcrumb">
+                
                 <ol class="breadcrumb">
                     <li><a class="text-danger" href="home"><i class="fa fa-home text-danger"></i> Home</a><i class="dot fa fa-circle"></i> </li>
                     @if (!empty($breadcumb1))

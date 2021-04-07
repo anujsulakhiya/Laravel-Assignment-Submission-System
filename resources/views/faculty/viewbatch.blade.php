@@ -1,11 +1,11 @@
 
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
-<x-facultysidebar breadcumb="View Batch" breadcumb1="" />
+{{-- <x-facultysidebar breadcumb="View Batch" breadcumb1="" /> --}}
 
 
-    <div class="font-weight-bold p-1">{{$batch_detail->batch_name}}<a href="" class="btn btn-danger btn-sm float-right mb-3 mx-5">Add New Enrollment</a></div>
+    <div class="font-weight-bold p-1">{{$batch_detail->batch_name}}<a href="" class="btn btn-primary btn-sm float-right mb-3 mx-5">Add New Enrollment</a></div>
 
     <table class='table text-center '>
         <thead class='thead-light'>
@@ -23,7 +23,7 @@
                 <td>{{ @$batch->enrollment }}</td>
                 <td>
                     <div class="btn-group">
-                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-danger btn-sm">Edit</a>
+                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <button class="btn btn-secondary btn-sm "><a class="text-white" href="/dstudent/{{$batch->enrollment}}">Remove</a></button>
                     </div>
 
@@ -46,7 +46,7 @@
                 <input  class="form-control" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}" id="myInput" readonly>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-danger btn-sm float-right" onclick="myFunction()">Copy Link</button>
+                <button class="btn btn-primary btn-sm float-right" onclick="myFunction()">Copy Link</button>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
                 <th></th>
                 <td>
                     <div class="btn-group">
-                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-danger btn-sm">Edit</a>
+                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <button class="btn btn-secondary btn-sm "><a class="text-white" href="/dstudent/{{$batch->enrollment}}">Remove</a></button>
                     </div>
 

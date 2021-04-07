@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
-<x-facultysidebar breadcumb="My Assignment" breadcumb1="" />
+{{-- <x-facultysidebar breadcumb="My Assignment" breadcumb1="" /> --}}
 
 
 @if (! empty($batchdetail[0]->id))
@@ -21,7 +21,7 @@
             <td>Name</td>
             <td>{{ @$batch->batch_name }}</td>
             <td>
-                <a href="/viewbatchassignment/{{$batch->id}}" class="btn btn-danger btn-sm">View Assignment</a>
+                <a href="/viewbatchassignment/{{$batch->id}}" class="btn btn-primary btn-sm">View Assignment</a>
             </td>
         </tr>
 
@@ -32,7 +32,7 @@
 
 @else
     <div class="alert alert-warning">
-        <strong>No Class Created ! </strong>    <a href="/createbatch" class="btn btn-danger btn-sm ml-5">Create New Class</a>
+        <strong>No Class Created ! </strong>    <a href="/createbatch" class="btn btn-primary btn-sm ml-5">Create New Class</a>
 
     </div>
 

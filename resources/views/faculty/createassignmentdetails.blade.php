@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.facultylayout')
 @section('content')
-<x-facultysidebar breadcumb="Assignment Detail" breadcumb1="" />
+{{-- <x-facultysidebar breadcumb="Assignment Detail" breadcumb1="" /> --}}
 
 
 <table class="table" style="overflow-x:auto;">
@@ -10,7 +9,7 @@
             <th class="col-md-2">Details</th>
 
             <th>
-            <a href="" class="btn btn-sm btn-danger mr-2">Edit</a>
+            <a href="" class="btn btn-sm btn-primary mr-2">Edit</a>
             </th>
 
         </tr>
@@ -39,6 +38,10 @@
         <th scope="col">Last Date</th>
         <th scope="col">{{@$assignmentdetail->last_submission_date}}</th>
         </tr>
+        <th scope="col">Submission Link</th>
+
+        <th scope="col"><a href="">{{env('APP_URL').$assignmentdetail->batch_id}}</a></th>
+        </tr>
     </tbody>
     @endforeach
 </table>
@@ -50,8 +53,8 @@
 
                 <th scope="col">
                 <div class="btn-group">
-                    <a href="" class="btn btn-sm btn-danger">Edit</a>
-                    <a href="" class="btn btn-sm btn-danger">Add</a>
+                    <a href="" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="" class="btn btn-sm btn-primary">Add</a>
                 </div>
                 </th>
             </tr>

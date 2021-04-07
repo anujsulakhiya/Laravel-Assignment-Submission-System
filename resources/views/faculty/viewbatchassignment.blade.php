@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
 
-<x-facultysidebar breadcumb="Batch Assignment" breadcumb1="" />
+{{-- <x-facultysidebar breadcumb="Batch Assignment" breadcumb1="" /> --}}
 
 @if (! empty($batchassignmentdetail[0]->id))
 
@@ -26,10 +26,10 @@
                     <th>{{ date( 'F d, Y' , strtotime($assignmentdetail->created_at)) }}</th>
                     <th>{{ date( 'F d, Y' , strtotime($assignmentdetail->last_submission_date)) }}</th>
                 <th>
-                <a href="" class="btn btn-sm btn-danger">View Submissions</a>
+                <a href="" class="btn btn-sm btn-primary">View Submissions</a>
 
                 <div class="btn-group">
-                    <a href="/batchassignmentdetails/{{$assignmentdetail->id}}" class="btn btn-sm btn-danger">Details</a>
+                    <a href="/batchassignmentdetails/{{$assignmentdetail->id}}" class="btn btn-sm btn-primary">Details</a>
                     <button class="btn btn-secondary btn-sm " onclick="return confirm('Are you sure? This Will Delete Your Assgnments and Assignment Questions');"><a class="text-white" href="/dassignment/{{$assignmentdetail->id}}">Delete</a></button>
 
                 </div>
@@ -41,7 +41,7 @@
     </table>
 @else
     <div class="alert alert-warning">
-        <strong><a class="text-danger" href="/createassignment">Create Assignment</a></strong> No Assignment Created For this Batch !
+        <strong><a class="text-primary" href="/createassignment">Create Assignment</a></strong> No Assignment Created For this Batch !
     </div>
 
 @endif
