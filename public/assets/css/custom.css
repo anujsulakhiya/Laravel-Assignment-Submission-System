@@ -6,6 +6,26 @@ body {
     overflow: auto;
 }
 
+body {
+    scrollbar-width: thin;
+    /* "auto" or "thin" */
+    scrollbar-color: blue orange;
+    /* scroll thumb and track */
+}
+
+.sidenav {
+    height: 100%;
+    /* width: 160px;
+    /* position: fixed; */
+    /* z-index: 1;
+    top: 0;
+    left: 0; */
+    /* background-color: #111; */
+    /* overflow-x: hidden;
+    padding-top: 20px;
+    */
+}
+
 a:link {
     text-decoration: none;
 }
@@ -9664,7 +9684,7 @@ html:not([dir=rtl]) .nav-tabs-boxed.nav-tabs-boxed-right .nav-item {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    height: 56px;
+    /* height: 56px; */
     padding-top: 0;
     padding-bottom: 0
 }
@@ -10768,7 +10788,7 @@ html:not([dir=rtl]) .c-sidebar.c-sidebar-overlaid.c-sidebar-right,
 .c-sidebar-close {
     position: absolute;
     width: 56px;
-    height: 56px;
+    /* height: 56px; */
     background: 0 0;
     border: 0
 }
@@ -20049,3 +20069,6 @@ a.text-dark:focus {
         color: inherit
     }
 }
+
+
+/* } */
