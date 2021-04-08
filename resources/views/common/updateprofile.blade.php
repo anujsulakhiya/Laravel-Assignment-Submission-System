@@ -1,16 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.facultylayout')
 
 @section('content')
 
-    @if ($user->role_id == '1')
 
-    <x-facultysidebar breadcumb="Profile" breadcumb1="Update Profile" />
-
-    @elseif ($user->role_id == '2')
-
-    <x-studentsidebar studentbreadcumb="Profile " studentbreadcumb1="Update Profile" />
-
-    @endif
 
 
     <form action="updateuserprofile" method="POST" class="">
