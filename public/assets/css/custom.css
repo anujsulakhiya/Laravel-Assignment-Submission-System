@@ -6,13 +6,6 @@ body {
     overflow: auto;
 }
 
-body {
-    scrollbar-width: thin;
-    /* "auto" or "thin" */
-    scrollbar-color: blue orange;
-    /* scroll thumb and track */
-}
-
 .sidenav {
     height: 100%;
     /* width: 160px;
@@ -259,7 +252,6 @@ a:link {
     border-radius: .25rem;
 }
 
-@charset "UTF-8";
 
 /*!* CoreUI - HTML, CSS, and JavaScript UI Components Library
 * @version v3.3.0
@@ -19976,7 +19968,8 @@ a.text-dark:focus {
     text-align: right
 }
 
-.ie-custom-properties {
+
+/* .ie-custom-properties {
     primary: #321fdb;
     secondary: #ced2d8;
     success: #2eb85c;
@@ -19991,7 +19984,7 @@ a.text-dark:focus {
     breakpoint-lg: 992px;
     breakpoint-xl: 1200px;
     breakpoint-xxl: 1400px
-}
+} */
 
 @media print {
     *,
