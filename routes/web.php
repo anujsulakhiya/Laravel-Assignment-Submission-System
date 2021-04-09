@@ -85,7 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewassignmentquestions/{id}', 'student\SubmissionController@showassignmentquestion');
 
         Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
-        Route::post('/submitans', 'student\SubmissionController@submitquestion')->name('submit_answer');
+        Route::post('/submitans', 'student\SubmissionController@submitanswer')->name('submit_answer');
     });
     //***********************************   Admin Routes   ***********************************//
 

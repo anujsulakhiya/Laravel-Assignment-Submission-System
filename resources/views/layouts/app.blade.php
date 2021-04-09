@@ -83,7 +83,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -105,6 +105,24 @@
     </div>
 </body>
 <script>
+
+    var minLength = 50;
+    var maxLength = 10000;
+    $(document).ready(function() {
+        $('#qanswer').on('keydown keyup change', function() {
+            var char = $(this).val();
+            var charLength = $(this).val().length;
+            if (charLength < minLength) {
+                $('span').text('Length is short, minimum ' + minLength + ' required.');
+            } else if (charLength > maxLength) {
+                $('span').text('Length is not valid, maximum ' + maxLength + ' allowed.');
+                $(this).val(char.substring(0, maxLength));
+            } else {
+                $('span').text('Length is valid');
+            }
+        });
+    });
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -117,6 +135,15 @@
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
         alert("Copied the Link: " + copyText.value);
+    }
+
+    function checkLength() {
+        var textbox = document.getElementById("qanswer");
+        if (textbox.value.length <= 10 && textbox.value.length >= 5) {
+            alert("success");
+        } else {
+            alert("make sure the input is between 5-10 characters long")
+        }
     }
 
 </script>
