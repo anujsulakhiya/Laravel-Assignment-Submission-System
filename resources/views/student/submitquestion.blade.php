@@ -28,40 +28,43 @@
 
                             <label for="">ANSWER</label>
                             <span class="text-danger"></span>
+                            {{-- <textarea type="text" id="qanswer" name="qanswer" rows="6"
+                                class="form-control @error('qanswer') is-invalid @enderror" oncopy="return false"
+                                onpaste="return false" oncut="return false"></textarea> --}}
                             <textarea type="text" id="qanswer" name="qanswer" rows="6"
-                            class="form-control @error('qanswer') is-invalid @enderror" oncopy="return false"
-                            onpaste="return false" oncut="return false"></textarea>
-                        @error('qanswer')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <label for="">Only Pdf</label>
-                        <input type="file" name="myfile" class="mt-2" value="">
+                                class="form-control @error('qanswer') is-invalid @enderror" oncopy="return false"
+                                onpaste="return false" oncut="return false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </textarea>
+                            @error('qanswer')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="">Only Pdf</label>
+                            <input type="file" name="myfile" class="mt-2" value="">
 
-                    </div>
-                </th>
-            </tr>
-        </tbody>
-    </table>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
 
 
-    <div class="mb-2 mx-3">
+        <div class="mb-2 mx-3">
 
-        {{-- <input class="btn btn-primary btn-sm" type="submit" name="submitanswer" onclick="checkLength()" /> --}}
-        <button class="btn btn-primary btn-sm" type="submit" name="submitanswer">Submit</button>
-        <a href="" class="btn btn-secondary btn-sm">Back</a>
+            {{-- <input class="btn btn-primary btn-sm" type="submit" name="submitanswer" onclick="checkLength()" /> --}}
+            <button class="btn btn-primary btn-sm" type="submit" name="submitanswer">Submit</button>
+            <a href="" class="btn btn-secondary btn-sm">Back</a>
+        </div>
+        {{-- <input type="hidden" name="question_id" value=""> --}}
+        <input type="hidden" name="assignment_id" value="{{ $createdassignmentquestion->first()->assignment_id }}">
+        <input type="hidden" name="email" value="{{ $user->email }}">
+
+    </form>
+
+
     </div>
-    {{-- <input type="hidden" name="question_id" value=""> --}}
-    <input type="hidden" name="assignment_id" value="{{ $createdassignmentquestion->first()->assignment_id }}">
-    <input type="hidden" name="email" value="{{ $user->email }}">
 
-</form>
-
-
-</div>
-
-</div>
-</div>
-</div>
+    </div>
+    </div>
+    </div>
 @endsection

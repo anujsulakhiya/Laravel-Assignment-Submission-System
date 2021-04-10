@@ -68,7 +68,13 @@ class SubmissionController extends Controller
 
         $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
-        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion'));
+        $submitted = Submission::select('question_id','status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->where('is_deleted','0')->get();
+
+        // $submitted =  explode(',', $s);
+
+        // dd($submitted);
+
+        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion' , 'submitted'));
     }
 
 
@@ -113,8 +119,11 @@ class SubmissionController extends Controller
         $Submission->save();
         // }
 
-        $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->assignment_id)->where('is_deleted', '0')->get();
+        // $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->assignment_id)->where('is_deleted', '0')->get();
 
-        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion'));
+        // return redirect()->back()   ;
+        // return redirect('viewassignmentquestions/'.$Submission->assignment_id);
+        // return view('student.submitassignment', compact('user'));
+        return redirect('submitassignment');
     }
 }
