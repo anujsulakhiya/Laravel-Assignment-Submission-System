@@ -24,29 +24,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role_id == '1'){
-            return view('faculty.dashboard');
-        }
-        elseif(Auth::user()->role_id == '2'){
-            return view('student.dashboard');
-        }
-        elseif(Auth::user()->role_id == '3'){
+        $user = Auth::user();
+        if (Auth::user()->role_id == '1') {
+            return view('faculty.dashboard' , compact('user'));
+        } elseif (Auth::user()->role_id == '2') {
+            return view('student.dashboard', compact('user'));
+        } elseif (Auth::user()->role_id == '3') {
 
-            return view('admin.dashboard');
-        }
-        elseif(Auth::user()->role_id == '4'){
+            return view('admin.dashboard', compact('user'));
+        } elseif (Auth::user()->role_id == '4') {
             Auth::logout();
             return view('dashboard/master/masterhome');
-        }
-        elseif(Auth::user()->role_id == 'pending_admin'){
+        } elseif (Auth::user()->role_id == 'pending_admin') {
             Auth::logout();
             return redirect()->back()->with('alert', 'Your Admin Login Request is Pending');
-        }
-        elseif(Auth::user()->role_id == 'rejected_admin'){
+        } elseif (Auth::user()->role_id == 'rejected_admin') {
             Auth::logout();
             return redirect()->back()->with('alert', 'Sorry ! Your Admin Login Request is Rejected. Please Contact to Support');
-        }
-        else{
+        } else {
             Auth::logout();
             return view('welcome');
         }

@@ -65,7 +65,7 @@
                     <th scope="col">Subject Name</th>
                     <th scope="col">
                         <input type="text" class="form-control @error('subject_name') is-invalid @enderror"
-                            id="subject_name" name="subject_name" value="" required>
+                            id="subject_name" name="subject_name" value="Maths" required>
                         @error('subject_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -77,7 +77,7 @@
                     <th scope="col">Assignment Name</th>
                     <th scope="col">
                         <input type="text" class="form-control @error('assignment_name') is-invalid @enderror"
-                            id="assignment_name" name="assignment_name" value="" required>
+                            id="assignment_name" name="assignment_name" value="M-III" required>
                         @error('assignment_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -111,13 +111,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Question 1</span>
                 </div>
-                <textarea type="text" rows="3" class="form-control" id="question2" value="1" name="questions[]"></textarea>
+                <textarea type="text" rows="3" class="form-control" id="question2" value="1" name="questions[]">Define Maths?</textarea>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Question 2</span>
                 </div>
-                <textarea type="text" rows="3" class="form-control" id="question2" value="1" name="questions[]"></textarea>
+                <textarea type="text" rows="3" class="form-control" id="question2" value="1" name="questions[]">Define Maths?</textarea>
             </div>
             <div class="form-group" value="1" id="question"></div>
 

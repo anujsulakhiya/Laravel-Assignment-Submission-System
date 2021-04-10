@@ -115,10 +115,24 @@
     <div class="c-wrapper c-fixed-components ">
         <header class="c-header c-header-light  c-header-with-subheader">
             <span class="c-header-toggler-icon navbar-toggler-icon m-3" id="menu-toggle" width="97" height="46"></span>
+            <ul class="c-header-nav ml-auto mr-4">
+                <li class="c-header-nav-item d-md-down-none mx-2">{{@$user->name}}</li>
+                <li>
+                    <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+
+            </ul>
             <div class="c-subheader px-3">
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="" breadcumb1="" />
             </div>
+
         </header>
 
         <div class="container-fluid" ied="mainpage">
