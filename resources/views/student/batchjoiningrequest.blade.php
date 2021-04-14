@@ -1,10 +1,9 @@
 
 
-@extends('layouts.app')
+@extends('layouts.StudentLayout')
 
 @section('content')
 
-<x-studentsidebar studentbreadcumb="Join Class" studentbreadcumb1="" />
 
 <table class="table" style="overflow-x:auto;">
     <thead class="thead-light">

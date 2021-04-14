@@ -22,9 +22,13 @@ class SubmissionController extends Controller
     {
 
         $user = Auth::user();
+
         $studentbatch = Studentbatch::select('batch_id')->where('enrollment', $user->email)->where('is_deleted', '0')->get()->toarray();
 
-        for ($i = 1; $i < count($studentbatch); $i++) {
+        // dd($studentbatch);
+
+
+        for ($i = 0; $i < count($studentbatch); $i++) {
 
             // foreach($studentbatch as $bid){
 
@@ -68,13 +72,13 @@ class SubmissionController extends Controller
 
         $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
-        $submitted = Submission::select('question_id','status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->where('is_deleted','0')->get();
+        $submitted = Submission::select('question_id', 'status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
         // $submitted =  explode(',', $s);
 
         // dd($submitted);
 
-        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion' , 'submitted'));
+        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion', 'submitted'));
     }
 
 
@@ -97,9 +101,17 @@ class SubmissionController extends Controller
 
         $file = $req->file('myfile');
 
-        $filename = $user->email . time() . '.' . $file->getClientOriginalExtension();
+        $originalfile = $file->hashName();
 
-        Storage::putFile('uploads', $req->file('myfile'));
+        // dd($originalfile);
+
+        // $filename = $user->email . time() . '.' . $file->getClientOriginalExtension();
+
+        // $file = $filename;
+
+        // dd($file);
+
+        Storage::putFile('public', $req->file('myfile'));
 
         // if ($req->hasFile('myfile')) {
 
@@ -114,7 +126,7 @@ class SubmissionController extends Controller
         $Submission->assignment_id = $req->assignment_id;
         $Submission->question_id = $req->question_id;
         $Submission->qanswer   = $req->qanswer;
-        $Submission->filename  =  $filename;
+        $Submission->filename  =  $originalfile;
         $Submission->status    = 'P';
         $Submission->save();
         // }

@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if (Auth::user()->role_id == '1') {
-            return view('faculty.dashboard' , compact('user'));
+            return view('layouts.facultylayout', compact('user'));
         } elseif (Auth::user()->role_id == '2') {
             return view('student.dashboard', compact('user'));
         } elseif (Auth::user()->role_id == '3') {
@@ -45,5 +45,11 @@ class HomeController extends Controller
             Auth::logout();
             return view('welcome');
         }
+    }
+    public function dashboard()
+    {
+        $user = Auth::user();
+
+        return view('faculty.dashboard', compact('user'));
     }
 }

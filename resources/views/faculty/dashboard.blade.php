@@ -1,14 +1,14 @@
 
 {{-- <x-facultysidebar breadcumb="" breadcumb1="" /> --}}
-
+{{--
 @extends('layouts.facultylayout')
 
-@section('content')
+@section('content') --}}
 
 
-<div  style="padding-right:0px; padding-left: 0px;" class="container">
+{{-- <div  style="padding-right:0px; padding-left: 0px;" class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12 mt-5" id="maincontent">
+        <div class="col-md-12 mt-5" id="maincontent"> --}}
             <div class="card">
                 <div class="card-header">{{ __('Faculty Dashboard') }}</div>
 
@@ -22,7 +22,7 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
-        </div>
+        {{-- </div>
     </div>
-</div>
-@endsection
+</div> --}}
+{{-- @endsection --}}

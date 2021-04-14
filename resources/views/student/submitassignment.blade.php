@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.StudentLayout')
 
 @section('content')
 
-<x-studentsidebar studentbreadcumb="Submit Assignment" studentbreadcumb1="" />
 
 {{-- {{dd($studentassignmentdetail[0]->id)}} --}}
 

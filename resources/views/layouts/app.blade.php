@@ -19,10 +19,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/listboxOption.js') }}" defer></script>
-    <script src="{{ asset('js/combobox-list.js') }}" defer></script>
-    {{-- <script src="{{ asset('js/listbox.js') }}" defer></script> --}}
-    <script type="text/javascript" src="{{ URL::asset('js/listbox.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

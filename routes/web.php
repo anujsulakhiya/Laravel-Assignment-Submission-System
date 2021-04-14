@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Profile Routes
     Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/dashboard', 'HomeController@dashboard')->name('home');
     Route::get('/profile', 'ProfileController@profile');
     Route::get('/updateprofile', 'ProfileController@userprofile');
     Route::post('/updateuserprofile', 'ProfileController@updateprofile');
@@ -69,6 +70,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewbatchassignment/{batch_id}', 'faculty\AssignmentController@viewbatchassignment');
         Route::get('batchassignmentdetails/{id}', 'faculty\AssignmentController@viewbatchassignmentdetails');
         Route::get('/dassignment/{id}', 'faculty\AssignmentController@classjoiningrequest  ');
+
+        //Faculty Routes --> Assignment Submission Routes
+        Route::get('/assignmentquestions/{id}', 'faculty\SubmissionController@viewassignmentquestions');
+        Route::get('/viewsubmission/{id}', 'faculty\SubmissionController@viewsubmission');
+        Route::post('/accept', 'faculty\SubmissionController@acceptsubmission');
+        Route::get('/accept/{id}', 'faculty\SubmissionController@acceptsubmission');
+        Route::get('/reject/{id}', 'faculty\SubmissionController@rejectsubmission');
+
+
     });
     //***********************************   Student Routes   ***********************************//
 
@@ -86,10 +96,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
         Route::post('/submitans', 'student\SubmissionController@submitanswer')->name('submit_answer');
+
     });
     //***********************************   Admin Routes   ***********************************//
 
     Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     });
+
+    // Route::get('viewfile/{filename}','faculty\SubmissionController@getfile');
 });

@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.StudentLayout')
 
 @section('content')
 
-    <x-studentsidebar studentbreadcumb="Submit Question " studentbreadcumb1="" />
 
 
 
@@ -33,14 +32,15 @@
                                 onpaste="return false" oncut="return false"></textarea> --}}
                             <textarea type="text" id="qanswer" name="qanswer" rows="6"
                                 class="form-control @error('qanswer') is-invalid @enderror" oncopy="return false"
-                                onpaste="return false" oncut="return false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </textarea>
+                                onpaste="return false"
+                                oncut="return false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </textarea>
                             @error('qanswer')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                             <label for="">Only Pdf</label>
-                            <input type="file" name="myfile" class="mt-2" value="">
+                            <input type="file" name="myfile" class="mt-2" value="" required>
 
                         </div>
                     </th>
