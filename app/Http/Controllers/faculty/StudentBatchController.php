@@ -11,6 +11,7 @@ use App\Batch_detail;
 use App\Assignment;
 use App\Assignment_question;
 use App\Batch_joining_request;
+use Log;
 
 
 class StudentBatchController extends Controller
@@ -32,12 +33,16 @@ class StudentBatchController extends Controller
     {
 
         $user = Auth::user();
-        return view('faculty.createbatch', compact('user'));
+        $batchcount = Batch_detail::select('id')->where('creater_email', $user->email)->where('is_deleted', '0')->get()->count();
+       
+        return view('faculty.createbatch', compact('user' , 'batchcount'));
     }
 
     public function createbatch(Request $req)
     {
 
+        $input = $req->all();
+        dd($input);
         // return $data = $req->all();
 
         $req->validate(['batch_name' => 'required'], ['email' => 'required']);

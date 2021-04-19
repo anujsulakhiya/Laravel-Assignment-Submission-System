@@ -23,10 +23,15 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
-    <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
-    <!-- jQuery library -->
+
+
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+    </script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -34,8 +39,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
@@ -60,9 +63,8 @@
             <div class="list-group-flush">
                 <ul class="c-sidebar-nav ps ps--active-y ">
 
-                    <li id="dashboard" class="c-sidebar-nav-item "><a
-                            class="c-nav-link list-group-item list-group-item-action" href="/home"><i
-                                class="fa fa-tachometer mr-2"></i>
+                    <li id="" class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
+                            href="/home"><i class="fa fa-tachometer mr-2"></i>
                             Dashboard <span class="badge badge-info">NEW</span></a></li>
 
                     <li id="dashboard" class="c-sidebar-nav-item"><a
@@ -135,7 +137,7 @@
             </ul>
             <div class="c-subheader px-3">
                 <!-- Breadcrumb-->
-                <x-breadcrumb breadcumb="" breadcumb1="" />
+                <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
             </div>
 
         </header>
@@ -157,8 +159,9 @@
 
 </body>
 
-<script>
-    
-</script>
+
+
+<script src="{{ asset('assets/js/app.js') }}" defer></script>
+
 
 </html>

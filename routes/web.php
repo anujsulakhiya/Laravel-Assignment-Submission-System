@@ -39,17 +39,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'ProfileController@profile');
     Route::get('/updateprofile', 'ProfileController@userprofile');
     Route::post('/updateuserprofile', 'ProfileController@updateprofile');
+    Route::get('/changepassword', 'ChangePasswordController@index');
+    Route::post('/change-password', 'ChangePasswordController@store')->name('change.password');
 
     //***********************************   Faculty Routes   ***********************************//
 
     Route::group(['as' => 'faculty.', 'middleware' => ['auth', 'faculty']], function () {
         Route::get('dashboard', 'faculty\DashboardController@index')->name('dashboard');
 
-
         //Faculty Routes --> Enroll Student Routes
         Route::get('enrollstudent', 'faculty\StudentBatchController@enrollstudent');
         Route::get('createbatch', 'faculty\StudentBatchController@createbatchpage');
-        Route::post('/createbatch', 'faculty\StudentBatchController@createbatch');
+        Route::post('/createbatch', 'faculty\StudentBatchController@createbatch')->name('createbatch');
         Route::get('/viewbatch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
         Route::get('/dbatch/{batch_id}', 'faculty\StudentBatchController@deletebatch');
         Route::get('/dstudent/{enrollment}', 'faculty\StudentBatchController@deletestudent');
@@ -77,8 +78,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/accept', 'faculty\SubmissionController@acceptsubmission');
         Route::get('/accept/{id}', 'faculty\SubmissionController@acceptsubmission');
         Route::get('/reject/{id}', 'faculty\SubmissionController@rejectsubmission');
-
-
     });
     //***********************************   Student Routes   ***********************************//
 
@@ -91,12 +90,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('sendjoningrequest/{batch_id}', 'student\ClassController@joinclassrequest');
 
         //Student Routes --> Submission Routes
-        Route::get('submitassignment', 'student\SubmissionController@submissionpage');
+        Route::get('/submitassignment', 'student\SubmissionController@viewmybatched');
+        Route::get('/viewassignment/{id}', 'student\SubmissionController@submissionpage');
+
         Route::get('/viewassignmentquestions/{id}', 'student\SubmissionController@showassignmentquestion');
 
         Route::get('/submitquestion/{id}', 'student\SubmissionController@submitquestion');
         Route::post('/submitans', 'student\SubmissionController@submitanswer')->name('submit_answer');
 
+        //Student Routes --> View Submission Routes
+        Route::get('/mysubmission', 'student\SubmissionController@viewmybatched')->name('view_mysubmission');
     });
     //***********************************   Admin Routes   ***********************************//
 

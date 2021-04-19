@@ -14,28 +14,10 @@ $(document).ready(function() {
         $("#mainpage").load("/profile");
     });
 
-    $("#dashboard").on("click", function() {
-
-        $("#mainpage").load("/home");
-    });
-
-    $("#dashboard").on("click", function() {
-
-        $("#mainpage").load("/home");
-    });
-
-    $("#dashboard").on("click", function() {
-
-        $("#mainpage").load("/home");
-    });
-
-    $("#dashboard").on("click", function() {
-
-        $("#mainpage").load("/home");
-    });
-
     //For batch name search option in dropdown
     $("#sel1").select2();
+
+
 });
 
 $("#menu-toggle").click(function(e) {
@@ -127,4 +109,51 @@ $("#accept").click(function(event) {
             }
         },
     });
+
+
+});
+
+$('#updateprofile').click(function(event) {
+
+
+
+});
+
+$("#btnSubmit").submit(function(e) {
+
+    e.preventDefault();
+
+    var table = document.getElementById("createbatchtable");
+    var varCount = table.rows.length;
+
+    var batch_name = document.getElementById("classname").value;
+
+    var name = "";
+    var enrollment = "";
+
+    for (var i = 1; i < varCount; i++) {
+
+        row = table.rows[i];
+
+        name += "," + $(row.cells[1]).find("input").val();
+        enrollment += "," + $(row.cells[2]).find("input").val();
+
+    }
+
+    var fd = new FormData();
+    fd.append('batch_name', batch_name);
+    fd.append('name', name);
+    fd.append('enrollment', enrollment);
+
+
+    $.ajax({
+        type: "POST",
+        url: "{{ url('/createbatch') }}", // ,
+        data: fd,
+
+        success: function(response) {
+            alert(response);
+        }
+    });
+
 });

@@ -52,6 +52,7 @@ class SubmissionController extends Controller
         // dd($req);
 
         Submission::where('id', $req->id)->update(["status" => 'R']);
+        Submission::where('id', $req->id)->update(["is_deleted" => '1']);
 
         return redirect()->back();
         // return response()->json(['success'=>'Ajax request submitted successfully']);

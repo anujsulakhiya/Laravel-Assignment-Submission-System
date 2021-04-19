@@ -75,30 +75,19 @@
                             Profile</a></li>
 
 
-                    <li class="c-sidebar-nav-title">Enroll Students</li>
+                    <li class="c-sidebar-nav-title">Assignmnets</li>
                     <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/createbatch"><i class="fa fa-graduation-cap mr-2"></i>
-                            Create Class</a></li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/enrollstudent"><i class="fa fa-graduation-cap mr-2"></i>
-                            Enroll Students</a></li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/enrollstudent"><i class="fa fa-graduation-cap mr-2"></i>
-                            Class Joining Requests </a></li>
+                            href="/submitassignment"><i class="fa fa-graduation-cap mr-2"></i>
+                            Submit Assignment</a></li>
 
 
-                    <li class="c-sidebar-nav-title">Assignment</li>
+                    <li class="c-sidebar-nav-title">View Submission</li>
                     <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/createassignment"><i class="fa fa-plus  mr-2"></i>
-                            Create Assignment</a></li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/myassignment"><i class="fa fa-book mr-2"></i>
-                            My Assignment</a></li>
+                            href="/mysubmission"><i class="fa fa-book  mr-2"></i>
+                            My Submission</a></li>
 
                     <li class="c-sidebar-nav-title">Other</li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/"><i class="fa fa-recycle mr-2"></i>
-                            Recycle Bin</a></li>
+
                     <li class="c-sidebar-nav-item ">
                         <a class="c-nav-link list-group-item list-group-item-action" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

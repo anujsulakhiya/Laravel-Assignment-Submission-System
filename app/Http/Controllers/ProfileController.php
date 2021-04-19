@@ -33,4 +33,11 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('common/profile', compact('user'));
     }
+
+    public function updateuserpassword(){
+
+        $user = Auth::user();
+        return view('auth/passwords/mannualreset', compact('user'));
+    }
+
 }

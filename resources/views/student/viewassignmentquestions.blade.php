@@ -44,12 +44,12 @@
                         @elseif (@$submitted[$j]->status == 'A')
                             <th class="text-center text-success text-uppercase">accepted</th>
                         @elseif (@$submitted[$j]->status == 'R')
-                            <th class="text-center text-success text-uppercase">rejected</th>
+                            <th class="text-center text-danger text-uppercase">rejected</th>
                         @else
                             <th class="text-center text-danger text-uppercase"></th>
                         @endif
 
-                        {{ @$submitted[$j]->status }}
+                        {{-- {{ @$submitted[$j]->status }} --}}
 
 
                     </tr>

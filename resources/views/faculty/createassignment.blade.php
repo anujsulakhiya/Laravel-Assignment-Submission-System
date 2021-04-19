@@ -46,7 +46,7 @@
 
                             @else
 
-                                <select class="form-control" style='width: 200px;' id="sel1" name="batch_id" required>
+                                <select class="form-control" style='width: 100%;' id="sel1" name="batch_id" required>
                                     <option value=""></option>
                                     @foreach ($batchdetail as $batch)
                                         <option value="{{ @$batch->id }}">{{ @$batch->batch_name }}</option>

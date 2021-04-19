@@ -21,22 +21,23 @@
                                     <div class="col-md-3">
                                         <label for="class_no">CLASS NO.</label>
                                         <input id="class_no" type="text" style="text-transform: capitalize"
-                                            class="form-control" placeholder="" value="">
+                                            class="form-control" placeholder="" value="{{ @$batchcount }}" readonly>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="">
-                                            <label for="inputCityName">CLASS NAME</label>
-                                            <input id="COMPANYNAME" type="text" style="text-transform: capitalize"
-                                                class="form-control" placeholder="Class Name">
+                                            <label for="batch_name">CLASS NAME</label>
+                                            <input id="batch_name" name="batch_name" type="text"
+                                                style="text-transform: capitalize" class="form-control"
+                                                placeholder="Class Name">
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-3">
                                         <div class="">
-                                            <label for="inputOwnerName">CLASS LIMIT</label>
-                                            <input id="txtRefrenceNo" type="text" style="text-transform: capitalize"
+                                            <label for="batch_limit">CLASS LIMIT</label>
+                                            <input id="batch_limit" type="text" style="text-transform: capitalize"
                                                 class="form-control" placeholder="Set Limit" value="">
                                         </div>
                                     </div>
@@ -56,20 +57,20 @@
                                                 <tr>
                                                     <td class="p-0 col-md-1">
 
-                                                        <button class="btn" type="button" onclick="deleteRow(this)"><i
-                                                                class="fa fa-window-close" aria-hidden="true"></i>
+                                                        <button class="btn" type="button" onclick="deleteRow(this)">
+                                                            <i class="fa fa-window-close" aria-hidden="true"></i>
                                                             1</button>
                                                     </td>
 
                                                     <td class="p-0 col-md-2">
                                                         <input name="itemcode" type="text"
-                                                            style="text-transform: capitalize" class="form-control ItemCode"
-                                                            placeholder="Item Code" />
+                                                            style="text-transform: capitalize" class="form-control"
+                                                            placeholder="Name" />
                                                     </td>
 
                                                     <td class="p-0 col-md-2">
                                                         <input name="Amount1" type="text" style="text-transform: capitalize"
-                                                            class="form-control Amount" placeholder="Amount"
+                                                            class="form-control Amount" placeholder="Email / Enrollment"
                                                             onkeydown="NewRow()" />
                                                     </td>
 
@@ -86,12 +87,12 @@
                                     <br>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary m-2 mb-3"
-                                            id="btnSubmit">Submit</button>
+                                            id="btnSubmit1">Submit</button>
                                         <button type="button" class="btn btn-warning m-2 mb-3"
                                             id="btnDetails">Details</button>
                                         <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose">Close</button>
                                     </div>
-
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -100,13 +101,9 @@
         </div>
 
     </section>
-    {{-- <x-facultysidebar breadcumb="Enroll Student" breadcumb1="Create New Batch" /> --}}
 
-    {{ Form::open(['url' => 'createbatch']) }}
-
-    {{-- <form class="" action="createbatch" method="POST"> --}}
-
-    @csrf
+    {{-- {{ Form::open(['url' => 'createbatch']) }} --}}
+    {{-- @csrf
     <div class="input-group mb-2">
         <div class="input-group-prepend">
             <span class="input-group-text font-weight-bold">Class Name</span>
@@ -158,7 +155,7 @@
                     $i = $i + 2;
                     $j = $j + 2;
                     }
-                    ?>
+                ?>
 
             </tbody>
 
@@ -167,12 +164,26 @@
     <button type="submit" name="nameupdate" class="btn btn-primary btn-sm">Create New Class</button>
     <button type="button" onclick="add_batch_enrollment_field()" class="btn btn-sm btn-primary">Add Enrollemnt
         Field</button>
-    <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a>
-    {{-- </form> --}}
-    {{ Form::close() }}
-    </div>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">Back</a> --}}
 
-    </div>
-    </div>
-    </div>
+    {{-- {{ Form::close() }} --}}
+
+    <script>
+        
+        $("#btnSubmit1").submit(function(e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/getmsg',
+                data: '_token = <?php echo csrf_token(); ?>',
+                success: function(data) {
+                    $("#msg").html(data.msg);
+                }
+            });
+        });
+
+    </script>
+
 @endsection

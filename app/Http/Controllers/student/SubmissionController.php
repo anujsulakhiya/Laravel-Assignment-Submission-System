@@ -12,58 +12,26 @@ use App\Assignment_question;
 use App\Batch_detail;
 use App\Submission;
 use App\Studentbatch;
-
+use Carbon\Carbon;
 
 
 
 class SubmissionController extends Controller
 {
-    public function submissionpage()
+    public function submissionpage(Request $req)
     {
-
         $user = Auth::user();
-
-        $studentbatch = Studentbatch::select('batch_id')->where('enrollment', $user->email)->where('is_deleted', '0')->get()->toarray();
-
-        // dd($studentbatch);
-
-
-        for ($i = 0; $i < count($studentbatch); $i++) {
-
-            // foreach($studentbatch as $bid){
-
-            $studentassignmentdetail = Assignment::select('*')->where('batch_id', $studentbatch)
-                ->where('is_deleted', '0')->get();
-
-
-
-            // }
-
-
-        }
-
-        // foreach($studentbatch as $bid){
-
-        // $studentassignmentdetail = Assignment::select('*')->where( 'batch_id', $bid->batch_id )
-        // ->where( 'is_deleted', '0' )->get();
-
-        // }
-
-        // $studentassignmentdetail = array_map(function ($studentbatch){
-
-        //     dd($studentbatch);
-
-        //     $studentassignmentdetail = Assignment::select('*')->where( 'batch_id', $studentbatch->batch_id )
-        //             ->where( 'is_deleted', '0' )->get();
-        //     return $studentassignmentdetail;
-
-        // }, $studentbatch);
-
-
-        // dd($studentassignmentdetail);
-
-        return view('student.submitassignment', compact('user', 'studentassignmentdetail'));
+        $date = Carbon::now();
+        //Get date and time
+        $today = $date->toDateTimeString();
+        // dd($today);
+        $batchassignmentdetail = Assignment::select('*')
+            ->where('batch_id', $req->id)
+            ->where('is_deleted', '0')->get();
+        return view('student.submitassignment', compact('user', 'batchassignmentdetail' , 'today'));
     }
+
+
 
     public function showassignmentquestion(Request $req)
     {
@@ -137,5 +105,27 @@ class SubmissionController extends Controller
         // return redirect('viewassignmentquestions/'.$Submission->assignment_id);
         // return view('student.submitassignment', compact('user'));
         return redirect('submitassignment');
+    }
+
+    public function viewmybatched()
+    {
+        $user = Auth::user();
+
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->get();
+
+        return view('student.mysubmission', compact('studentbatch'));
+    }
+
+    public function viewmysubmission()
+    {
+
+        $user = Auth::user();
+
+        $mysubmission = Submission::select('*')->where('enrollment', $user->email)->get();
+        // dd($mysubmission);
+
+        // $assignment_detail = Assignment::select('assignment_name')->where('id' , $mysubmission->assignment_id)->get();
+
+        return view('student.mysubmission', compact('mysubmission', 'assignment_detail'));
     }
 }
