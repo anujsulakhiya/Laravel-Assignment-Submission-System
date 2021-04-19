@@ -87,7 +87,7 @@
                                     <br>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-primary m-2 mb-3"
-                                            id="btnSubmit1">Submit</button>
+                                            id="btnSubmit">Submit</button>
                                         <button type="button" class="btn btn-warning m-2 mb-3"
                                             id="btnDetails">Details</button>
                                         <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose">Close</button>
@@ -168,22 +168,6 @@
 
     {{-- {{ Form::close() }} --}}
 
-    <script>
-        
-        $("#btnSubmit1").submit(function(e) {
 
-            e.preventDefault();
-
-            $.ajax({
-                type: 'POST',
-                url: '/getmsg',
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(data) {
-                    $("#msg").html(data.msg);
-                }
-            });
-        });
-
-    </script>
 
 @endsection
