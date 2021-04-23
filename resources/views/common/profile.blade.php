@@ -221,6 +221,7 @@
 
 
 <script>
+    
     $("#changepassword").on("click", function() {
 
         $("#mainpage").load("/changepassword");
