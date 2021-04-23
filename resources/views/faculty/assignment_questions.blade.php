@@ -1,6 +1,6 @@
-@extends('layouts.facultylayout')
+{{-- @extends('layouts.facultylayout')
 
-@section('content')
+@section('content') --}}
 
     {{-- {{ $Assignment_question }}  --}}
     <table class="table table-bordered" style="overflow-x:auto;">
@@ -17,11 +17,18 @@
 
                     <th>Q --> {{ $question->questions}}</th>
 
-                    <th class=""><a href="/viewsubmission/{{ $question->id }}" class="btn btn-sm btn-danger">View</a></th>
+                    <th class=""><a href="/view_submission/{{ $question->id }}" class="btn btn-sm btn-danger my_mainpage_link ">View</a></th>
                 </tr>
             @endforeach
 
         </tbody>
     </table>
 
-@endsection
+{{-- @endsection --}}
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+</script>

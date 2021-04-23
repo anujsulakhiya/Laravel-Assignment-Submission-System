@@ -1,7 +1,7 @@
 
-@extends('layouts.facultylayout')
+{{-- @extends('layouts.facultylayout')
 
-@section('content')
+@section('content') --}}
 {{-- <x-facultysidebar breadcumb="View Batch" breadcumb1="" /> --}}
 
 
@@ -14,7 +14,7 @@
             <th></th>
         </thead>
         <tbody class=' table-bordered'>
-        {{$batch_detail}}
+        {{-- {{$batch_detail}} --}}
 
             @foreach($batchstudents as $batch)
 
@@ -43,7 +43,7 @@
         </div>
         <div class="row col-md-6">
             <div class="col-md-9">
-                <input  class="form-control" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}" id="myInput" readonly>
+                <input  class="form-control" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join" id="myInput" readonly>
             </div>
             <div class="col-md-3">
                 <button class="btn btn-primary btn-sm float-right" onclick="myFunction()">Copy Link</button>
@@ -70,7 +70,7 @@
                 <th></th>
                 <td>
                     <div class="btn-group">
-                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="/view_batch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
                         <button class="btn btn-secondary btn-sm "><a class="text-white" href="/dstudent/{{$batch->enrollment}}">Remove</a></button>
                     </div>
 
@@ -87,4 +87,4 @@
 </div>
 </div>
 </div>
-@endsection
+{{-- @endsection --}}

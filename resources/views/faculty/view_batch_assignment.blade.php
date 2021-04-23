@@ -1,6 +1,5 @@
-@extends('layouts.facultylayout')
-
-@section('content')
+{{-- @extends('layouts.facultylayout')
+@section('content') --}}
 
     {{-- <x-facultysidebar breadcumb="Batch Assignment" breadcumb1="" /> --}}
 
@@ -26,11 +25,11 @@
                         <th>{{ date('F d, Y', strtotime($assignmentdetail->created_at)) }}</th>
                         <th>{{ date('F d, Y', strtotime($assignmentdetail->last_submission_date)) }}</th>
                         <th>
-                            <a href="/assignmentquestions/{{ $assignmentdetail->id }}" class="btn btn-sm btn-primary">View Submissions</a>
+                            <a href="/assignment_questions/{{ $assignmentdetail->id }}" class="btn btn-sm btn-primary my_mainpage_link">View Submissions</a>
 
                             <div class="btn-group">
                                 <a href="/batchassignmentdetails/{{ $assignmentdetail->id }}"
-                                    class="btn btn-sm btn-primary">Details</a>
+                                    class="btn btn-sm btn-primary my_mainpage_link">Details</a>
                                 <button class="btn btn-secondary btn-sm "
                                     onclick="return confirm('Are you sure? This Will Delete Your Assgnments and Assignment Questions');"><a
                                         class="text-white"
@@ -58,4 +57,11 @@
     </div>
     </div>
     </div>
-@endsection
+{{-- @endsection --}}
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+</script>

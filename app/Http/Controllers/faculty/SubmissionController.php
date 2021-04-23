@@ -23,7 +23,7 @@ class SubmissionController extends Controller
 
         $Assignment_question = Assignment_question::select('*')->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
-        return view('faculty/assignmentquestions', compact('Assignment_question'));
+        return view('faculty/assignment_questions', compact('Assignment_question'));
     }
 
     public function viewsubmission(Request $req)
@@ -32,7 +32,7 @@ class SubmissionController extends Controller
 
         $Submitted_Assignment_question = Submission::select('*')->where('question_id', $req->id)->where('is_deleted', '0')->get();
 
-        return view('faculty/viewsubmission', compact('Submitted_Assignment_question', 'Assignment_question'));
+        return view('faculty/view_submission', compact('Submitted_Assignment_question', 'Assignment_question'));
     }
 
 

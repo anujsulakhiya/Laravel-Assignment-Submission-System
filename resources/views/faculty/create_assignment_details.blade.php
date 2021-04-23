@@ -1,5 +1,5 @@
-@extends('layouts.facultylayout')
-@section('content')
+{{-- @extends('layouts.facultylayout')
+@section('content') --}}
 {{-- <x-facultysidebar breadcumb="Assignment Detail" breadcumb1="" /> --}}
 
 
@@ -78,4 +78,4 @@
 </div>
 </div>
 </div>
-@endsection
+{{-- @endsection --}}

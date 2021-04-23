@@ -1,7 +1,8 @@
-@extends('layouts.facultylayout')
+{{-- @extends('layouts.facultylayout')
 
-@section('content')
+@section('content') --}}
     {{-- {{ $Submitted_Assignment_question }} --}}
+
     <table class="table table-bordered" style="overflow-x:auto;">
         <thead class="thead-light">
             <tr>
@@ -51,5 +52,6 @@
             @endforeach
         </tbody>
     </table>
-@endsection
+    
+{{-- @endsection --}}
 {{-- {{Storage::url('app/uploads/'.$submission_details->filename)} --}}

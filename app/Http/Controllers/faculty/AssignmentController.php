@@ -19,7 +19,7 @@ class AssignmentController extends Controller
 
         $user = Auth::user();
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
-        return view('faculty.createassignment', compact('user', 'batchdetail'));
+        return view('faculty.create_assignment', compact('user', 'batchdetail'));
     }
 
     public function autocomplete(Request $request)
@@ -42,7 +42,7 @@ class AssignmentController extends Controller
         $user = Auth::user();
         $batch_name = Batch_detail::select('batch_name')
             ->where('creater_email', $user->email)->where('id', $req->batch_id)->get();
-        return view('faculty.createassignment', compact('user', 'batch_name'));
+        return view('faculty.create_assignment', compact('user', 'batch_name'));
     }
 
     public function createassignment(Request $req)
@@ -95,7 +95,7 @@ class AssignmentController extends Controller
 
         // return redirect()->view('faculty.createassignmentdetails',compact('createdassignmentdetail' ,'createdassignmentquestion'));
 
-        return view('faculty.createassignmentdetails', compact('createdassignmentdetail', 'createdassignmentquestion'));
+        return view('faculty.create_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
     }
 
     public function createassignmentdetails()
@@ -103,7 +103,7 @@ class AssignmentController extends Controller
 
         $user = Auth::user();
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
-        return view('faculty.createassignmentdetails', compact('user', 'batchdetail'));
+        return view('faculty.create_assignment_details', compact('user', 'batchdetail'));
     }
 
     public function viewmyassignment()
@@ -111,7 +111,7 @@ class AssignmentController extends Controller
 
         $user = Auth::user();
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
-        return view('faculty.myassignment', compact('user', 'batchdetail'));
+        return view('faculty.my_assignment', compact('user', 'batchdetail'));
     }
 
     public function viewbatchassignment(Request $req)
@@ -121,7 +121,7 @@ class AssignmentController extends Controller
         $batchassignmentdetail = Assignment::select('*')
             ->where('email', $user->email)->where('batch_id', $req->batch_id)
             ->where('is_deleted', '0')->get();
-        return view('faculty.viewbatchassignment', compact('user', 'batchassignmentdetail'));
+        return view('faculty.view_batch_assignment', compact('user', 'batchassignmentdetail'));
     }
 
     public function viewbatchassignmentdetails(Request $req)
@@ -136,7 +136,7 @@ class AssignmentController extends Controller
             ->where('email', $user->email)
             ->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
-        return view('faculty.createassignmentdetails', compact('createdassignmentdetail', 'createdassignmentquestion'));
+        return view('faculty.create_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
     }
 
     public function deleteassignment(Request $req)
