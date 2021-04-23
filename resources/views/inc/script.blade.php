@@ -11,49 +11,69 @@
 
 
 <script>
+
     /* ------------------------  Faculty JS  -------------------------------*/
 
+    const CONTENT_WRAPPER = $('#mainpage');
 
-    $(document).ready(function() {
-
-
-        function view_page() {
-
-        }
-        $("#dashboard").on("click", function() {
-
-            $("#mainpage").load("/dashboard");
-        });
-
-        $("#profile").on("click", function() {
-
-            $("#mainpage").load("/profile");
-        });
-
-        $("#createbatch").on("click", function() {
-
-            $("#mainpage").load("/createbatch");
-        });
-
-        $("#enrollstudent").on("click", function() {
-
-            $("#mainpage").load("/enrollstudent");
-        });
-
-        //For batch name search option in dropdown
-        $("#sel1").select2();
-
-    });
+    var last_loaded = null;
 
     function set_my_ajax_link_listner() {
         $('.my_ajax_link').on('click', (e) => {
             e.preventDefault();
             const page_name = e.target.href;
-            load_ajax_page(page_name);
-            last_loaded = page_name;
+            CONTENT_WRAPPER.load(page_name);
+            // load_ajax_page(page_name);
+            // last_loaded = page_name;
             //  console.log(last_loaded);
         });
     }
+
+    function set_my_ajax_link_in_mainpage() {
+        $('.my_mainpage_link').on('click', (e) => {
+            e.preventDefault();
+            const page_name = e.target.href;
+            CONTENT_WRAPPER.load(page_name);
+            // load_ajax_page(page_name);
+            // last_loaded = page_name;
+            //  console.log(last_loaded);
+        });
+    }
+
+    function load_ajax_page(page_name = "/home_page") {
+
+        CONTENT_WRAPPER.load(page_name, () => {
+            set_my_ajax_link_listner();
+        });
+    }
+
+    // function go_back() {
+    //     console.log(1);
+    //     if (last_loaded == null) {
+    //         load_ajax_page();
+    //     } else {
+    //         load_ajax_page(last_loaded);
+    //     }
+    // }
+
+    $(document).ready(function() {
+
+        set_my_ajax_link_listner();
+
+        if( window.location.search  != '?m=join' ){
+            load_ajax_page();
+        }
+
+
+        // $("#dashboard").on("click", function() {
+
+        //     $("#mainpage").load("/dashboard");
+        // });
+
+        //For batch name search option in dropdown
+        $("#sel1").select2();
+
+    });
 
     function post_request(element) {
 
@@ -86,14 +106,6 @@
         alert("Copied the Link: " + copyText.value);
     }
 
-    $(document).ready(function() {
-
-        // Initialize select2
-
-
-    });
-
-
     //table js for appending and deleting new tr in table for enrollment field
     function deleteRow(row) {
         var i = row.parentNode.parentNode.rowIndex;
@@ -106,7 +118,7 @@
 
         e = e || window.event;
 
-        if (e.keyCode == 13) {
+        if (e.keyCode == 9) {
             insRow();
         }
     }
@@ -135,7 +147,7 @@
 
         e = e || window.event;
 
-        if (e.keyCode == 13) {
+        if (e.keyCode == 9) {
             insRow();
         }
     }
@@ -166,8 +178,6 @@
     });
 
     $('#updateprofile').click(function(event) {
-
-
 
     });
 

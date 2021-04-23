@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,56 +25,67 @@
                 Assignment Submitter New
             </div>
             <div class="list-group-flush">
+
                 <ul class="c-sidebar-nav ps ps--active-y ">
 
-                    <li id="" class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/home"><i class="fa fa-tachometer mr-2"></i>
-                            Dashboard <span class="badge badge-info">NEW</span></a></li>
+                    <a href="/home_page" class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
+                            class="fa fa-tachometer mr-2"></i> Dashboard </a>
 
-                    <li id="dashboard" class="c-sidebar-nav-item"><a
-                            class="c-nav-link list-group-item list-group-item-action" href="#"><i
-                                class="fa fa-tachometer mr-2"></i>Dashboard</a></li>
+                    <a href="/profile" class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
+                            class="fa fa-user mr-2"></i> Profile </a>
 
-                    <li id="profile" class="c-sidebar-nav-item "><a
-                            class="c-nav-link list-group-item list-group-item-action" href="#"><i
-                                class="fa fa-user mr-2"></i>
-                            Profile</a></li>
+                    {{-- --------------------------------- Faculty Sidebar --------------------------------- --}}
 
+                    @if ($user->role_id == '1')
 
-                    <li class="c-sidebar-nav-title">Enroll Students</li>
+                        <li class="c-sidebar-nav-title">Enroll Students</li>
 
-                    <li id="createbatch" class="c-sidebar-nav-item ">
-                        <a class="c-nav-link list-group-item list-group-item-action" href="#">
-                            <i class="fa fa-graduation-cap mr-2"></i>Create Class</a>
-                    </li>
+                        <a href="/createbatch" class="c-nav-link list-group-item list-group-item-action my_ajax_link">
+                            <i class="fa fa-tachometer mr-2"></i> Create Class </a>
 
-                    <li id="enrollstudent" class="c-sidebar-nav-item ">
-                        <a class="c-nav-link list-group-item list-group-item-action" href="#">
-                            <i class="fa fa-graduation-cap mr-2"></i>Enroll Students</a>
-                    </li>
+                        <a href="/enroll_student"
+                            class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
+                                class="fa fa-tachometer mr-2"></i> Enroll Students</a>
 
-                    <li id="class_joining_requests" class="c-sidebar-nav-item ">
-                        <a class="c-nav-link list-group-item list-group-item-action" href="#">
-                            <i class="fa fa-graduation-cap mr-2"></i>Class Joining Requests</a>
-                    </li>
+                        <a href="/enroll_student"
+                            class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
+                                class="fa fa-tachometer mr-2"></i> Class Joining Requests </a>
 
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/enrollstudent"><i class="fa fa-graduation-cap mr-2"></i>
-                            Class Joining Requests </a></li>
+                        <li class="c-sidebar-nav-title">Assignment</li>
 
+                        <a href="/create_assignment"
+                            class="c-nav-link list-group-item list-group-item-action my_ajax_link">
+                            <i class="fa fa-tachometer mr-2"></i> Create Assignment </a>
 
-                    <li class="c-sidebar-nav-title">Assignment</li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/createassignment"><i class="fa fa-plus  mr-2"></i>
-                            Create Assignment</a></li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/myassignment"><i class="fa fa-book mr-2"></i>
-                            My Assignment</a></li>
+                        <a href="/my_assignment" class="c-nav-link list-group-item list-group-item-action my_ajax_link">
+                            <i class="fa fa-tachometer mr-2"></i> My Assignment</a>
+
+                        {{-- --------------------------------- Student Sidebar --------------------------------- --}}
+
+                    @elseif( $user->role_id == '2' )
+
+                        <li class="c-sidebar-nav-title">Assignmnets</li>
+
+                        <a href="/submitassignment"
+                            class="c-nav-link list-group-item list-group-item-action my_ajax_link">
+                            <i class="fa fa-tachometer mr-2"></i> Submit Assignment </a>
+
+                        <li class="c-sidebar-nav-title">View Submission</li>
+
+                        <a href="/mysubmission" class="c-nav-link list-group-item list-group-item-action my_ajax_link">
+                            <i class="fa fa-tachometer mr-2"></i> My Submission</a>
+
+                    @endif
 
                     <li class="c-sidebar-nav-title">Other</li>
-                    <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
-                            href="/"><i class="fa fa-recycle mr-2"></i>
-                            Recycle Bin</a></li>
+
+                    <li class="c-sidebar-nav-item ">
+                        <a class="c-nav-link list-group-item list-group-item-action" href="/">
+                            <i class="fa fa-recycle mr-2"></i>
+                            Recycle Bin
+                        </a>
+                    </li>
+
                     <li class="c-sidebar-nav-item ">
                         <a class="c-nav-link list-group-item list-group-item-action" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -84,7 +96,6 @@
                         </form>
                     </li>
 
-
                 </ul>
             </div>
 
@@ -92,10 +103,15 @@
     </div>
 
     <div class="c-wrapper c-fixed-components ">
+
         <header class="c-header c-header-light  c-header-with-subheader">
+
             <span class="c-header-toggler-icon navbar-toggler-icon m-3" id="menu-toggle" width="97" height="46"></span>
+
             <ul class="c-header-nav ml-auto mr-4">
+
                 <li class="c-header-nav-item d-md-down-none mx-2">{{ @$user->name }}</li>
+
                 <li>
                     <a class="" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -105,6 +121,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
+
                 </li>
 
             </ul>

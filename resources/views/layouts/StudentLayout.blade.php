@@ -76,6 +76,7 @@
 
 
                     <li class="c-sidebar-nav-title">Assignmnets</li>
+
                     <li class="c-sidebar-nav-item "><a class="c-nav-link list-group-item list-group-item-action"
                             href="/submitassignment"><i class="fa fa-graduation-cap mr-2"></i>
                             Submit Assignment</a></li>
