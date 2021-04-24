@@ -3,7 +3,7 @@
 {{-- <x-facultysidebar breadcumb="Create Assignment" breadcumb1="" /> --}}
 
 
-<form class="" action="createnewassignment" method="POST">
+<form class="" action="/createnewassignment" method="POST">
     @csrf
     <input type="hidden" name="email" value="{{ $user->email }}">
 
