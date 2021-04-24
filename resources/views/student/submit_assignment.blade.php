@@ -1,6 +1,6 @@
-@extends('layouts.StudentLayout')
+{{-- @extends('layouts.StudentLayout')
 
-@section('content')
+@section('content') --}}
 
 
     {{-- {{dd($batchassignmentdetail)}} --}}
@@ -30,7 +30,7 @@
 
                         @if (strtotime($today) <= strtotime($assignmentdetail->last_submission_date))
                             <th class=""><a href="/viewassignmentquestions/{{ $assignmentdetail->id }}"
-                                    class="btn btn-sm btn-primary">View Questions </a></th>
+                                    class="btn btn-sm btn-primary my_mainpage_link">View Questions </a></th>
                         @else
                                 <th class="text-danger">Submission Closed</th>
                         @endif
@@ -55,4 +55,11 @@
     </div>
     </div>
     </div>
-@endsection
+{{-- @endsection --}}
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+</script>

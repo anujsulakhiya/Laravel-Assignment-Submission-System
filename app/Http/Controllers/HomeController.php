@@ -26,9 +26,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if (Auth::user()->role_id == '1') {
-            return view('layouts.facultylayout', compact('user'));
+            return view('layouts.layout', compact('user'));
         } elseif (Auth::user()->role_id == '2') {
-            return view('student.dashboard', compact('user'));
+            return view('layouts.layout', compact('user'));
         } elseif (Auth::user()->role_id == '3') {
 
             return view('admin.dashboard', compact('user'));
@@ -46,10 +46,16 @@ class HomeController extends Controller
             return view('welcome');
         }
     }
+
     public function dashboard()
     {
         $user = Auth::user();
 
-        return view('faculty.dashboard', compact('user'));
+        if($user->role_id == '1'){
+            return view('faculty.home_page', compact('user'));
+        }
+        if($user->role_id == '2'){
+            return view('student.home_page', compact('user'));
+        }
     }
 }

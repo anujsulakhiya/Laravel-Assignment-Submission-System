@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\student;
-
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,7 +28,7 @@ class SubmissionController extends Controller
         $batchassignmentdetail = Assignment::select('*')
             ->where('batch_id', $req->id)
             ->where('is_deleted', '0')->get();
-        return view('student.submitassignment', compact('user', 'batchassignmentdetail' , 'today'));
+        return view('student.submit_assignment', compact('user', 'batchassignmentdetail' , 'today'));
     }
 
 
@@ -46,7 +46,7 @@ class SubmissionController extends Controller
 
         // dd($submitted);
 
-        return view('student.viewassignmentquestions', compact('user', 'createdassignmentquestion', 'submitted'));
+        return view('student.view_assignment_questions', compact('user', 'createdassignmentquestion', 'submitted'));
     }
 
 
@@ -57,15 +57,27 @@ class SubmissionController extends Controller
 
         $createdassignmentquestion = Assignment_question::select('*')->where('id', $req->id)->where('is_deleted', '0')->get();
 
-        return view('student.submitquestion', compact('user', 'createdassignmentquestion'));
+        return view('student.submit_question', compact('user', 'createdassignmentquestion'));
     }
 
     public function submitanswer(Request $req)
     {
+        dd($req->all());
+        // return ;
+
 
         $req->validate(['qanswer' => ['required', 'min:50']], ['question_id' => 'required']);
 
         $user = Auth::user();
+
+        $validator = Validator::make($req->all(), [
+            'qanswer' => 'required | min:50',
+        ]);
+
+        if ($validator->fails()) {
+
+            return view('student.submit_question')->withErrors($validator);
+        }
 
         $file = $req->file('myfile');
 
@@ -113,7 +125,7 @@ class SubmissionController extends Controller
 
         $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->get();
 
-        return view('student.mysubmission', compact('studentbatch'));
+        return view('student.my_submission', compact('studentbatch'));
     }
 
     public function viewmysubmission()
@@ -126,6 +138,6 @@ class SubmissionController extends Controller
 
         // $assignment_detail = Assignment::select('assignment_name')->where('id' , $mysubmission->assignment_id)->get();
 
-        return view('student.mysubmission', compact('mysubmission', 'assignment_detail'));
+        return view('student.my_submission', compact('mysubmission', 'assignment_detail'));
     }
 }

@@ -24,7 +24,7 @@ class ClassController extends Controller
 
         $faculty_name = User::select('name')->where( 'email', $batch_detail->creater_email )->first();
 
-        return view('student.batchjoiningrequest' , compact('user' , 'batch_detail' , 'faculty_name')) ;
+        return view('student.batch_joining_request' , compact('user' , 'batch_detail' , 'faculty_name')) ;
     }
 
     public function joinclassrequest(Request $req){

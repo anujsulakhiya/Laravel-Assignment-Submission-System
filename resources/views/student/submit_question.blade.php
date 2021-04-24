@@ -1,11 +1,8 @@
-@extends('layouts.StudentLayout')
+{{-- @extends('layouts.StudentLayout')
 
-@section('content')
+@section('content') --}}
 
-
-
-
-    <form class="" action="{{ route('student.submit_answer') }}" method="POST" enctype="multipart/form-data">
+    <form class="" action="/submitans" method="POST" enctype="multipart/form-data" onsubmit="return post_request(this)">
         @csrf
         <table class="table table-bordered" style="overflow-x:auto;">
 
@@ -67,4 +64,12 @@
     </div>
     </div>
     </div>
-@endsection
+{{-- @endsection --}}
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+</script>
+

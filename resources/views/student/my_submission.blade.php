@@ -1,10 +1,12 @@
-@extends('layouts.StudentLayout')
+{{-- @extends('layouts.StudentLayout')
 
-@section('content')
+@section('content') --}}
 
 
     {{-- {{dd($studentbatch)}} --}}
-    {{$studentbatch}}
+    {{-- {{$studentbatch}} --}}
+
+
     @if (!empty($studentbatch))
     <table class='table text-center '>
         <thead class='thead-light'>
@@ -25,7 +27,7 @@
                 <td>{{ @$batch->name }}</td>
                 <td>{{ @$batch->creater_email }}</td>
                 <td>
-                    <a href="/viewassignment/{{$batch->batch_id}}" class="btn btn-primary btn-sm">View Assignment</a>
+                    <a href="/viewassignment/{{$batch->batch_id}}" class="btn btn-primary btn-sm my_mainpage_link">View Assignment</a>
                 </td>
             </tr>
 
@@ -41,4 +43,13 @@
     @endif
 
 
-@endsection
+{{-- @endsection --}}
+<script>
+
+    $(document).ready(function() {
+
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+</script>
