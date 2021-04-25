@@ -1,5 +1,4 @@
 
-
 <!-- Styles -->
 
     <!-- Font awesome css -->
@@ -9,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+
+    {{-- <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"> --}}
 
     <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -277,5 +278,148 @@
         background-color: #e9ecef;
         border-radius: .25rem;
     } */
+
+    .orders {
+        overflow: hidden
+    }
+
+    .card {
+        margin-bottom: 1.875em;
+        border-radius: 5px;
+        padding: 0;
+        border: 0 solid transparent;
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .08);
+        box-shadow: 0 0 20px rgba(0, 0, 0, .08)
+    }
+
+    .card .box-title {
+        font-weight: 600;
+        font-size: 22px;
+        padding: 5px 0
+    }
+
+    .card .weather-title.box-title {
+        padding: 0 15px;
+        line-height: 50px;
+        background: #fff;
+        border-radius: 5px 5px 0 0
+    }
+
+    .card .box-link {
+        font-weight: 600;
+        font-size: 16px;
+        padding: 5px 0
+    }
+
+    .card .box-link a {
+        color: green;
+        text-decoration: underline;
+    }
+
+    .table-stats table {
+        font-family: open sans
+    }
+
+    .table-stats table th,
+    .table-stats table td {
+        border: none;
+        border-bottom: 1px solid #e8e9ef;
+        color: #868e96;
+        font-size: 12px;
+        font-weight: 400;
+        padding: .75em 1.25em;
+        text-transform: uppercase
+    }
+
+    .table-stats table th img,
+    .table-stats table td img {
+        margin-right: 10px;
+        max-width: 45px
+    }
+
+    .table-stats table th .name,
+    .table-stats table td .name {
+        color: #343a40;
+        font-size: 14px;
+        text-transform: capitalize
+    }
+
+    .table-stats table td {
+        color: #343a40;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: capitalize;
+        vertical-align: middle
+    }
+
+    .order-table {
+        position: relative
+    }
+
+    .order-table:after,
+    .order-table:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 37px;
+        width: 10px;
+        background: #e8e9ef
+    }
+
+    .order-table:after {
+        right: -1px
+    }
+
+    .order-table:before {
+        left: -1px
+    }
+
+    .order-table tr th {
+        background: #e8e9ef
+    }
+
+    .order-table tr td:last-child,
+    .order-table tr th:last-child {
+        text-align: right
+    }
+
+    .order-table tr:last-child td {
+        border: none
+    }
+
+    .order-table .badge {
+        color: #fff;
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 400
+    }
+
+    .order-table .badge-complete {
+        background: green
+    }
+
+    .order-table .badge-pending {
+        background: #fb9678
+    }
+
+    .order-table .badge-delete {
+        background: #ff0000
+    }
+
+    .order-table .badge-edit {
+        background: #33a2ff;
+    }
+
+    .order-table .serial {
+        display: none
+    }
+
+    .ov-h {
+        overflow: hidden
+    }
+
+    .badge a {
+        color: #fff;
+    }
 
 </style>

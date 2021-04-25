@@ -1,5 +1,5 @@
 <ol class="breadcrumb" style="margin: 0px; border:0px;">
-    <li><a class="text-dark" href="/home"><i class="fa fa-home text-dark"></i> Home</a><i class="dot fa fa-circle"></i>
+    <li><a class="text-dark my_ajax_link" href="/home_page"><i class="fa fa-home text-dark"></i> Home</a><i class="dot fa fa-circle "></i>
     </li>
     @if (!empty($breadcumb1))
         <?php $segments = ''; ?>
@@ -16,3 +16,4 @@
         <li class="breadcrumb-item active" aria-current="page">{{ @$breadcumb }}</li>
     @endif
 </ol>
+

@@ -11,7 +11,6 @@
 
 
 <script>
-
     /* ------------------------  Faculty JS  -------------------------------*/
 
     const CONTENT_WRAPPER = $('#mainpage');
@@ -23,6 +22,8 @@
             e.preventDefault();
             const page_name = e.target.href;
             CONTENT_WRAPPER.load(page_name);
+            localStorage.setItem("last_loaded", page_name);
+            // alert(localStorage.getItem("last_loaded"));
             // load_ajax_page(page_name);
             // last_loaded = page_name;
             //  console.log(last_loaded);
@@ -34,6 +35,7 @@
             e.preventDefault();
             const page_name = e.target.href;
             CONTENT_WRAPPER.load(page_name);
+            localStorage.setItem("last_loaded", page_name);
             // load_ajax_page(page_name);
             // last_loaded = page_name;
             //  console.log(last_loaded);
@@ -42,27 +44,37 @@
 
     function load_ajax_page(page_name = "/home_page") {
 
+        page_name = localStorage.getItem("last_loaded");
         CONTENT_WRAPPER.load(page_name, () => {
             set_my_ajax_link_listner();
         });
     }
 
-    // function go_back() {
-    //     console.log(1);
-    //     if (last_loaded == null) {
-    //         load_ajax_page();
-    //     } else {
-    //         load_ajax_page(last_loaded);
-    //     }
-    // }
+    function go_back() {
+        console.log(1);
+        if (last_loaded == null) {
+            load_ajax_page();
+        } else {
+            load_ajax_page(last_loaded);
+        }
+    }
+
+
 
     $(document).ready(function() {
 
         set_my_ajax_link_listner();
 
-        if( window.location.search  != '?m=join' ){
+        if (window.location.search != '?m=join') {
             load_ajax_page();
         }
+
+        $.get(
+            "approvestudent",
+            function(data) {
+                CONTENT_WRAPPER.html(data);
+            }
+        );
 
 
         // $("#dashboard").on("click", function() {
@@ -114,6 +126,13 @@
         }
     }
 
+    function delete_question(row) {
+        var i = row.parentNode.parentNode.rowIndex;
+        if (i > 1) {
+            document.getElementById('createassignment').deleteRow(i);
+        }
+    }
+
     function NewRow(e) {
 
         e = e || window.event;
@@ -122,6 +141,17 @@
             insRow();
         }
     }
+
+    function insRow_for_question_new(e) {
+
+        e = e || window.event;
+
+        if (e.keyCode == 9) {
+            insRow_for_question();
+        }
+    }
+
+
 
     function insRow() {
 
@@ -143,6 +173,8 @@
 
     }
 
+
+
     function nextItem(e) {
 
         e = e || window.event;
@@ -151,6 +183,36 @@
             insRow();
         }
     }
+
+
+    function insRow_for_question() {
+
+        var x = document.getElementById('createassignment');
+        var y = document.getElementById('createnewassignmentbody');
+
+        var len = x.rows.length;
+        var new_row = x.rows[len - 1].cloneNode(true);
+
+        new_row.cells[0].innerHTML =
+            '<button class="btn" type="button" onclick="deleteRow(this)"><i class="fa fa-window-close" aria-hidden="true"></i> ' +
+            len + '</button>'; //auto increment the srno
+
+        new_row.cells[1].getElementsByTagName('textarea')[0].value = "";
+
+        y.appendChild(new_row);
+        new_row.cells[1].getElementsByTagName('textarea')[0].focus();
+
+    }
+
+    function insRow_for_question_new(e) {
+
+        e = e || window.event;
+
+        if (e.keyCode == 9) {
+            insRow_for_question();
+        }
+    }
+
 
     $("#accept").click(function(event) {
         //

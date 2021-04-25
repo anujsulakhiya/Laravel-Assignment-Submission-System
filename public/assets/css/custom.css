@@ -20061,6 +20061,9 @@ a.text-dark:focus {
     .table .thead-dark th {
         color: inherit
     }
+    .table-stats table {
+        font-family: none;
+    }
 }
 
 
