@@ -7,6 +7,16 @@
                 {{ session('status') }}
             </div>
         @endif
+
+        @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @elseif (session()->has('rmessage'))
+                        <div class="alert alert-warning">
+                            {{ session()->get('rmessage') }}
+                        </div>
+                    @endif
         {{ __('You are logged in!') }}
     </div>
 </div>

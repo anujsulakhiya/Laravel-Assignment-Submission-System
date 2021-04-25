@@ -47,12 +47,7 @@ class AssignmentController extends Controller
 
     public function createassignment(Request $req)
     {
-
-        // return $data = $req->all();
-
-        $req->validate(['batch_id' => 'required'], ['email' => 'required']);
-
-        // $req->validate(['batch_id' => 'required'] , ['email' => 'required'],['subject_name' => 'required'] , ['assignment_name' => 'required'],['last_date' => 'required']);
+        // dd($req->all());
 
         $assignmentdetail = new Assignment;
         $assignmentdetail->email = $req->email;
@@ -74,6 +69,7 @@ class AssignmentController extends Controller
                 $assignmentquestion->save();
             }
         }
+
         $user = Auth::user();
 
         $createdassignmentdetail = Assignment::select('*')

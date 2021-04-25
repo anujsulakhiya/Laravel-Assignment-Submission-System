@@ -1,90 +1,124 @@
+<style>
 
-{{-- @extends('layouts.facultylayout')
+    input {
+        background: rgba(255, 255, 255, 0.4);
+        border: none;
+        position: relative;
+        display: ;
+        outline: none;
+        width: 300px;
+        height: 20p;
+        margin: 0 auto;
+        padding: 10px;
+        color: #333;
+        -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+    }
 
-@section('content') --}}
-{{-- <x-facultysidebar breadcumb="View Batch" breadcumb1="" /> --}}
+    ::-webkit-input-placeholder {
+        color: #666;
+    }
 
+    :-moz-placeholder {
+        color: #666;
+    }
 
-    <div class="font-weight-bold p-1">{{$batch_detail->batch_name}}<a href="" class="btn btn-primary btn-sm float-right mb-3 mx-5">Add New Enrollment</a></div>
+    ::-moz-placeholder {
+        color: #666;
+    }
 
-    <table class='table text-center '>
-        <thead class='thead-light'>
-            <th>No.</th>
-            <th>Batch Name</th>
-            <th></th>
-        </thead>
-        <tbody class=' table-bordered'>
-        {{-- {{$batch_detail}} --}}
+    :-ms-input-placeholder {
+        color: #666;
+    }
 
-            @foreach($batchstudents as $batch)
+    button {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+        border: none;
+        height: 30px;
+        width: 60px;
+        border-radius: 100%;
+        outline: none;
+        text-align: center;
+        font-weight: bold;
+        padding: 2px;
+    }
 
-            <tr>
-                <td>Name</td>
-                <td>{{ @$batch->enrollment }}</td>
-                <td>
-                    <div class="btn-group">
-                        <a href="/viewbatch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
-                        <button class="btn btn-secondary btn-sm "><a class="text-white" href="/dstudent/{{$batch->enrollment}}">Remove</a></button>
+</style>
+
+<section class="forms">
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h5">Class Details</h3>
                     </div>
 
-                </td>
-            </tr>
+                    <div class="card-body">
 
-            @endforeach
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">
+                                <h5 class="text-uppercase">{{ $batch_detail->batch_name }}</h5>
+                            </div>
+                            <div class="row col-md-6 ">
 
-        </tbody>
-    </table>
-    <br>
+                                    <input class=""
+                                        value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join"
+                                        id="myInput" readonly>
+                                        <button class="btn btn-primary btn-sm" onclick="myFunction()">Copy
+                                            Link</button>
 
 
-    <div class="row mb-3">
-        <div class="col-md-6 font-weight-bold p-1 ">
-              Students Joining Request
-        </div>
-        <div class="row col-md-6">
-            <div class="col-md-9">
-                <input  class="form-control" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join" id="myInput" readonly>
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-primary btn-sm float-right" onclick="myFunction()">Copy Link</button>
+                            </div>
+                        </div>
+                        {{-- <a href="" class="btn btn-primary btn-sm float-right mb-3 mx-5">Add New Enrollment</a> --}}
+                    </div>
+
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+
+                            <table class='table text-center '>
+                                <thead class=''>
+                                    <tr>
+                                        <th>S No.</th>
+                                        <th>Student Name</th>
+                                        <th>Enrollment</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class=''>
+                                    <?php $i = 1; ?>
+                                    @foreach ($batchstudents as $batch)
+
+                                        <tr>
+                                            <td>{{ @$i }}</td>
+                                            <td>{{ @$batch->student_name }}</td>
+                                            <td>{{ @$batch->enrollment }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="/viewbatch/{{ $batch->id }}"
+                                                        class="btn btn-primary btn-sm">Edit</a>
+                                                    <button class="btn btn-secondary btn-sm "><a class="text-white"
+                                                            href="/dstudent/{{ $batch->enrollment }}">Remove</a></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <br>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
-    <table class='table text-center '>
-        <thead class='thead-light'>
-            <th>No.</th>
-            <th>Name</th>
-            <th>Email</th>
-
-            <th></th>
-        </thead>
-        <tbody class=' table-bordered'>
-        {{-- {{$batchstudents}} --}}
-
-            @foreach($batchstudents as $batch)
-
-            <tr>
-                <td>Name</td>
-                <td>{{ @$batch->enrollment }}</td>
-                <th></th>
-                <td>
-                    <div class="btn-group">
-                        <a href="/view_batch/{{$batch->id}}" class="btn btn-primary btn-sm">Edit</a>
-                        <button class="btn btn-secondary btn-sm "><a class="text-white" href="/dstudent/{{$batch->enrollment}}">Remove</a></button>
-                    </div>
-
-                </td>
-            </tr>
-
-            @endforeach
-
-        </tbody>
-    </table>
-
-</div>
-
-</div>
-</div>
-</div>
-{{-- @endsection --}}
+</section>
