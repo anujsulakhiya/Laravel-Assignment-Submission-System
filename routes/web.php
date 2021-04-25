@@ -78,6 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/reject/{id}', 'faculty\SubmissionController@rejectsubmission');
 
     });
+
     //***********************************   Student Routes   ***********************************//
 
     Route::group(['as' => 'student.', 'middleware' => ['auth', 'student']], function () {

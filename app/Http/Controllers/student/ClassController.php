@@ -31,7 +31,7 @@ class ClassController extends Controller
 
         $user = Auth::user();
 
-        $exists = Batch_joining_request::select('*')->where( 'email', $user->email)->where( 'batch_id', $req->batch_id )->get();
+        $exists = Batch_joining_request::select('*')->where( 'email', $user->email)->where( 'batch_id', $req->batch_id )->where( 'status', 'A' )->get();
 
         if(!count($exists)){
 
