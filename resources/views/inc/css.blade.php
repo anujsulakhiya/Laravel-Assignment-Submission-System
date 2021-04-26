@@ -1,20 +1,19 @@
-
 <!-- Styles -->
 
-    <!-- Font awesome css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Font awesome css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
-    {{-- <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"> --}}
+{{-- <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"> --}}
 
-    <!-- Select2 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-    <!-- Scripts -->
+<!-- Scripts -->
 
 
 <!-- Fonts -->
@@ -420,6 +419,168 @@
 
     .badge a {
         color: #fff;
+    }
+
+    .navbar-fixed {
+        top: 0;
+        z-index: 100;
+        position: fixed;
+        width: 100%;
+    }
+
+    .classiframe {
+        padding-top: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .left-panel {
+        background: #fff;
+        height: 100vh;
+        padding: 0;
+        vertical-align: top;
+        width: 280px;
+        -webkit-box-shadow: 1px 0 20px rgba(0, 0, 0, .08);
+        box-shadow: 1px 0 20px rgba(0, 0, 0, .08);
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        top: 55px;
+        z-index: 999
+    }
+
+    .right-panel {
+        background: #f1f2f7;
+        margin-left: 270px;
+        margin-top: 40px
+    }
+
+    .right-panel {
+        background: #f1f2f7;
+        margin-left: 280px;
+        margin-top: 55px
+    }
+
+    .right-panel .top-left {
+        width: 350px;
+        float: left
+    }
+
+    .right-panel .top-rigth {
+        float: left
+    }
+
+    .right-panel .breadcrumbs {
+        float: left;
+        margin-top: 30px;
+        padding: 0 1.875em;
+        width: 100%
+    }
+
+    .right-panel .breadcrumbs .breadcrumbs-inner {
+        background-color: #fff
+    }
+
+    .right-panel .breadcrumbs .col-lg-8 .page-header {
+        float: left
+    }
+
+    .right-panel .page-header {
+        min-height: 50px;
+        margin: 0;
+        padding: 0 15px;
+        background: #fff;
+        border-bottom: 0
+    }
+
+    .right-panel .page-header h1 {
+        font-size: 18px;
+        padding: 15px 0
+    }
+
+    .right-panel .page-header .breadcrumb {
+        margin: 0;
+        padding: 13.5px 0;
+        background: #fff;
+        text-transform: capitalize
+    }
+
+    .right-panel .page-header .breadcrumb>li+li:before {
+        padding: 0 5px;
+        color: #ccc;
+        content: "/\00a0"
+    }
+
+    .right-panel header.header {
+        background: #fff;
+        border-bottom: 1px solid #e8e9ed;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        clear: both;
+        padding: 0 30px;
+        height: 55px;
+        position: fixed;
+        left: 280px;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 999
+    }
+
+    .right-panel .navbar-brand {
+        width: 250px;
+        display: inline-block
+    }
+
+    .right-panel .menutoggle {
+        padding-top: 7px
+    }
+
+    .right-panel .navbar-header {
+        width: 100%;
+        background-color: #fff;
+        padding: 0 1.25em 0 0
+    }
+
+    .right-panel .navbar-header>a {
+        display: inline-block
+    }
+
+    .right-panel .navbar-brand {
+        line-height: 42px
+    }
+
+    .right-panel .navbar-brand img {
+        max-width: 145px
+    }
+
+    .right-panel .navbar-brand.hidden {
+        display: none
+    }
+
+    .open .right-panel {
+        margin-left: 83px
+    }
+
+    /* main content csss to fix in right side */
+    .content {
+        margin-left: 265px;
+        margin-top: 110px;
+        margin-right: 10px;
+        width: auto;
+        position: relative;
+        overflow: auto;
+        z-index: 1;
+    }
+
+    @media (max-width:600px) {
+
+        .content {
+            margin-left: 25px;
+        }
     }
 
 </style>

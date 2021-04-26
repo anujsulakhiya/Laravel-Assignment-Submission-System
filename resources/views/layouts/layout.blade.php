@@ -17,16 +17,18 @@
 </head>
 
 <body class="c-app">
+    {{-- c-sidebar-dark --}}
 
-    <div id="wrapper" style="position: relative;">
+
+    <div id="wrapper" class="nav" style="position: relative; box-shadow: -30px -5px 100px grey;">
         <!-- Sidebar -->
-        <div class="c-sidebar c-sidebar-dark c-sidebar-lg-show c-sidebar-show sidenav" id="sidebar-wrapper">
-            <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold">
+        <div class="c-sidebar c-sidebar-light c-sidebar-fixed " id="sidebar-wrapper">
+            <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold text-dark">
                 Assignment Submitter New
             </div>
-            <div class="list-group-flush">
+            <div class="list-group-flush ">
 
-                <ul class="c-sidebar-nav ps ps--active-y ">
+                <ul class="c-sidebar-nav ps ps--active-y">
 
                     <a href="/home_page" class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                             class="fa fa-tachometer mr-2"></i> Dashboard </a>
@@ -34,14 +36,14 @@
                     <a href="/profile" class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                             class="fa fa-user mr-2"></i> Profile </a>
 
-                    {{-- --------------------------------- Faculty Sidebar --------------------------------- --}}
+                    {{-- ---------------------------- Faculty Sidebar ---------------------------- --}}
 
                     @if ($user->role_id == '1')
 
                         <li class="c-sidebar-nav-title">Enroll Students</li>
 
-                        <a href="/createbatch" class="c-nav-link list-group-item list-group-item-action my_ajax_link">
-                            <i class="fa fa-tachometer mr-2"></i> Create Class </a>
+                        <a href="/createbatch" class="c-nav-link list-group-item list-group-item-action my_ajax_link"><i
+                                class="fa fa-tachometer mr-2"></i> Create Class </a>
 
                         <a href="/enroll_student"
                             class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
@@ -54,13 +56,13 @@
                         <li class="c-sidebar-nav-title">Assignment</li>
 
                         <a href="/create_assignment"
-                            class="c-nav-link list-group-item list-group-item-action my_ajax_link">
-                            <i class="fa fa-tachometer mr-2"></i> Create Assignment </a>
+                            class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
+                                class="fa fa-tachometer mr-2"></i> Create Assignment </a>
 
                         <a href="/my_assignment" class="c-nav-link list-group-item list-group-item-action my_ajax_link">
                             <i class="fa fa-tachometer mr-2"></i> My Assignment</a>
 
-                        {{-- --------------------------------- Student Sidebar --------------------------------- --}}
+                        {{-- --------------------------- Student Sidebar ---------------------------- --}}
 
                     @elseif( $user->role_id == '2' )
 
@@ -104,7 +106,7 @@
 
     <div class="c-wrapper c-fixed-components ">
 
-        <header class="c-header c-header-light  c-header-with-subheader">
+        <header class="c-header c-header-light  c-header-with-subheader navbar-fixed" style="position: ;">
 
             <span class="c-header-toggler-icon navbar-toggler-icon m-3" id="menu-toggle" width="97" height="46"></span>
 
@@ -125,25 +127,31 @@
                 </li>
 
             </ul>
-            <div class="c-subheader px-3">
+            <div class="c-subheader justify-content-end  px-3 ">
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
             </div>
 
         </header>
 
-        <div class="container-fluid">
+        <style>
 
-            <div>
-                <main id="mainpage">
 
-                    @yield('content')
+        </style>
+        <div class="content" >
 
-                </main>
-            </div>
+            <main id="mainpage">
+
+                @yield('content')
+
+            </main>
 
         </div>
+
+
+
     </div>
+
 
 
     <!-- SCRIPT -->

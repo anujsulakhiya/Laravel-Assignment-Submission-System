@@ -23,10 +23,7 @@
             const page_name = e.target.href;
             CONTENT_WRAPPER.load(page_name);
             localStorage.setItem("last_loaded", page_name);
-            // alert(localStorage.getItem("last_loaded"));
-            // load_ajax_page(page_name);
-            // last_loaded = page_name;
-            //  console.log(last_loaded);
+
         });
     }
 
@@ -36,9 +33,7 @@
             const page_name = e.target.href;
             CONTENT_WRAPPER.load(page_name);
             localStorage.setItem("last_loaded", page_name);
-            // load_ajax_page(page_name);
-            // last_loaded = page_name;
-            //  console.log(last_loaded);
+
         });
     }
 
@@ -77,13 +72,7 @@
         );
 
 
-        // $("#dashboard").on("click", function() {
 
-        //     $("#mainpage").load("/dashboard");
-        // });
-
-        //For batch name search option in dropdown
-        $("#sel1").select2();
 
     });
 
@@ -107,6 +96,13 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+
+    $('.nav a').click(function(){
+        if(window.innerWidth < 550)
+        {
+            $("#wrapper").toggleClass("toggled");
+        }
     });
 
     function myFunction() {
