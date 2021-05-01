@@ -5,8 +5,8 @@
             <div class="col-lg-12">
                 <div class="card">
 
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Create Class</h3>
+                    <div class="card-header d-flex align-items-center text-weight-bold">
+                        <h5 class=" ">Create Class</h5>
                     </div>
                     <div class="card-body">
 
@@ -18,7 +18,7 @@
 
                                 <div class="col-md-3">
                                     <label for="class_no">CLASS NO.</label><br>
-                                    <span class="form-control font-weight-bold">{{ @$batchcount+1 }}</span>
+                                    <span class="form-control font-weight-bold">{{ @$batchcount + 1 }}</span>
 
                                 </div>
 
@@ -94,17 +94,19 @@
                                         <caption>
                                             <button type="button" onclick="insRow()" class=" btn-sm btn-success"><i
                                                     class="fa fa-diamond" aria-hidden="true"></i> Add (+)</button>
+                                                    <span>( Note : Use Tab To Add More Name / Enrollment Field )</span>
+
                                         </caption>
                                     </table>
 
                                 </div>
                                 <br>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary m-2 mb-3"
+                                    <button type="submit" class="btn btn-success m-2 mb-3"
                                         id="btnSubmit">Submit</button>
-                                    <button type="button" class="btn btn-warning m-2 mb-3"
-                                        id="btnDetails" >Details</button>
-                                    <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose" onclick="go_back()" >Close</button>
+
+                                    <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose">
+                                        <a href="/home_page" class="my_mainpage_link text-white">Close</a>
                                 </div>
                             </div>
                         </form>
@@ -116,14 +118,9 @@
 
 </section>
 <script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
 
-   function go_back() {
-        console.log(1);
-        if (last_loaded == null) {
-            load_ajax_page();
-        } else {
-            load_ajax_page(last_loaded);
-        }
-    }
+    });
 
 </script>

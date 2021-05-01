@@ -9,6 +9,9 @@
 <!-- Select2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
 
 <script>
     /* ------------------------  Faculty JS  -------------------------------*/
@@ -86,7 +89,8 @@
                 console.log(1);
                 $("#mainpage").html(response);
             },
-            error: () => {
+            error: (data) => {
+                console.log(data);
                 alert('Error From Server\nTry again after sometime');
             }
         });
@@ -98,9 +102,8 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $('.nav a').click(function(){
-        if(window.innerWidth < 550)
-        {
+    $('.nav a').click(function() {
+        if (window.innerWidth < 550) {
             $("#wrapper").toggleClass("toggled");
         }
     });
@@ -122,10 +125,10 @@
         }
     }
 
-    function delete_question(row) {
+    function delete_Row(row) {
         var i = row.parentNode.parentNode.rowIndex;
         if (i > 1) {
-            document.getElementById('createassignment').deleteRow(i);
+            document.getElementById('createassignment').delete_Row(i);
         }
     }
 
@@ -137,17 +140,6 @@
             insRow();
         }
     }
-
-    function insRow_for_question_new(e) {
-
-        e = e || window.event;
-
-        if (e.keyCode == 9) {
-            insRow_for_question();
-        }
-    }
-
-
 
     function insRow() {
 
@@ -181,6 +173,13 @@
     }
 
 
+    // function delete_question(row) {
+    //     var i = row.parentNode.parentNode.rowIndex;
+    //     if (i > 1) {
+    //         document.getElementById('createassignment').delete_question(i);
+    //     }
+    // }
+
     function insRow_for_question() {
 
         var x = document.getElementById('createassignment');
@@ -190,7 +189,7 @@
         var new_row = x.rows[len - 1].cloneNode(true);
 
         new_row.cells[0].innerHTML =
-            '<button class="btn" type="button" onclick="deleteRow(this)"><i class="fa fa-window-close" aria-hidden="true"></i> ' +
+            '<button class="btn" type="button" onclick="delete_Row(this)"><i class="fa fa-window-close" aria-hidden="true"></i> ' +
             len + '</button>'; //auto increment the srno
 
         new_row.cells[1].getElementsByTagName('textarea')[0].value = "";

@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         <h4 class="box-link" class="text-left"><a class="my_mainpage_link" href="/createbatch">
-                                Create New Class </a> </h4>
+                                Create New Class </a> </h4> 
                     </div>
 
                     <div class="card-body--">

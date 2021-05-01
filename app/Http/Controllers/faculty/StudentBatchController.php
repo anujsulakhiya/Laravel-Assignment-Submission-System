@@ -42,6 +42,8 @@ class StudentBatchController extends Controller
 
     public function createbatch(Request $req)
     {
+
+        // \dd($req->all());
         $user = Auth::user();
         $batchcount = Batch_detail::select('id')->where('creater_email', $user->email)->where('is_deleted', '0')->get()->count();
 
@@ -79,7 +81,7 @@ class StudentBatchController extends Controller
         }
 
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
-        
+
         return view('faculty.enroll_student', compact('batchdetail'));
     }
 

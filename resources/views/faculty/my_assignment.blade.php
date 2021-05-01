@@ -4,8 +4,10 @@
             <div class="col-lg-12">
                 <div class="card">
 
-                    <div class="card-header d-flex align-items-center">
+                    <div class="card-header d-flex align-items-center ">
                         <h3 class="h5">Assignment Details</h3>
+                        <h6 class="ml-3 text-dark">( Note :  Select Class to See Assignments )</h6>
+
                     </div>
 
                     <div class="card-body--">

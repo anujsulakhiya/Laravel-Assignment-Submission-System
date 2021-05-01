@@ -60,7 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Faculty Routes --> Create Assignment Routes
         Route::get('create_assignment', 'faculty\AssignmentController@createassignmentpage');
-        Route::post('createnewassignment', 'faculty\AssignmentController@createassignment');
+        Route::post('/createnewassignment', 'faculty\AssignmentController@createassignment');
+        Route::post('/update_assignment', 'faculty\AssignmentController@update_assignment');
         Route::get('createassignmentdetails', 'faculty\AssignmentController@createassignmentdetails');
         Route::get('/createbatchassignment/{batch_id}', 'faculty\AssignmentController@viewperticulerbatch');
 

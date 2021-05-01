@@ -114,8 +114,7 @@
 
                                 <div class="col-md-12 table-responsive mt-3">
 
-                                    <table id="createassignment"
-                                        class="table table-condensed table-bordered text-center p-0">
+                                    <table id="createassignment" class="table table-condensed table-bordered text-center p-0">
 
                                         <thead>
                                             <th>
@@ -130,7 +129,7 @@
                                             <tr>
                                                 <td class="p-0">
                                                     <button class="btn btn-sm" type="button"
-                                                        onclick="delete_question(this)"><i class="fa fa-window-close"
+                                                        onclick="delete_Row(this)"><i class="fa fa-window-close"
                                                             aria-hidden="true"></i>1</button>
                                                 </td>
 
@@ -138,7 +137,6 @@
                                                     <textarea type="text" rows="3" class="form-control" id="question2"
                                                         onkeydown="insRow_for_question_new()" value="1"
                                                         name="questions[]">Define Maths?</textarea>
-
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -146,18 +144,20 @@
                                             <button type="button" onclick="insRow_for_question()"
                                                 class=" btn-sm btn-success"><i class="fa fa-diamond"
                                                     aria-hidden="true"></i> Add (+)</button>
+                                                    <span>( Note : Use Tab To Add More Questions Field )</span>
                                         </caption>
                                     </table>
 
                                 </div>
                                 <br>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary m-2 mb-3"
+                                    <button type="submit" class="btn btn-success m-2 mb-3"
                                         id="btnSubmit">Submit</button>
-                                    <button type="button" class="btn btn-warning m-2 mb-3"
-                                        id="btnDetails">Details</button>
-                                    <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose"
-                                        onclick="go_back()">Close</button>
+                                    <button type="button" class="btn btn-warning m-2 mb-3 text-white"
+                                        id="btnDetails">Detailed View</button>
+                                    <button type="button" class="btn btn-danger m-2 mb-3" id="btnClose">
+                                        <a href="/home_page" class="my_mainpage_link text-white">Close</a>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -171,13 +171,10 @@
 <script>
     $("#sel1").select2();
 
-    function go_back() {
-        console.log(1);
-        if (last_loaded == null) {
-            load_ajax_page();
-        } else {
-            load_ajax_page(last_loaded);
-        }
-    }
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
 
 </script>

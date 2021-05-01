@@ -13,8 +13,8 @@
 <!-- Select2 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-<!-- Scripts -->
-
+<!-- jquery.modal -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -581,6 +581,31 @@
         .content {
             margin-left: 25px;
         }
+    }
+
+    .modal {
+        display: none;
+        vertical-align: right;
+        position: relative;
+        z-index: 1;
+        max-width: 70%;
+        max-height: 70%;
+        box-sizing: border-box;
+        width: 90%;
+        background: #fff;
+        padding: 15px 30px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -o-border-radius: 8px;
+        -ms-border-radius: 8px;
+        border-radius: 0px;
+        -webkit-box-shadow: 0 0 10px #000;
+        -moz-box-shadow: 0 0 10px #000;
+        -o-box-shadow: 0 0 10px #000;
+        -ms-box-shadow: 0 0 10px #000;
+        box-shadow: 0 0 10px #000;
+        text-align: left;
+        margin-left: 25%
     }
 
 </style>

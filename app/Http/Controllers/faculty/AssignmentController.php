@@ -94,6 +94,27 @@ class AssignmentController extends Controller
         return view('faculty.create_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
     }
 
+    public function update_assignment(Request $req){
+
+        // dd($req->all());
+
+        // Assignment::where('id', $req->id)
+        // ->update(["subject_name" => $req->subject_name])
+        // ->update(["assignment_name" => $req->assignment_name])
+        // ->update(["last_date" => $req->last_date])
+        // ->update(["description" => $req->description]);
+
+        // Assignment::where('id', $req->id)->update($req->all());
+
+        Assignment::where('id', $req->id)->update($req->only(['subject_name', 'assignment_name',
+        'last_submission_date', 'description']));
+
+        // $request = new Request();
+        // $request->batch_id = $req->batch_id;
+        return $this->viewbatchassignmentdetails($req);
+
+    }
+
     public function createassignmentdetails()
     {
 
