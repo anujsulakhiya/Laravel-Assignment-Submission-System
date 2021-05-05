@@ -5,22 +5,30 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center ">
-                        <h3 class="h5">Assignment Details</h3>
-                        <h6 class="ml-3 text-dark">( Note :  Select Class to See Assignments )</h6>
 
+                        <div class="col-md-6 float-left">
+                            <h3 class="h5">Assignment Details</h3>
+                        </div>
+                        <div class="col-md-6 float-right">
+                            <input class="form-control search" placeholder="Search by Class Name , Date etc"
+                                type="text" name="search" id="search">
+                        </div>
+                        {{-- <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )
+
+                        </h6> --}}
                     </div>
 
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
                             @if (!empty($batchdetail[0]->id))
 
-                                <table class='table text-center '>
+                                <table class='table search'>
                                     <thead>
                                         <th>No.</th>
                                         <th>Class Name</th>
                                         <th></th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="search_table">
                                         {{-- {{$batchdetail}} --}}
 
                                         @foreach ($batchdetail as $batch)
@@ -65,7 +73,7 @@
 <script>
     $(document).ready(function() {
         set_my_ajax_link_in_mainpage();
-
+        serach_and_pagination();
     });
 
 </script>

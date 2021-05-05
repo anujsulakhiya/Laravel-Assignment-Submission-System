@@ -9,14 +9,20 @@
 
                     <div class="card-body">
                         <h4 class="box-link" class="text-left"><a class="my_mainpage_link" href="/createbatch">
-                                Create New Class </a> </h4> 
+                                Create New Class </a>
+                            <div class="col-md-6 float-right">
+                                <input class="form-control search" placeholder="Search by Class Name , Date etc"
+                                    type="text" name="search" id="search">
+                            </div>
+                        </h4>
+
                     </div>
 
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
 
                             @if (!empty($batchdetail[0]->id))
-                                <table class="table ">
+                                <table class="table search">
                                     <thead>
 
                                         <tr>
@@ -27,7 +33,7 @@
                                         </tr>
 
                                     </thead>
-                                    <tbody>
+                                    <tbody class="search_table">
                                         <?php $i = 1; ?>
                                         @foreach ($batchdetail as $batch)
 
@@ -46,10 +52,13 @@
                                                         Request</a>
 
                                                     <a href="/createbatchassignment/{{ $batch->id }}"
-                                                        class="btn btn-success btn-sm my-1 my_mainpage_link">Create Assignment</a>
+                                                        class="btn btn-success btn-sm my-1 my_mainpage_link">Create
+                                                        Assignment</a>
 
-                                                    <button class="btn btn-dark btn-sm " onclick="return confirm('Are you sure? This Will Delete Your All Assgnments Cretated For this Batch');">
-                                                        <a class="text-white my-1"  href="/dbatch/{{ $batch->id }}">Delete</a>
+                                                    <button class="btn btn-dark btn-sm "
+                                                        onclick="return confirm('Are you sure? This Will Delete Your All Assgnments Cretated For this Batch');">
+                                                        <a class="text-white my-1"
+                                                            href="/dbatch/{{ $batch->id }}">Delete</a>
                                                     </button>
 
                                                 </td>
@@ -81,8 +90,10 @@
 
 <script>
     $(document).ready(function() {
+
         set_my_ajax_link_in_mainpage();
 
+        serach_and_pagination();
     });
-</script>
 
+</script>

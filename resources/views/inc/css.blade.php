@@ -379,7 +379,7 @@
 
     .order-table tr td:last-child,
     .order-table tr th:last-child {
-        text-align: right
+        text-align: none
     }
 
     .order-table tr:last-child td {

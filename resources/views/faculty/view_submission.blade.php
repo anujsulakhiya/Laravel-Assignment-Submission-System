@@ -11,17 +11,15 @@
                         <h3 class="h5"> Q . {{ $Assignment_question->questions }}</h3>
                     </div>
                     <div class="card-body--">
-
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ov-h" style="text-align: none">
                             <table class='table'>
                                 <thead>
                                     <th>Answers</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($Submitted_Assignment_question as $submission_details)
-
                                         <tr>
-                                            <th>
+                                            <td>
                                                 <label for="">Name : {{ $submission_details->name }}</label>
                                                 <label class="ml-4" for="">Enrollment :
                                                     {{ $submission_details->enrollment }}</label>
@@ -33,41 +31,25 @@
                                                     oncopy="return false" onpaste="return false" oncut="return false"
                                                     readonly>{{ $submission_details->qanswer }}</textarea>
 
-                                                <form class="my-2" action="" enctype='multipart/form-data'
-                                                    method="POST">
+                                                <div class="mt-2">
                                                     <a target="_blank"
                                                         href="{{ Storage::url($submission_details->filename) }}"
                                                         class="btn btn-secondary btn-sm">View pdf</a>
-                                                    <input type="hidden" name="question_id" value="">
-                                                    <input type="hidden" name="enrollment" value="">
 
-                                                    <a class="btn btn-danger btn-sm"
+                                                    <a class="btn btn-danger btn-sm "
                                                         href="/accept/{{ $submission_details->id }}" id="">Accept</a>
-                                                    {{-- <button class="btn btn-danger btn-sm" type="submit" name="accept" id="">Accept</button> --}}
-                                                    <!-- <button class="btn btn-secondary btn-sm" type="submit" name="reject">Reject</button> -->
+
                                                     <a href="/reject/{{ $submission_details->id }}"
                                                         class="btn btn-secondary btn-sm">Reject</a>
-                                                </form>
-                                            </th>
-
+                                                </div>
+                                            </td>
                                         </tr>
-
                                     @endforeach
                                 </tbody>
-                                <tbody>
-
-
-
-
-                                </tbody>
                             </table>
-
-
                         </div>
                         <br>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -83,4 +65,3 @@
     });
 
 </script>
-

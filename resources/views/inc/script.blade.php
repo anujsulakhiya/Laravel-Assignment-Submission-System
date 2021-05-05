@@ -1,5 +1,7 @@
 <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
+<script src="{{ asset('assets/js/fancyTable.js') }}" defer></script>
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -12,13 +14,18 @@
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 
 <script>
-    /* ------------------------  Faculty JS  -------------------------------*/
+    /*--------------------------  Faculty JS  --------------------------*/
 
     const CONTENT_WRAPPER = $('#mainpage');
 
     var last_loaded = null;
+    var back_number = null;
 
     function set_my_ajax_link_listner() {
         $('.my_ajax_link').on('click', (e) => {
@@ -36,20 +43,33 @@
             const page_name = e.target.href;
             CONTENT_WRAPPER.load(page_name);
             localStorage.setItem("last_loaded", page_name);
-
         });
     }
 
     function load_ajax_page(page_name = "/home_page") {
 
         page_name = localStorage.getItem("last_loaded");
+
         CONTENT_WRAPPER.load(page_name, () => {
             set_my_ajax_link_listner();
         });
     }
 
+    function set_back_page() {
+
+        var back = [];
+        if (back_number == null) {
+            back_number = 0;
+        }
+        back[back_number] = localStorage.getItem("last_loaded");
+        localStorage.setItem("back", JSON.stringify(back));
+        back_number = back_number + 1;
+    }
+
     function go_back() {
+
         console.log(1);
+
         if (last_loaded == null) {
             load_ajax_page();
         } else {
@@ -57,8 +77,27 @@
         }
     }
 
+    function serach_and_pagination() {
 
+        // $(".search").fancyTable({
 
+        //     sortColumn: 0,
+        //     pagination: true,
+        //     perPage: 2,
+        //     searchable: false,
+        //     globalSearch: true
+
+        // });
+
+        //S Search option for tables
+        $(".search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $(".search_table tr").filter(function() {
+
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    }
     $(document).ready(function() {
 
         set_my_ajax_link_listner();
@@ -67,24 +106,30 @@
             load_ajax_page();
         }
 
-        $.get(
-            "approvestudent",
-            function(data) {
-                CONTENT_WRAPPER.html(data);
-            }
-        );
+        set_back_page();
 
+        $('.back').click(function() {
+            go_back();
+            return false;
+        });
 
 
 
     });
 
-    function post_request(element) {
+    function post_request_with_file(element) {
 
         $.ajax({
             url: element.action,
             method: 'post',
+            data: fileData,
             data: $(element).serialize(),
+            beforeSend: function() {
+                $('#loading').show();
+            },
+            complete: function() {
+                $('#loading').hide();
+            },
             success: (response) => {
                 console.log(1);
                 $("#mainpage").html(response);
@@ -92,6 +137,30 @@
             error: (data) => {
                 console.log(data);
                 alert('Error From Server\nTry again after sometime');
+            }
+        });
+        return false;
+    }
+
+    function post_request(element) {
+
+        $.ajax({
+            url: element.action,
+            method: 'post',
+            data: $(element).serialize(),
+            beforeSend: function() {
+                $('#loading').show();
+            },
+            complete: function() {
+                $('#loading').hide();
+            },
+            success: (response) => {
+                console.log(1);
+                $("#mainpage").html(response);
+            },
+            error: (data) => {
+                console.log(data);
+                alert(console.log(data));
             }
         });
         return false;
@@ -172,14 +241,6 @@
         }
     }
 
-
-    // function delete_question(row) {
-    //     var i = row.parentNode.parentNode.rowIndex;
-    //     if (i > 1) {
-    //         document.getElementById('createassignment').delete_question(i);
-    //     }
-    // }
-
     function insRow_for_question() {
 
         var x = document.getElementById('createassignment');
@@ -209,83 +270,12 @@
     }
 
 
-    $("#accept").click(function(event) {
-        //
-        event.preventDefault();
-
-        let id = $("input[name=submission_id]").val();
-
-        // alert($("input[name=submission_id]").val());
-        $.ajax({
-            url: "/accept",
-            type: "POST",
-            data: {
-                id: id
-            },
-            success: function(response) {
-                console.log(response);
-                if (response) {
-                    $('.success').text(response.success);
-                    $("#status")[0].reload();
-                }
-            },
-        });
-
-
-    });
-
-    $('#updateprofile').click(function(event) {
-
-    });
-
     $('#createbatchid').on('keyup keypress', function(e) {
         var keyCode = e.keyCode || e.which;
         if (keyCode === 9) {
             e.preventDefault();
             return false;
         }
-    });
-
-    $("#btnSubmit").submit(function(e) {
-
-        e.preventDefault();
-
-        var table = document.getElementById("createbatchtable");
-        var varCount = table.rows.length;
-
-        var batch_name = document.getElementById("batch_name").value;
-
-        var name = "";
-        var enrollment = "";
-
-        for (var i = 1; i < varCount; i++) {
-
-            row = table.rows[i];
-
-            name += "," + $(row.cells[1]).find("input").val();
-            enrollment += "," + $(row.cells[2]).find("input").val();
-
-        }
-
-        var fd = new FormData();
-        fd.append('batch_name', batch_name);
-        fd.append('name', name);
-        fd.append('enrollment', enrollment);
-
-
-        $.ajax({
-            url: '/create_batch',
-            method: 'post',
-            data: fd,
-            success: (response) => {
-                console.log(1);
-                $("#mainpage").html(response);
-            },
-            error: () => {
-                alert('Error From Server\nTry again after sometime');
-            }
-        });
-        return false;
     });
 
 </script>

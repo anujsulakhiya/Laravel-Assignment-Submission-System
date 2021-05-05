@@ -4,15 +4,25 @@
             <div class="col-lg-12">
                 <div class="card">
 
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Assignment Details</h3>
+                    <div class="card-header d-flex align-items-center ">
+
+                        <div class="col-md-6 float-left">
+                            <h3 class="h5">Assignment Details</h3>
+                        </div>
+                        <div class="col-md-6 float-right">
+                            <input class="form-control search" placeholder="Search by Subject Name , Assignment Name , Last Date etc"
+                                type="text" name="search" id="search">
+                        </div>
+                        {{-- <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )
+
+                        </h6> --}}
                     </div>
 
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
                             @if (!empty($batchassignmentdetail[0]->id))
 
-                                <table class='table text-center '>
+                                <table class='table text-center search'>
                                     <thead>
                                         <th>No.</th>
                                         <th scope="col">Assignment Name</th>
@@ -23,7 +33,7 @@
                                         <th scope="col">Last Date</th>
                                         <th scope="col"> Update Status</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="search_table">
                                         {{-- {{$batchdetail}} --}}
 
                                         @foreach ($batchassignmentdetail as $assignmentdetail)
@@ -83,7 +93,7 @@
 <script>
     $(document).ready(function() {
         set_my_ajax_link_in_mainpage();
-
+        serach_and_pagination();
     });
 
 </script>
