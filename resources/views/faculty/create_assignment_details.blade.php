@@ -5,8 +5,9 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Assignment Details</h3>
+                        <h3 class="h5"><a href="/view_batch_assignment/{{$createdassignmentdetail[0]->batch_id}}" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Assignment Details</h3>
                     </div>
+
                     <!-- Modal HTML embedded directly into document -->
                     <div id="fade" class="modal" style="margin-top: 100px; overflow-y:scroll">
                         @foreach ($createdassignmentdetail as $assignmentdetail)

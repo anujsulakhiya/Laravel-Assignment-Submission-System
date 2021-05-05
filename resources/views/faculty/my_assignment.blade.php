@@ -6,12 +6,13 @@
 
                     <div class="card-header d-flex align-items-center ">
 
-                        <div class="col-md-6 float-left">
-                            <h3 class="h5">Assignment Details</h3>
+                        <div class="col-md-6 float-left m-0 p-0">
+                            <h3 class="h5"><a href="/home_page"
+                                    class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Assignment Details</h3>
                         </div>
                         <div class="col-md-6 float-right">
-                            <input class="form-control search" placeholder="Search by Class Name , Date etc"
-                                type="text" name="search" id="search">
+                            <input class="form-control search" placeholder="Search by Class Name , Date etc" type="text"
+                                name="search" id="search">
                         </div>
                         {{-- <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )
 
@@ -37,8 +38,8 @@
                                                 <td>Name</td>
                                                 <td>{{ @$batch->batch_name }}</td>
                                                 <td>
-                                                    <a href="/view_batch_assignment/{{ $batch->id }}"
-                                                        class="btn btn-primary btn-sm my_mainpage_link">View
+                                                    <a href="/view_batch_assignment/{{ $batch->id }}" id=""
+                                                        class="btn btn-primary btn-sm store_batch_id  my_mainpage_link ">View
                                                         Assignment</a>
                                                 </td>
                                             </tr>
@@ -72,8 +73,14 @@
 
 <script>
     $(document).ready(function() {
+
+
+
+
         set_my_ajax_link_in_mainpage();
         serach_and_pagination();
+
+
     });
 
 </script>

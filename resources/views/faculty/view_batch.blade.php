@@ -1,5 +1,4 @@
 <style>
-
     input {
         background: rgba(255, 255, 255, 0.4);
         border: none;
@@ -53,7 +52,9 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Class Details</h3>
+
+                        <h3 class="h5"> <a href="/enroll_student" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>
+                             Class Details</h3>
                     </div>
 
                     <div class="card-body">
@@ -64,11 +65,10 @@
                             </div>
                             <div class="row col-md-6 ">
 
-                                    <input class=""
-                                        value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join"
-                                        id="myInput" readonly>
-                                        <button class="btn btn-primary btn-sm" onclick="myFunction()">Copy
-                                            Link</button>
+                                <input class="" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join"
+                                    id="myInput" readonly>
+                                <button class="btn btn-primary btn-sm" onclick="myFunction()">Copy
+                                    Link</button>
 
 
                             </div>
@@ -122,3 +122,12 @@
     </div>
 
 </section>
+<script>
+    $(document).ready(function() {
+
+        set_my_ajax_link_in_mainpage();
+
+        serach_and_pagination();
+    });
+
+</script>

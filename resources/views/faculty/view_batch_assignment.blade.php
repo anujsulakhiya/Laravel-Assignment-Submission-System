@@ -6,12 +6,14 @@
 
                     <div class="card-header d-flex align-items-center ">
 
-                        <div class="col-md-6 float-left">
-                            <h3 class="h5">Assignment Details</h3>
+                        <div class="col-md-6 float-left p-0">
+                            <h3 class="h5"><a href="/my_assignment"
+                                    class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Assignment Details</h3>
                         </div>
                         <div class="col-md-6 float-right">
-                            <input class="form-control search" placeholder="Search by Subject Name , Assignment Name , Last Date etc"
-                                type="text" name="search" id="search">
+                            <input class="form-control search"
+                                placeholder="Search by Subject Name , Assignment Name , Last Date etc" type="text"
+                                name="search" id="search">
                         </div>
                         {{-- <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )
 
@@ -92,8 +94,12 @@
 
 <script>
     $(document).ready(function() {
-        set_my_ajax_link_in_mainpage();
-        serach_and_pagination();
+
+                set_my_ajax_link_in_mainpage();
+                serach_and_pagination();
+
+
+
     });
 
 </script>

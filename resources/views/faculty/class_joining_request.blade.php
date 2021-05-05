@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Students Joining Request For Class {{ $batch_detail->batch_name }}</h3>
+                        <h3 class="h5"><a href="/enroll_student" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Students Joining Request For Class {{ $batch_detail->batch_name }}</h3>
                     </div>
                     @if (session()->has('message'))
                         <div class="alert alert-success">

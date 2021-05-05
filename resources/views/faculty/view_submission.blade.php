@@ -5,7 +5,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5">Assignment Details</h3>
+                        <h3 class="h5"><a href="/assignment_questions/{{ $Assignment_question->assignment_id }}" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Assignment Details</h3>
                     </div>
                     <div class="card-header d-flex align-items-center">
                         <h3 class="h5"> Q . {{ $Assignment_question->questions }}</h3>

@@ -6,7 +6,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center text-weight-bold">
-                        <h5 class=" ">Create Class</h5>
+                        <h5 class=" "><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Create Class</h5>
                     </div>
                     <div class="card-body">
 

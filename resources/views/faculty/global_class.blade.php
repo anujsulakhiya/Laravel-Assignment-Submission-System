@@ -1,3 +1,12 @@
+<?php// $items = array(); ?>
+{{-- @foreach ($exists as $req)
+
+<?php// $items[] = $req; ?>
+
+@endforeach --}}
+
+
+
 <section class="forms">
     <div class="container-fluid mt-2">
         <div class="row">
@@ -63,9 +72,12 @@
                                                             class="btn btn-primary btn-sm my-1 my_mainpage_link">View
                                                             Class</a>
 
-                                                        {{-- @foreach ($exists as $req) --}}
+                                                        <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
+                                                            class="btn btn-success btn-sm my-1 my_mainpage_link">
+                                                            Send Joining Request</a>
 
-                                                        @if (@$batch->id == @$exists[$j]->batch_id)
+
+                                                        {{-- @if (@$batch->id == @$exists[$j]->batch_id)
 
                                                             {{ @$exists[$j]->batch_id . @$exists[$j]->status }}
 
@@ -84,14 +96,14 @@
                                                             <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
                                                                 class="btn btn-success btn-sm my-1 my_mainpage_link">
                                                                 Send Joining Request</a>
-                                                        @endif
 
-                                                        {{-- @endforeach --}}
+                                                        @endif --}}
+
 
                                                         {{-- <a href="/createbatchassignment/{{ $batch->id }}"
                                                         class="btn btn-success btn-sm my-1 my_mainpage_link">Create Assignment</a> --}}
 
-                                                        {{-- {{ $exists[$j] }} --}}
+                                                        {{-- {{ $items[$j] }} --}}
 
 
                                                     </td>
@@ -105,7 +117,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-
 
                             @else
                                 <div class="alert alert-warning">
