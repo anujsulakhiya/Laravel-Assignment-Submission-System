@@ -1,78 +1,90 @@
-{{-- @extends('layouts.StudentLayout')
+<section class="forms">
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
 
-@section('content') --}}
-{{-- {{dd($submitted)}} --}}
+                    <div class="card-header d-flex align-items-center ">
+                        <h3 class="h5">Assignment Details</h3>
+                        <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )</h6>
 
-@if (!empty($createdassignmentquestion[0]->id))
+                    </div>
 
-    <table class="table table-bordered ">
-        <thead class="thead-light">
-            <tr class="text-center">
-                <th scope="col">Questions</th>
-                <th scope="col"></th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody style="font-size: 14px;">
-            <?php
-            $i = 1;
-            $j = 0;
-            ?>
-            @foreach ($createdassignmentquestion as $assignmentdetail)
+                    <div class="card-body--">
+                        <div class="table-stats order-table ov-h">
+                            @if (!empty($createdassignmentquestion[0]->id))
 
-                <tr>
-                    <th>Q{{ $i }} - {{ @$assignmentdetail->questions }} </th>
+                                <table class='table'>
+                                    <thead>
+                                        <th scope="col">Questions</th>
+                                        <th scope="col"></th>
+                                        <th>Status</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        $j = 0;
+                                        ?>
+                                        @foreach ($createdassignmentquestion as $assignmentdetail)
 
-                    @if (@$submitted[$j]->question_id == $assignmentdetail->id)
-                        @if (@$submitted[$j]->status == 'R')
-                            <th class="text-center"><a href="/submitquestion/{{ $assignmentdetail->id }}"
-                                    class="btn btn-sm btn-primary my_mainpage_link">Submit</a></th>
-                        @else
-                            <th class="text-center text-success text-uppercase">Submitted</th>
+                                            <tr>
+                                                <td>Q{{ $i }} - {{ @$assignmentdetail->questions }} </td>
 
-                        @endif
+                                                @if (@$submitted[$j]->question_id == $assignmentdetail->id)
+                                                    @if (@$submitted[$j]->status == 'R')
+                                                        <td class="text-center"><a
+                                                                href="/submitquestion/{{ $assignmentdetail->id }}"
+                                                                class="btn btn-sm btn-primary my_mainpage_link">Submit</a>
+                                                        </td>
+                                                    @else
+                                                        <td class="text-center text-success text-uppercase">Submitted
+                                                        </td>
 
-                    @else
-                        <th class="text-center"><a href="/submitquestion/{{ $assignmentdetail->id }}"
-                                class="btn btn-sm btn-primary my_mainpage_link">Submit</a></th>
-                    @endif
+                                                    @endif
 
-                    @if (@$submitted[$j]->status == 'P')
-                        <th class="text-center text-secondary text-uppercase">pending</th>
-                    @elseif (@$submitted[$j]->status == 'A')
-                        <th class="text-center text-success text-uppercase">accepted</th>
-                    @elseif (@$submitted[$j]->status == 'R')
-                        <th class="text-center text-danger text-uppercase">rejected</th>
-                    @else
-                        <th class="text-center text-danger text-uppercase"></th>
-                    @endif
+                                                @else
+                                                    <td class="text-center"><a
+                                                            href="/submitquestion/{{ $assignmentdetail->id }}"
+                                                            class="btn btn-sm btn-primary my_mainpage_link">Submit</a>
+                                                    </td>
+                                                @endif
 
-                    {{-- {{ @$submitted[$j]->status }} --}}
+                                                @if (@$submitted[$j]->status == 'P')
+                                                    <td class="text-center text-secondary text-uppercase">pending</td>
+                                                @elseif (@$submitted[$j]->status == 'A')
+                                                    <td class="text-center text-success text-uppercase">accepted</td>
+                                                @elseif (@$submitted[$j]->status == 'R')
+                                                    <td class="text-center text-danger text-uppercase">rejected</td>
+                                                @else
+                                                    <td class="text-center text-danger text-uppercase"></td>
+                                                @endif
 
+                                            </tr>
+                                            <?php
+                                            $i++;
+                                            $j++;
+                                            ?>
+                                        @endforeach
 
-                </tr>
-                <?php
-                $i++;
-                $j++;
-                ?>
-            @endforeach
-        </tbody>
-    </table>
+                                    </tbody>
+                                </table>
 
-@else
-    <div class="alert alert-warning">
-        <strong>Sorry !</strong> No Question Created For This Assignment .
+                            @else
+                                <div class="alert alert-warning">
+                                    <strong>Sorry !</strong> No Question Created For This Assignment .
+                                </div>
+                            @endif
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
-@endif
+</section>
 
-
-</div>
-
-</div>
-</div>
-</div>
-{{-- @endsection --}}
 <script>
     $(document).ready(function() {
         set_my_ajax_link_in_mainpage();
