@@ -16,13 +16,33 @@
 
 </head>
 
+<style>
+    div#loading {
+        position: absolute;
+        top: 0;
+        bottom: 0%;
+        left: 0;
+        right: 0%;
+        opacity: 0.2;
+        background-color: rgb(95, 95, 95);
+        z-index: 99;
+    }
+
+</style>
+
 <body class="c-app">
+
     {{-- c-sidebar-dark --}}
 
+    <div id="loading" style="display:none;">
+        <div class="spinner-grow text-white" style="  position:fixed; margin-top: 20% ; margin-left:55%;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
-    <div id="wrapper" class="nav" style="position: relative; box-shadow: -30px -5px 100px grey;">
+    <div id="wrapper" class="nav" style="position: relative; box-shadow: -30px -5px 100px grey; ">
         <!-- Sidebar -->
-        <div class="c-sidebar c-sidebar-light c-sidebar-fixed " id="sidebar-wrapper">
+        <div class="c-sidebar c-sidebar-light c-sidebar-fixed " id="sidebar-wrapper" style="overflow-y:scroll">
             <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold text-dark">
                 Assignment Submitter New
             </div>
@@ -35,6 +55,9 @@
 
                     <a href="/profile" class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                             class="fa fa-user mr-2"></i> Profile </a>
+
+                    <a href="/global_class" class="c-nav-link list-group-item list-group-item-action my_ajax_link"><i
+                            class="fa fa-tachometer mr-2"></i> Global Classes </a>
 
                     {{-- ---------------------------- Faculty Sidebar ---------------------------- --}}
 
@@ -127,7 +150,9 @@
                 </li>
 
             </ul>
+
             <div class="c-subheader justify-content-end  px-3 ">
+                <button class="back">go back</button>
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
             </div>
@@ -138,11 +163,14 @@
 
 
         </style>
-        <div class="content" >
+
+        <div class="content">
 
             <main id="mainpage">
 
                 @yield('content')
+
+
 
             </main>
 
