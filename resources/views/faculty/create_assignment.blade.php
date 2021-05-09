@@ -6,7 +6,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="#" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Create Assignment</h3>
+                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Create Assignment</h3>
                     </div>
                     <div class="card-body">
 
