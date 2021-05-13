@@ -28,7 +28,7 @@ class SubmissionController extends Controller
 
     public function viewsubmission(Request $req)
     {
-        $Assignment_question = Assignment_question::select('questions')->where('id', $req->id)->where('is_deleted', '0')->first();
+        $Assignment_question = Assignment_question::select('assignment_id','questions')->where('id', $req->id)->where('is_deleted', '0')->first();
 
         $Submitted_Assignment_question = Submission::select('*')->where('question_id', $req->id)->where('is_deleted', '0')->get();
 

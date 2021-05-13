@@ -94,7 +94,8 @@ class AssignmentController extends Controller
         return view('faculty.create_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
     }
 
-    public function update_assignment(Request $req){
+    public function update_assignment(Request $req)
+    {
 
         // dd($req->all());
 
@@ -106,13 +107,43 @@ class AssignmentController extends Controller
 
         // Assignment::where('id', $req->id)->update($req->all());
 
-        Assignment::where('id', $req->id)->update($req->only(['subject_name', 'assignment_name',
-        'last_submission_date', 'description']));
+        Assignment::where('id', $req->id)->update($req->only([
+            'subject_name', 'assignment_name',
+            'last_submission_date', 'description'
+        ]));
 
         // $request = new Request();
         // $request->batch_id = $req->batch_id;
         return $this->viewbatchassignmentdetails($req);
+    }
 
+    public function update_questions(Request $req)
+    {
+
+        // dd($req->all());
+
+        $update_questions = $req->input('questions');
+        $questions_id = $req->input('question_id');
+        // dd($questions_id);
+
+        $i = '0';
+        foreach ($update_questions as $question) {
+
+                dd($questions_id[$i]);
+
+                $u_question = Assignment_question::find($questions_id[$i]);
+                $u_question->questions = $question;
+                $u_question->save();
+
+            // Assignment_question::where('id', $questions_id[$i])->update(["questions " => $update_questions[$i]]);
+            $i++;
+        }
+
+
+
+        // $request = new Request();
+        // $request->batch_id = $req->batch_id;
+        // return $this->viewbatchassignmentdetails($req);
     }
 
     public function createassignmentdetails()
@@ -122,6 +153,7 @@ class AssignmentController extends Controller
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
         return view('faculty.create_assignment_details', compact('user', 'batchdetail'));
     }
+
 
     public function viewmyassignment()
     {
@@ -155,6 +187,39 @@ class AssignmentController extends Controller
 
         return view('faculty.create_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
     }
+
+    public function update_assignment_details(Request $req)
+    {
+
+
+        $user = Auth::user();
+        $createdassignmentdetail = Assignment::select('*')
+            ->where('email', $user->email)
+            ->where('id', $req->id)->where('is_deleted', '0')->get();
+
+        $createdassignmentquestion = Assignment_question::select('*')
+            ->where('email', $user->email)
+            ->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
+
+        return view('faculty.update_assignment_details', compact('createdassignmentdetail', 'createdassignmentquestion'));
+    }
+
+    public function update_assignment_questions(Request $req)
+    {
+
+
+        $user = Auth::user();
+        $createdassignmentdetail = Assignment::select('*')
+            ->where('email', $user->email)
+            ->where('id', $req->id)->where('is_deleted', '0')->get();
+
+        $createdassignmentquestion = Assignment_question::select('*')
+            ->where('email', $user->email)
+            ->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
+
+        return view('faculty.update_assignment_questions', compact('createdassignmentdetail', 'createdassignmentquestion'));
+    }
+
 
     public function deleteassignment(Request $req)
     {

@@ -31,6 +31,18 @@ class SubmissionController extends Controller
         return view('student.submit_assignment', compact('user', 'batchassignmentdetail' , 'today'));
     }
 
+    public function old_submissions(Request $req)
+    {
+        $user = Auth::user();
+        $date = Carbon::now();
+        //Get date and time
+        $today = $date->toDateTimeString();
+        // dd($today);
+        $batchassignmentdetail = Assignment::select('*')
+            ->where('batch_id', $req->id)
+            ->where('is_deleted', '0')->get();
+        return view('student.view_submitted_assignment', compact('user', 'batchassignmentdetail' , 'today'));
+    }
 
 
     public function showassignmentquestion(Request $req)
@@ -62,11 +74,10 @@ class SubmissionController extends Controller
 
     public function submitanswer(Request $req)
     {
-        dd($req->all());
+        // dd($req->all());
         // return ;
 
 
-        $req->validate(['qanswer' => ['required', 'min:50']], ['question_id' => 'required']);
 
         $user = Auth::user();
 
@@ -116,16 +127,30 @@ class SubmissionController extends Controller
         // return redirect()->back()   ;
         // return redirect('viewassignmentquestions/'.$Submission->assignment_id);
         // return view('student.submitassignment', compact('user'));
-        return redirect('submitassignment');
+
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->get();
+
+        return view('student.my_submission', compact('studentbatch'));
+
+        // return redirect('submitassignment');
     }
 
     public function viewmybatched()
     {
         $user = Auth::user();
 
-        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->get();
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->get();
 
         return view('student.my_submission', compact('studentbatch'));
+    }
+
+    public function viewmyoldbatched()
+    {
+        $user = Auth::user();
+
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->get();
+
+        return view('student.old_submissions', compact('studentbatch'));
     }
 
     public function viewmysubmission()

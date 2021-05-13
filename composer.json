@@ -11,6 +11,7 @@
         "php": "^7.2.5|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "grammarbot/grammarbot-php-client": "dev-master",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "laravel/framework": "^7.29",
         "laravel/socialite": "^5.2",

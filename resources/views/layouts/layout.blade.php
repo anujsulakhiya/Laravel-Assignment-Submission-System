@@ -152,7 +152,7 @@
             </ul>
 
             <div class="c-subheader justify-content-end  px-3 ">
-                <button class="back">go back</button>
+                {{-- <button class="back">go back</button> --}}
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
             </div>

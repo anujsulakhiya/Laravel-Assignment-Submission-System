@@ -43,6 +43,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/changepassword', 'ChangePasswordController@index');
     Route::post('/change-password', 'ChangePasswordController@store')->name('change.password');
 
+    //Global Classes
+    Route::get('global_class', 'faculty\StudentBatchController@global_class');
+    Route::get('sendjoningrequest_from_global/{batch_id}', 'student\ClassController@global_joinclassrequest');
+
+    //
+    Route::get('truncate_batch', 'faculty\DashboardController@truncate_batch');
+    Route::get('truncate_assignment', 'faculty\DashboardController@truncate_assignment');
+
     //***********************************   Faculty Routes   ***********************************//
 
     Route::group(['as' => 'faculty.', 'middleware' => ['auth', 'faculty']], function () {
@@ -61,14 +69,20 @@ Route::group(['middleware' => 'auth'], function () {
         //Faculty Routes --> Create Assignment Routes
         Route::get('create_assignment', 'faculty\AssignmentController@createassignmentpage');
         Route::post('/createnewassignment', 'faculty\AssignmentController@createassignment');
-        Route::post('/update_assignment', 'faculty\AssignmentController@update_assignment');
         Route::get('createassignmentdetails', 'faculty\AssignmentController@createassignmentdetails');
+
         Route::get('/createbatchassignment/{batch_id}', 'faculty\AssignmentController@viewperticulerbatch');
 
         //Faculty Routes --> My Assignment Routes
         Route::get('my_assignment', 'faculty\AssignmentController@viewmyassignment');
         Route::get('/view_batch_assignment/{batch_id}', 'faculty\AssignmentController@viewbatchassignment');
         Route::get('batchassignmentdetails/{id}', 'faculty\AssignmentController@viewbatchassignmentdetails');
+        Route::get('/update_assignment_details/{id}', 'faculty\AssignmentController@update_assignment_details');
+        Route::post('/update_assignment', 'faculty\AssignmentController@update_assignment');
+
+        Route::get('/update_assignment_questions/{id}','faculty\AssignmentController@update_assignment_questions');
+        Route::post('/update_questions', 'faculty\AssignmentController@update_questions');
+
         Route::get('/dassignment/{id}', 'faculty\AssignmentController@classjoiningrequest  ');
 
         //Faculty Routes --> Assignment Submission Routes
@@ -77,7 +91,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/accept', 'faculty\SubmissionController@acceptsubmission');
         Route::get('/accept/{id}', 'faculty\SubmissionController@acceptsubmission');
         Route::get('/reject/{id}', 'faculty\SubmissionController@rejectsubmission');
-
     });
 
     //***********************************   Student Routes   ***********************************//
@@ -98,7 +111,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/submitans', 'student\SubmissionController@submitanswer')->name('submit_answer');
 
         //Student Routes --> View Submission Routes
-        Route::get('/mysubmission', 'student\SubmissionController@viewmybatched')->name('view_mysubmission');
+        Route::get('/mysubmission', 'student\SubmissionController@viewmyoldbatched')->name('view_mysubmission');
+        Route::get('/view_submitted_assignment/{id}', 'student\SubmissionController@old_submissions');
+
     });
     //***********************************   Admin Routes   ***********************************//
 

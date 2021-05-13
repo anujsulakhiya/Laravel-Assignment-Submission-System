@@ -18,5 +18,19 @@
                         </div>
                     @endif
         {{ __('You are logged in!') }}
+
+        <a href="/truncate_assignment" class="btn btn-danger btn-sm my_mainpage_link">Truncate Assignment</a>
+        <a href="/truncate_batch" class="btn btn-danger btn-sm my_mainpage_link">Truncate Batch</a>
     </div>
 </div>
+
+
+<script>
+
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+
+    });
+
+
+</script>

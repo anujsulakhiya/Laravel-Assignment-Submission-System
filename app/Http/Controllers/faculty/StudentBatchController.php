@@ -21,6 +21,26 @@ class StudentBatchController extends Controller
 
     //Student Enrollment View
 
+    public function global_class()
+    {
+
+        $user = Auth::user();
+        $batchdetail = Batch_detail::select('id', 'batch_name','creater_email','created_at')->where('is_deleted', '0')->get();
+
+        $exists = Batch_joining_request::select('batch_id','status')->where( 'email', $user->email)->get()->toArray();
+
+        // $batchdetail = Batch_detail::select('Batch_detail.id', 'Batch_detail.batch_name', 'Batch_details.creater_email', 'Batch_details.created_at' , 'Batch_joining_request.status ')->join('Batch_joining_request', 'Batch_joining_request.batch_id', '=', 'Batch_details.id')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
+        // $batchdetail = Batch_detail::select('Batch_detail.id', 'Batch_detail.batch_name', 'Batch_details.creater_email', 'Batch_details.created_at', 'Batch_joining_request.* ')->where('is_deleted', '0')->get();
+        // dd($exists);
+
+        return view('faculty.global_class', compact('batchdetail' , 'exists'));
+        // dd($exists);
+
+        // return view('faculty.global_class')->with('batchdetail', $batchdetail)->with('exists', $exists);
+        // return view('faculty.global_class')->with('batchdetail', $batchdetail);
+
+    }
+
     public function enrollstudent()
     {
 

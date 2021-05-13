@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88f8ec4ddb0e48382014c7abe0a22f6c",
+    "content-hash": "8c49cf472e43a54772143284c1d1d4e9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -596,6 +596,50 @@
                 }
             ],
             "time": "2020-10-22T13:57:20+00:00"
+        },
+        {
+            "name": "grammarbot/grammarbot-php-client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imranswe/grammarbot-php-client.git",
+                "reference": "db7641b8c85beaf53d2f4662aa1d9cd8b8e2e378"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imranswe/grammarbot-php-client/zipball/db7641b8c85beaf53d2f4662aa1d9cd8b8e2e378",
+                "reference": "db7641b8c85beaf53d2f4662aa1d9cd8b8e2e378",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GrammarBot": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Imran Ullah Khan",
+                    "email": "imran.swe.pk@gmail.com"
+                }
+            ],
+            "description": "This is a PHP client for using Grammarbot API to parse text for syntax and grammer errors",
+            "homepage": "https://www.grammarbot.io",
+            "keywords": [
+                "GrammarBot",
+                "api",
+                "php client"
+            ],
+            "support": {
+                "issues": "https://github.com/imranswe/grammarbot-php-client/issues",
+                "source": "https://github.com/imranswe/grammarbot-php-client/tree/master"
+            },
+            "time": "2018-12-13T22:55:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7322,7 +7366,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "grammarbot/grammarbot-php-client": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
