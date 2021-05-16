@@ -4,7 +4,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Class Details</h3>
+                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Class
+                            Details</h3>
                     </div>
 
                     <div class="card-body">
@@ -43,6 +44,7 @@
                                                 <td></td>
                                                 <td class="my-1">
 
+
                                                     <a href="/view_batch/{{ $batch->id }}"
                                                         class="btn btn-primary btn-sm my-1 my_mainpage_link">View
                                                         Class</a>
@@ -51,15 +53,25 @@
                                                         class="btn btn-danger btn-sm my-1 my_mainpage_link"> Joining
                                                         Request</a>
 
-                                                    <a href="/createbatchassignment/{{ $batch->id }}"
+                                                    {{-- <a href="/createbatchassignment/{{ $batch->id }}"
                                                         class="btn btn-success btn-sm my-1 my_mainpage_link">Create
-                                                        Assignment</a>
+                                                        Assignment</a> --}}
+
+
 
                                                     <button class="btn btn-dark btn-sm "
                                                         onclick="return confirm('Are you sure? This Will Delete Your All Assgnments Cretated For this Batch');">
                                                         <a class="text-white my-1"
                                                             href="/dbatch/{{ $batch->id }}">Delete</a>
                                                     </button>
+
+                                                    @if ($batch->status == 'Active')
+                                                        <a href="/deactive_batch/{{ $batch->id }}"
+                                                            class="btn btn-success text-white btn-sm my-1 my_mainpage_link">Activated</a>
+                                                    @elseif ($batch->status == 'Deactive')
+                                                        <a href="/active_batch/{{ $batch->id }}"
+                                                            class="btn btn-secondary btn-sm my-1 my_mainpage_link">Deactivated</a>
+                                                    @endif
 
                                                 </td>
                                             </tr>

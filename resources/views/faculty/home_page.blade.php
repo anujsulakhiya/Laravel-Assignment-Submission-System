@@ -21,6 +21,7 @@
 
         <a href="/truncate_assignment" class="btn btn-danger btn-sm my_mainpage_link">Truncate Assignment</a>
         <a href="/truncate_batch" class="btn btn-danger btn-sm my_mainpage_link">Truncate Batch</a>
+        <a href="/logActivity" class="btn btn-danger btn-sm my_mainpage_link">logActivity</a>
     </div>
 </div>
 

@@ -1,24 +1,17 @@
-<?php// $items = array(); ?>
-{{-- @foreach ($exists as $req)
-
-<?php// $items[] = $req; ?>
-
-@endforeach --}}
-
-
-
 <section class="forms">
     <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Global Class Details</h3>
+                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Global
+                            Class Details</h3>
                     </div>
 
                     <div class="card-body">
-                        <h4 class="box-link" class="text-left"><a class="my_mainpage_link" href="/createbatch">
-                                Create New Class </a>
+                        <h4 class="box-link" class="text-left">
+                            {{-- <a class="my_mainpage_link" href="/createbatch">
+                                Create New Class </a> --}}
                             @if (session()->has('req'))
                                 <div class="alert alert-success">
                                     {{ session()->get('req') }}
@@ -33,6 +26,8 @@
                         </h4>
 
                     </div>
+
+                    {{-- {{$batch_id}} --}}
 
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
@@ -69,35 +64,50 @@
                                                     <td class="my-1">
 
                                                         <a href="/view_batch/{{ $batch->id }}"
-                                                            class="btn btn-primary btn-sm my-1 my_mainpage_link">View
+                                                            class="btn btn-primary btn-sm my-1 mx-1 my_mainpage_link">View
                                                             Class</a>
 
-                                                        <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
+                                                        {{-- <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
                                                             class="btn btn-success btn-sm my-1 my_mainpage_link">
-                                                            Send Joining Request</a>
-
-
-                                                        {{-- @if (@$batch->id == @$exists[$j]->batch_id)
-
-                                                            {{ @$exists[$j]->batch_id . @$exists[$j]->status }}
-
-                                                            @if (@$exists[$j]->status == 'P')
-
-                                                                <span>Request Pending</span>
-
-                                                            @else
-
-                                                                <span>Request Acceepted</span>
-
-                                                            @endif
-
+                                                            Send Joining Request</a> --}}
+                                                        {{-- @if (isset(@$batch->id) && @$batch->id == @$exists[$j]->batch_id))
+                                                            <span>Yes</span>
                                                         @else
-
-                                                            <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
-                                                                class="btn btn-success btn-sm my-1 my_mainpage_link">
-                                                                Send Joining Request</a>
-
+                                                            <span>No</span>
                                                         @endif --}}
+                                                        {{-- {{$user_role}} --}}
+                                                        @if ($user_role == 2)
+                                                            {{ $batch->request_status }}
+
+                                                            @if ($batch->status == 'Active')
+
+                                                                @if ($batch->request_status)
+                                                                
+                                                                    @if ($batch->request_status == 'P')
+
+                                                                        <span>Request Pending</span>
+
+                                                                    @elseif($batch->request_status == 'A')
+
+                                                                        <a href="/viewassignment/{{ $batch->id }}"
+                                                                            class="btn btn-info btn-sm my-1 my_mainpage_link">
+                                                                            View Assignments</a>
+
+                                                                    @endif
+
+                                                                @else
+
+                                                                    <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
+                                                                        class="btn btn-success btn-sm my-1 my_mainpage_link">
+                                                                        Send Joining Request</a>
+
+                                                                @endif
+                                                            @else
+                                                                <span class="text-danger">Class Deactivated</span>
+                                                            @endif
+                                                            {{-- {{-- @else --}}
+
+                                                        @endif
 
 
                                                         {{-- <a href="/createbatchassignment/{{ $batch->id }}"

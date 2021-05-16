@@ -101,7 +101,7 @@
                                                     <a href="/viewbatch/{{ $batch->id }}"
                                                         class="btn btn-primary btn-sm">Edit</a>
                                                     <button class="btn btn-secondary btn-sm "><a class="text-white"
-                                                            href="/dstudent/{{ $batch->enrollment }}">Remove</a></button>
+                                                            href="/dstudent/{{ $batch->enrollment }}/{{$batch_detail->id}}">Remove</a></button>
                                                 </div>
                                             </td>
                                         </tr>
