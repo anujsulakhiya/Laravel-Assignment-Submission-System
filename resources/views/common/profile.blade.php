@@ -12,9 +12,11 @@
                         <div class="mt-3">
                             <h4>{{ $user->name }}</h4>
                             <br>
-                            <button id="updateprofile" class="btn btn-primary">Update Profile</button>
+                            <a href="/updateprofile" class="btn btn-primary my_mainpage_link">Update Profile</a>
+                            <a href="/changepassword" class="btn btn-primary my_mainpage_link">Change Password</a>
+                            {{-- <button id="updateprofile" class="btn btn-primary"></button> --}}
 
-                            <button id="changepassword" class="btn btn-outline-primary">Change Password</button>
+                            {{-- <button id="changepassword" class="btn btn-outline-primary">Change Password</button> --}}
 
                         </div>
                     </div>
@@ -196,36 +198,19 @@
 </div>
 
 
-
-<table class='table'>
-    <thead class='thead-light'>
-        <th>Manage {{ $user->role }} Profile</th>
-        <th></th>
-    </thead>
-    <tbody class=' table-bordered'>
-        <tr>
-            <th class='col-md-4'>Name</th>
-            <td>{{ $user->name }}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>{{ $user->email }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<a href="/updateprofile" class="btn btn-primary btn-sm mt-3">Update Profile</a>
-<a href="/changepassword" class="btn btn-secondary btn-sm mt-3">Change Password</a>
-
-
-
-
 <script>
-    
+
     $("#changepassword").on("click", function() {
 
         $("#mainpage").load("/changepassword");
 
+    });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
     });
 
 </script>
