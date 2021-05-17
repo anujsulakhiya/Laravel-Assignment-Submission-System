@@ -5,7 +5,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center ">
-                        <h3 class="h5">Active Batch Details</h3>
+                        <h3 class="h5">All Batch Details</h3>
                         <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )</h6>
 
                     </div>
@@ -33,7 +33,7 @@
                                                 <td>{{ @$batch->name }}</td>
                                                 <td>{{ @$batch->creater_email }}</td>
                                                 <td>
-                                                    <a href="/viewassignment/{{ $batch->batch_id }}"
+                                                    <a href="/view_submitted_assignment/{{ $batch->batch_id }}"
                                                         class="btn btn-primary btn-sm my_mainpage_link">
                                                         View Assignment</a>
                                                 </td>

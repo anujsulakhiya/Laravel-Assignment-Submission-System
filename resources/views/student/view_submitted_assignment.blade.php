@@ -5,7 +5,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center ">
-                        <h3 class="h5">Assignment Details</h3>
+                        <h3 class="h5">Old Assignment Submission Details</h3>
                         <h6 class="ml-3 text-dark">( Note : Select Assignment to View Questions )</h6>
 
                     </div>
@@ -25,23 +25,13 @@
                                         @foreach ($batchassignmentdetail as $assignmentdetail)
                                             <tr>
 
-
                                                 <td>{{ $assignmentdetail->assignment_name }}</td>
                                                 <td>{{ $assignmentdetail->subject_name }}</td>
                                                 <td>{{ date('F d, Y', strtotime($assignmentdetail->last_submission_date)) }}
                                                 </td>
-
-                                                @if (strtotime($today) <= strtotime($assignmentdetail->last_submission_date))
-                                                    <td class=""><a
-                                                            href="/viewassignmentquestions/{{ $assignmentdetail->id }}"
-                                                            class="btn btn-sm btn-primary my_mainpage_link">View
-                                                            Questions </a></td>
-                                                @else
-                                                    <td class="text-danger">Submission Closed</td>
-                                                @endif
-
-
-
+                                                <td>
+                                                <a href="/old_submisstion_detail/{{$assignmentdetail->id}}" class="btn btn-sm btn-primary my_mainpage_link">View Submission </a>
+                                                </td>
 
                                             </tr>
                                         @endforeach
