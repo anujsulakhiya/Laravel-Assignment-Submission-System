@@ -21,6 +21,10 @@
 
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="{{ asset('assets/css/jquery.jscrollpane.css') }}" rel="stylesheet" media="all" />
+
+
 <style>
     html {
         scroll-behavior: smooth;
