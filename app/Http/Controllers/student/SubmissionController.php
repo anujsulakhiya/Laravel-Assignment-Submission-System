@@ -44,6 +44,32 @@ class SubmissionController extends Controller
         return view('student.view_submitted_assignment', compact('user', 'batchassignmentdetail' , 'today'));
     }
 
+    public function showoldassignmentquestion(Request $req)
+    {
+
+        $user = Auth::user();
+
+
+        $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
+
+        $submitted = Submission::select('question_id','qanswer','filename', 'status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
+
+        // $submitted1 = Assignment_question::select('Assignment_question.*' , 'Submission.question_id','Submission.qanswer','Submission.filename', 'Submission.status')
+        // ->join('Submission', 'Submission.question_id', '=', 'Assignment_question.id')
+        // // ->join('Submission', 'Submission.enrollment', '=', 'Assignment_question.email')
+        // ->where('email', $user->email)->get();
+
+        // $submitted1 =
+
+        // dd($submitted);
+
+        // $submitted =  explode(',', $s);
+
+        // dd($submitted);
+
+        return view('student.old_submisstion_detail', compact('user', 'createdassignmentquestion', 'submitted'));
+    }
+
 
     public function showassignmentquestion(Request $req)
     {
@@ -70,6 +96,7 @@ class SubmissionController extends Controller
         $createdassignmentquestion = Assignment_question::select('*')->where('id', $req->id)->where('is_deleted', '0')->get();
 
         return view('student.submit_question', compact('user', 'createdassignmentquestion'));
+
     }
 
     public function submitanswer(Request $req)
@@ -128,7 +155,7 @@ class SubmissionController extends Controller
         // return redirect('viewassignmentquestions/'.$Submission->assignment_id);
         // return view('student.submitassignment', compact('user'));
 
-        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->get();
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->where('Batch_details.status', 'Active')->get();
 
         return view('student.my_submission', compact('studentbatch'));
 
@@ -139,7 +166,7 @@ class SubmissionController extends Controller
     {
         $user = Auth::user();
 
-        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->get();
+        $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->where('Batch_details.status', 'Active')->get();
 
         return view('student.my_submission', compact('studentbatch'));
     }

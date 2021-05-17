@@ -71,11 +71,45 @@ class ClassController extends Controller
             $joinclass->save();
         }
 
-        $batchdetail = Batch_detail::select('id', 'batch_name', 'creater_email', 'created_at')->where('is_deleted', '0')->get();
+        $batchdetail = Batch_detail::select('id', 'batch_name', 'creater_email', 'created_at' , 'status')->where('is_deleted', '0')->get();
 
         $exists = Batch_joining_request::select('batch_id', 'status')->where('email', $user->email)->get();
 
-        return view('faculty.global_class')->with('batchdetail', $batchdetail)->with('exists', $exists);
+        $batch_id =  array();
+        $batch_status =  array();
+
+        $batch_id = array_fill(0, $batchdetail->count() , 0);
+        $batch_status = array_fill(0, $batchdetail->count() , 0);
+
+        foreach($exists as $e){
+
+            $k = $e->batch_id - 1;
+            $batch_id[$k] = $e->batch_id;
+            $batch_status[$k] = $e->status;
+
+        }
+
+        $plucked_batch_id = $batchdetail->pluck('id')->toArray();
+        $plucked_batch_request =$exists->pluck('batch_id')->toArray();
+        $plucked_batch_request_status =$exists->pluck('status')->toArray();
+
+
+        $i = 0;
+        foreach ($batchdetail as $batch) {
+
+            if (in_array( $plucked_batch_id[$i], $plucked_batch_request)) {
+
+                $status = Batch_joining_request::select('status')->where('email', $user->email)->where('batch_id' , $batch->id)->first();
+                $batch->request_status = $status->status;
+
+            }
+            $i++;
+        }
+
+
+        // dd($plucked_batch_request_status);
+
+        return view('faculty.global_class', compact('batchdetail' , 'batch_id' , 'batch_status'))->with('user_role' , $user->role_id);;
 
         // return redirect()->back()->with('message', 'You Are Already Enrolled For This Class !');
     }

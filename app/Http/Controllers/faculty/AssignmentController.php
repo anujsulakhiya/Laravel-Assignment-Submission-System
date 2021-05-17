@@ -160,7 +160,19 @@ class AssignmentController extends Controller
 
         $user = Auth::user();
         $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
-        return view('faculty.my_assignment', compact('user', 'batchdetail'));
+
+        $assignment_count =  array();
+        $assignment_count = array_fill(0, $batchdetail->count(), 0);
+
+        $i=0;
+
+        foreach($batchdetail as $batch){
+
+            $assignment_count[$i] = Assignment::where('batch_id' , $batch->id)->get()->count();
+            $i++;
+        }
+        // dd($assignment_count);
+        return view('faculty.my_assignment', compact('user', 'batchdetail' , 'assignment_count'));
     }
 
     public function viewbatchassignment(Request $req)
