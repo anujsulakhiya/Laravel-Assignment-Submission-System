@@ -35,13 +35,13 @@
 
                                     </thead>
                                     <tbody class="search_table">
-                                        <?php $i = 1; ?>
+                                        <?php $i = 1; $j=0;?>
                                         @foreach ($batchdetail as $batch)
 
                                             <tr>
                                                 <td>{{ @$i }}</td>
                                                 <td>{{ @$batch->batch_name }}</td>
-                                                <td></td>
+                                                <td>Students : {{@$student_count[$j]}} &nbsp;&nbsp; Pending Requests : {{@$student_request[$j]}}</td>
                                                 <td class="my-1">
 
 
@@ -75,7 +75,7 @@
 
                                                 </td>
                                             </tr>
-                                            <?php $i++; ?>
+                                            <?php $i++; $j++ ?>
                                         @endforeach
 
 

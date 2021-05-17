@@ -27,22 +27,29 @@
                                     <thead>
                                         <th>No.</th>
                                         <th>Class Name</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </thead>
                                     <tbody class="search_table">
                                         {{-- {{$batchdetail}} --}}
-
+                                        @php
+                                           $i = 1; $j = 0;
+                                        @endphp
                                         @foreach ($batchdetail as $batch)
 
                                             <tr>
-                                                <td>Name</td>
+                                                <td>{{$i }}</td>
                                                 <td>{{ @$batch->batch_name }}</td>
+                                                <td>Assignments  :  {{@$assignment_count[$j]}}</td>
                                                 <td>
                                                     <a href="/view_batch_assignment/{{ $batch->id }}" id=""
                                                         class="btn btn-primary btn-sm store_batch_id  my_mainpage_link ">View
                                                         Assignment</a>
                                                 </td>
                                             </tr>
+                                            @php
+                                               $i++; $j++;
+                                            @endphp
                                         @endforeach
 
                                     </tbody>

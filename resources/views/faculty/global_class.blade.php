@@ -58,7 +58,7 @@
                                                     <td scope="row">{{ @$i }}</td>
                                                     <td>{{ @$batch->batch_name }}</td>
                                                     <td>{{ @$batch->creater_email }}</td>
-                                                    <td></td>
+                                                    <td>Students Joined  : {{$student_count[$j]}}</td>
                                                     <td class="">
                                                         {{ date('F d, Y', strtotime($batch->created_at)) }}</td>
                                                     <td class="my-1">
@@ -82,7 +82,7 @@
                                                             @if ($batch->status == 'Active')
 
                                                                 @if ($batch->request_status)
-                                                                
+
                                                                     @if ($batch->request_status == 'P')
 
                                                                         <span>Request Pending</span>
