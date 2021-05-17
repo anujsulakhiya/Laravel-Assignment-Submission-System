@@ -9,6 +9,14 @@
 <!-- Custom CSS -->
 <link href="assets/css/custom.css" rel="stylesheet">
 
+<style>
+    .navbar-fixed-top {
+        top: -70px;
+        opacity: 0;
+    }
+
+</style>
+
 <!-- -------------- JS -------------- -->
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,7 +28,7 @@
 
 
 <!--Start navigation -->
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary pl-5 fixed-top">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary text-darkpl-5 fixed-top navbar-fixed-top">
     <a href="#" class="navbar-brand text-uppercase">{{ config('app.name') }}</a>
     <span style="font-size:1vw;" class="navbar-text">Makes Your Work Easy</span>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
@@ -68,127 +76,253 @@
 <!--End Introduntion Section -->
 
 <!--Start Registration Section -->
-<div class="container">
-    <div class="pt-5" id="register">
-        <h2 class="text-center">Create an Account</h2>
 
-    </div>
-    <div class="row mt-4 mb-4">
-        <div class="col-md-6 offset-md-3">
-            <div class="card-body shadow p-4">
-
-                {{ Form::open(array('route' => 'register')) }}
-
-                {{-- <form method="POST" action="{{ route('register') }}"> --}}
-                    @csrf
-
-                    <div class="form-group">
-                        <i class="fa fa-user"></i><label for="name" class="font-weight-bold pl-2">Name</label>
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name">
-
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+<section class="forms" id="register"  >
+    <div class="container-fluid mt-2" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card" style="border:0px;">
+                    <div class="pt-5" >
+                        <h2 class="text-center">Create an Account</h2>
                     </div>
-                    <div class="form-group">
-                        <i class="fa fa-user"></i><label for="email" class="font-weight-bold pl-2">Email</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <div class=" card-body">
 
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <div class="col-md-8 offset-md-2">
+
+                            <div class="card mt-2">
+                                <div class="card-body mt-2 shadow p-4">
+
+                                    {{ Form::open(['route' => 'register']) }}
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <i class="fa fa-user"></i><label for="name"
+                                                class="font-weight-bold pl-2">Name</label>
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                                value="{{ old('name') }}" required autocomplete="name">
+
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <i class="fa fa-user"></i><label for="email"
+                                                class="font-weight-bold pl-2">Email</label>
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autocomplete="email">
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <i class="fa fa-key"></i><label for="password"
+                                                class="font-weight-bold pl-2">Password</label>
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="new-password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i class="fa fa-key"></i><label for="password_confirmation"
+                                                class="font-weight-bold pl-2">Confirm
+                                                Password</label>
+                                            <input id="password-confirm" type="password" class="form-control"
+                                                name="password_confirmation" required autocomplete="new-password">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i class="fa fa-key"></i><label for="role"
+                                                class="font-weight-bold pl-2">Role</label>
+                                            <select name="role" class="form-control" required
+                                                value="{{ old('name') }}" id="role">
+                                                <option></option>
+                                                <option value="1">Faculty</option>
+                                                <option value="2">Student</option>
+                                            </select>
+
+                                            @error('role')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary p-2 mt-3  shadow-sm ">
+                                            {{ __('Register') }}
+                                        </button>
+                                    </div>
+                                    {{ Form::close() }}
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <br>
+
                     </div>
-                    <div class="form-group">
-                        <i class="fa fa-key"></i><label for="password" class="font-weight-bold pl-2">Password</label>
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="new-password">
 
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <i class="fa fa-key"></i><label for="password_confirmation"
-                            class="font-weight-bold pl-2">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
-                    </div>
-
-                    <div class="form-group">
-                        <i class="fa fa-key"></i><label for="role" class="font-weight-bold pl-2">Role</label>
-                        <select name="role" class="form-control" required value="{{ old('name') }}" id="role">
-                            <option></option>
-                            <option value="1">Faculty</option>
-                            <option value="2">Student</option>
-                        </select>
-
-                        @error('role')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary mt-5 btn-block shadow-sm font-weight-bold">
-                        {{ __('Register') }}
-                    </button>
-
-                    {{ Form::close() }}
-
-                {{-- </form> --}}
+                </div>
             </div>
-
         </div>
     </div>
-</div>
+    </div>
+
+</section>
+
 <!--End Registration Section -->
 
 <!--Start Contact Section -->
-<div class="container-fluid bg-light shadow pt-4" id="contact">
-    <h2 class="text-center mx-4 p-5 "> Contact Us</h2>
-    <div class="row ">
-        <div class="col-md-6 mx-5 bg-light shadow p-4">
-            <form action="./inc/user_query.php" method="POST">
-                <input type="text" class="form-control" name="u_name" placeholder="Name" required><br>
-                <input type="text" class="form-control" name="u_subject" placeholder="Subject" required><br>
-                <input type="email" class="form-control" name="u_email" placeholder="Email" required><br>
-                <textarea class="form-control" name="message" rows="5" placeholder="How can we help you?"></textarea>
-                <input type="submit" class="btn btn-primary mt-3" name="send" value="Send">
-            </form><br><br>
-            <?php if (isset($_GET['id'])) {
-            echo $_GET['id'];
-            } ?>
+
+<section class="forms">
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card" style="border:0px;">
+                    <div class="pt-5" id="contact">
+                        <h2 class="text-center">Contact Us</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-body">
+
+                                <div class="">
+
+                                    <div class="card">
+                                        <div class="card-body mt-2 shadow p-4">
+
+                                            {{ Form::open(['route' => 'register']) }}
+                                            @csrf
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <i class="fa fa-user"></i><label for="name"
+                                                        class="font-weight-bold pl-2">Name</label>
+                                                    <input id="name" type="text"
+                                                        class="form-control @error('name') is-invalid @enderror"
+                                                        name="name" value="{{ old('name') }}" required
+                                                        autocomplete="name">
+
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <i class="fa fa-user"></i><label for="email"
+                                                        class="font-weight-bold pl-2">Email</label>
+                                                    <input id="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email">
+
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <i class="fa fa-user"></i><label for="subject"
+                                                        class="font-weight-bold pl-2">Subject</label>
+                                                    <input id="subject" type="text"
+                                                        class="form-control @error('subject') is-invalid @enderror"
+                                                        name="subject" value="{{ old('subject') }}" required>
+
+                                                    @error('subject')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mt-2">
+
+                                                <div class="col-md-12">
+                                                    <i class="fa fa-user"></i><label for="email"
+                                                        class="font-weight-bold pl-2">Description</label>
+
+                                                    <textarea
+                                                        class="form-control  @error('description') is-invalid @enderror"
+                                                        id="description" name="description" rows="5"
+                                                        value="{{ old('description') }}"
+                                                        placeholder="How can we help you?"></textarea>
+
+                                                    @error('description')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <div class="">
+                                                <button type="submit" class="btn btn-primary p-2 mt-1  shadow-sm ">
+                                                    {{ __('Submit Query') }}
+                                                </button>
+                                            </div>
+                                            {{ Form::close() }}
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <br>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mt-5 ">
+                            <strong>Contact Info :<br><br>
+
+                                ANUJ SULAKHIYA<br>
+                                B.Tech CS (Second Year)<br>
+                                College :
+                                IPS ACADEMY, Indore<br>
+                                Phone : +919009111944<br><br><br>
+                                Address :<br>Betma,Indore,<br>Madhaya Pradesh,453001<br>
+                                <a href="#" class="text-secondary">www.assignmentsubmitter.com</a>
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="col-md-5  text-center  text-secondary">
-            <strong>Contact Info :<br><br>
-
-                ANUJ SULAKHIYA<br>
-                B.Tech CS (Second Year)<br>
-                College :
-                IPS ACADEMY, Indore<br>
-                Phone : +919009111944<br><br><br>
-                Address :<br>Betma,Indore,<br>Madhaya Pradesh,453001<br>
-                <a href="#" class="text-secondary">www.assignmentsubmitter.com</a>
-            </strong>
-
-        </div>
-
+    </div>
     </div>
 
-    <br>
-</div>
-<footer class="container-fluid bg-dark text-white">
+</section>
+
+
+<footer class="bg-dark text-white" style="background: black">
     <div class="container">
         <div class="row py-3">
             <div class="col-md-6">
@@ -197,7 +331,8 @@
                 <a href="#" class="pr-2 fi-color"><i class="fa fa-instagram"></i></a>
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{ route('register') }}">{{ __('Admin Registration') }}</a>
+                <a class="text-white text-weight-bold"
+                    href="{{ route('register') }}">{{ __('Admin Registration') }}</a>
                 <small>Designed By Anuj &copy; 2020</small>
                 <!-- <small class="ml-2"><a href="#">Admin Login</a></small> -->
             </div>
@@ -205,3 +340,30 @@
     </div>
 </footer>
 <!--END Contact Section -->
+
+<script>
+    /*---------------------------------------*/
+    /*	NAVIGATION AND NAVIGATION VISIBLE ON SCROLL
+    /*---------------------------------------*/
+    $(window).on("load", function() {
+        mainNav();
+        $(window).scroll(function() {
+            mainNav();
+        });
+
+        function mainNav() {
+            var top = (document.documentElement && document.documentElement.scrollTop) || document.body
+                .scrollTop;
+            if (top > 40) $('.navbar-fixed-top').stop().animate({
+                "opacity": '1',
+                "top": '0'
+            });
+            else $('.navbar-fixed-top').stop().animate({
+                "top": '-70',
+                "opacity": '0'
+            });
+
+        }
+    });
+
+</script>

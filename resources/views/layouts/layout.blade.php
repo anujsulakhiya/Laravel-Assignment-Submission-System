@@ -28,9 +28,42 @@
         z-index: 99;
     }
 
+    .my-custom-scrollbar {
+        position: relative;
+        /* width: 800px; */
+        /* height: 400px; */
+        overflow: auto;
+    }
+
+    .scrollbar-primary::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .scrollbar-primary::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #acacac;
+    }
+
+    .scrollbar-primary {
+        scrollbar-color: #acacac #F5F5F5;
+    }
+
+    .invisible-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroller {
+        /* width: 300px; */
+        height: 100%;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+    }
+
 </style>
 
-<body class="c-app">
+<body class="c-app ">
 
     {{-- c-sidebar-dark --}}
 
@@ -40,11 +73,12 @@
         </div>
     </div>
 
-    <div id="wrapper" class="nav" style="position: relative; box-shadow: -30px -5px 100px grey; ">
+    <div id="wrapper" class="nav " style="position: relative; box-shadow: -30px -5px 100px grey; ">
         <!-- Sidebar -->
-        <div class="c-sidebar c-sidebar-light c-sidebar-fixed " id="sidebar-wrapper" style="overflow-y:scroll">
+        <div class="c-sidebar c-sidebar-light c-sidebar-fixed scroll-pane scrollbar-primary scroller" id="sidebar-wrapper"
+            style="overflow-y:auto">
             <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold text-dark">
-                Assignment Submitter New
+                Assignment Submitter
             </div>
             <div class="list-group-flush ">
 
@@ -129,7 +163,7 @@
 
     <div class="c-wrapper c-fixed-components ">
 
-        <header class="c-header c-header-light  c-header-with-subheader navbar-fixed" style="position: ;">
+        <header class="c-header c-header-light  c-header-with-subheader navbar-fixed " style="position: ;">
 
             <span class="c-header-toggler-icon navbar-toggler-icon m-3" id="menu-toggle" width="97" height="46"></span>
 
@@ -151,7 +185,7 @@
 
             </ul>
 
-            <div class="c-subheader justify-content-end  px-3 ">
+            <div class="c-subheader justify-content-end  px-1 ">
                 {{-- <button class="back">go back</button> --}}
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
@@ -159,18 +193,11 @@
 
         </header>
 
-        <style>
-
-
-        </style>
-
-        <div class="content">
+        <div class=" content ">
 
             <main id="mainpage">
 
                 @yield('content')
-
-
 
             </main>
 
@@ -185,6 +212,18 @@
     <!-- SCRIPT -->
     @include('inc.script')
 
+    <script>
+        var myCustomScrollbar = document.querySelector('.my-custom-scrollbar');
+        var ps = new PerfectScrollbar(myCustomScrollbar);
+
+        var scrollbarY = myCustomScrollbar.querySelector('.ps__rail-y');
+
+        myCustomScrollbar.onscroll = function() {
+            scrollbarY.style.cssText =
+                `top: ${this.scrollTop}px!important; height: 400px; right: ${-this.scrollLeft}px`;
+        }
+
+    </script>
 </body>
 
 </html>
