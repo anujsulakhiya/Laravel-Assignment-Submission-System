@@ -571,7 +571,7 @@
 
     /* main content csss to fix in right side */
     .content {
-        margin-left: 265px;
+        margin-left: 240px;
         margin-top: 110px;
         margin-right: 10px;
         width: auto;
