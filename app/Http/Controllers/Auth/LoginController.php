@@ -40,9 +40,11 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        return redirect('/home');
+
+        $this->redirectTo = route('home');
+
         // if (Auth::check() && Auth::user()->role_id == 1) {
-        //     $this->redirectTo = route('home');
+
         // } elseif (Auth::check() && Auth::user()->role_id == 2) {
         //     $this->redirectTo = route('home');
         // } elseif (Auth::check() && Auth::user()->role_id == 3) {
