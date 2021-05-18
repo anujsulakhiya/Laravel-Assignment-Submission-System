@@ -17,7 +17,7 @@
 
 
 <!-- the jScrollPane script -->
-<script type="text/javascript" src="{{ asset('assets/js/jquery.jscrollpane.min.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('assets/js/jquery.jscrollpane.min.js') }}"></script> --}}
 
 <!-- the mousewheel plugin - optional to provide mousewheel support -->
 <script type="text/javascript" src="{{ asset('assets/js/jquery.mousewheel.js') }}"></script>
@@ -120,10 +120,6 @@
         $('.back').click(function() {
             go_back();
             return false;
-        });
-
-        $(function() {
-            $('.scroll-pane').jScrollPane();
         });
 
 
