@@ -12,7 +12,7 @@
                         <div class="mt-3">
                             <h4>{{ $user->name }}</h4>
                             <br>
-                            <a href="/updateprofile" class="btn btn-primary my_mainpage_link">Update Profile</a>
+                            <a href="/updateprofile" class="btn btn-outline-primary my_mainpage_link">Update Profile</a>
                             <a href="/changepassword" class="btn btn-primary my_mainpage_link">Change Password</a>
                             {{-- <button id="updateprofile" class="btn btn-primary"></button> --}}
 
