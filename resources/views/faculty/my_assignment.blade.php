@@ -40,7 +40,7 @@
                                             <tr>
                                                 <td>{{$i }}</td>
                                                 <td>{{ @$batch->batch_name }}</td>
-                                                <td>Assignments  :  {{@$assignment_count[$j]}}</td>
+                                                <td>Assignments  : <span class="badge badge-success p-2">{{@$assignment_count[$j]}}</span></td>
                                                 <td>
                                                     <a href="/view_batch_assignment/{{ $batch->id }}" id=""
                                                         class="btn btn-primary btn-sm store_batch_id  my_mainpage_link ">View

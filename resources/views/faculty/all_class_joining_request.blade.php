@@ -4,13 +4,12 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Class
-                            Details</h3>
+                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>All Class Joining Request</h3>
                     </div>
 
                     <div class="card-body">
                         <h4 class="box-link" class="text-left"><a class="my_mainpage_link" href="/createbatch">
-                                Create New Class </a>
+                                 </a>
                             <div class="col-md-6 float-right">
                                 <input class="form-control search" placeholder="Search by Class Name , Date etc"
                                     type="text" name="search" id="search">

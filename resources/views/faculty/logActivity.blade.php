@@ -8,41 +8,54 @@
 
 			<th>No</th>
 
-			<th>Subject</th>
+			<th>log_name</th>
 
-			<th>URL</th>
+			<th>description </th>
 
-			<th>Method</th>
+			<th>subject_typ</th>
 
-			<th>Ip</th>
+			<th> 	causer_type</th>
 
-			<th width="300px">User Agent</th>
+			<th width="300px"> 	properties</th>
 
-			<th>User Id</th>
+			<th>created_at </th>
 
 			<th>Action</th>
 
 		</tr>
 
-		@if($logs->count())
+        @foreach ($log as $logs)
 
-			@foreach($logs as $key => $log)
+
+
+
+
+
+
+
+
+        @endforeach
+
+			@foreach($log as $logs)
 
 			<tr>
 
-				<td>{{ ++$key }}</td>
+				<td></td>
 
-				<td>{{ $log->subject }}</td>
+				<td>{{$logs->id}}</td>
 
-				<td class="text-success">{{ $log->url }}</td>
+				<td class="text-success">
+                    {{$logs->log_name}}
+                </td>
 
-				<td><label class="label label-info">{{ $log->method }}</label></td>
+				<td><label class="label label-info">{{$logs->description}}</label></td>
 
-				<td class="text-warning">{{ $log->ip }}</td>
+				<td class="text-warning">{{$logs->subject_type}}</td>
 
-				<td class="text-danger">{{ $log->agent }}</td>
+				<td class="text-danger">{{$logs->properties}}</td>
 
-				<td>{{ $log->user_id }}</td>
+				<td>{{$logs->created_at}}</td>
+
 
 				<td><button class="btn btn-danger btn-sm">Delete</button></td>
 
@@ -50,7 +63,7 @@
 
 			@endforeach
 
-		@endif
+
 
 	</table>
 

@@ -54,7 +54,7 @@
                     <div class="card-header d-flex align-items-center">
 
                         <h3 class="h5"> <a href="/enroll_student" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>
-                             Class Details</h3>
+                            Class Details</h3>
                     </div>
 
                     <div class="card-body">
@@ -85,7 +85,10 @@
                                         <th>S No.</th>
                                         <th>Student Name</th>
                                         <th>Enrollment</th>
-                                        <th></th>
+                                        @if ($user->role_id == '1')
+                                            <th></th>
+                                        @endif
+
                                     </tr>
                                 </thead>
                                 <tbody class=''>
@@ -96,14 +99,19 @@
                                             <td>{{ @$i }}</td>
                                             <td>{{ @$batch->student_name }}</td>
                                             <td>{{ @$batch->enrollment }}</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="/viewbatch/{{ $batch->id }}"
-                                                        class="btn btn-primary btn-sm">Edit</a>
-                                                    <button class="btn btn-secondary btn-sm "><a class="text-white"
-                                                            href="/dstudent/{{ $batch->enrollment }}/{{$batch_detail->id}}">Remove</a></button>
-                                                </div>
-                                            </td>
+
+                                            @if ($user->role_id == '1')
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="/viewbatch/{{ $batch->id }}"
+                                                            class="btn btn-primary btn-sm">Edit</a>
+                                                        <button class="btn btn-secondary btn-sm "><a class="text-white"
+                                                                href="/dstudent/{{ $batch->enrollment }}/{{ $batch_detail->id }}">Remove</a>
+                                                        </button>
+                                                    </div>
+                                                </td>
+
+                                            @endif
                                         </tr>
                                         <?php $i++; ?>
                                     @endforeach
