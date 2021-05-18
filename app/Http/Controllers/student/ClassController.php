@@ -31,9 +31,10 @@ class ClassController extends Controller
 
     public function joinclassrequest(Request $req)
     {
-        // dd($req->batch_id);
         $user = Auth::user();
 
+        $faculty_email = Batch_detail::select('batch_name','creater_email')->where('id', $req->batch_id)->first();
+        // dd($faculty_email);
         $exists = Batch_joining_request::select('*')->where('email', $user->email)->where('batch_id', $req->batch_id)->where('status', 'A')->get();
 
         if (!count($exists)) {
@@ -44,6 +45,9 @@ class ClassController extends Controller
             $joinclass->email = $user->email;
             $joinclass->batch_id  = $req->batch_id;
             $joinclass->status  = "P";
+            $joinclass->creater_email  = $faculty_email->creater_email;
+            $joinclass->batch_name  = $faculty_email->batch_name;
+
             $joinclass->save();
 
             return redirect()->back()->with('message', 'Joining Request Sent Successfully !');
@@ -54,6 +58,8 @@ class ClassController extends Controller
     public function global_joinclassrequest(Request $req)
     {
         $user = Auth::user();
+
+        $faculty_email = Batch_detail::select('batch_name','creater_email')->where('id', $req->batch_id)->first();
 
         $exists = Batch_joining_request::select('id')->where('email', $user->email)->where('batch_id', $req->batch_id)->where('status', 'P')->first();
 
@@ -66,6 +72,8 @@ class ClassController extends Controller
             $joinclass->email = $user->email;
             $joinclass->batch_id  = $req->batch_id;
             $joinclass->status  = "P";
+            $joinclass->creater_email  = $faculty_email->creater_email;
+            $joinclass->batch_name  = $faculty_email->batch_name;
             $joinclass->save();
         }
 

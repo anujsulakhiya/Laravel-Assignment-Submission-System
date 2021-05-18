@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                                 <form class="" action="/submitans" method="POST" enctype="multipart/form-data"
                                     onsubmit="return post_request_with_file(this)">
 

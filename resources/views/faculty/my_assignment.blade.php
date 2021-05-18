@@ -20,15 +20,15 @@
                     </div>
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                             @if (!empty($batchdetail[0]->id))
-
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller ">
                                 <table class='table search'>
                                     <thead>
                                         <th>No.</th>
-                                        <th>Class Name</th>
-                                        <th>Status</th>
-                                        <th></th>
+                                        <th style="min-width: 170px">Class Name</th>
+                                        <th style="min-width: 150px">Status</th>
+                                        <th style="min-width: 150px"></th>
                                     </thead>
                                     <tbody class="search_table">
                                         {{-- {{$batchdetail}} --}}
@@ -54,7 +54,7 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong>No Class Created ! </strong> <a href="/createbatch"

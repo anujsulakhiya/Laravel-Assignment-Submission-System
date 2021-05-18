@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                             <form action="/updateuserprofile" id="" onsubmit="return post_request(this)">
                                 @csrf
                                 <table class='table'>

@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body--">
                         {{-- {{ $submitted }} --}}
-                        <div class="table-stats order-table ov-h" style="text-align: none">
+                        <div class="table-stats order-table " style="text-align: none">
                             <table class='table'>
                                 <?php $i = 1;  ?>
                                 @foreach ($createdassignmentquestion as $submission_details)

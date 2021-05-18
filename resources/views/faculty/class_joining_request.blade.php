@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/enroll_student" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Students Joining Request For Class {{ $batch_detail->batch_name }}</h3>
+                        <h3 class="h5"><a href="/enroll_studentx" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Students Joining Request For Class {{ $batch_detail->batch_name }}</h3>
                     </div>
                     @if (session()->has('message'))
                         <div class="alert alert-success">
@@ -19,7 +19,7 @@
 
 
 
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                             @if (!empty($Batch_joining_request[0]->id))
                                 <table class='table text-center '>
                                     <thead class=''>
@@ -81,7 +81,7 @@
     $(document).ready(function() {
         set_my_ajax_link_in_mainpage();
 
-        alert($.session.get("msg"));
+        // alert($.session.get("msg"));
     });
 
 </script>

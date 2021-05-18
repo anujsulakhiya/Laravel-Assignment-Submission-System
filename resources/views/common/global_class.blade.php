@@ -1,4 +1,4 @@
-<section class="forms">
+<section class="forms ">
     <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-lg-12">
@@ -30,20 +30,20 @@
                     {{-- {{$batch_id}} --}}
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
 
                             @if (!empty($batchdetail[0]->id))
-                                <div class="table-responsive">
+                                <div class="table-responsive scroll-pane scrollbar-primary scroller">
                                     <table class="table">
                                         <thead>
                                             <tr>
 
                                                 <th scope="col">S.NO.</th>
-                                                <th scope="col">Class Name</th>
+                                                <th scope="col" style="min-width: 170px">Class Name</th>
                                                 <th scope="col">Faculty</th>
-                                                <th scope="col">Student Details</th>
-                                                <th scope="col">Created At</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col" style="min-width: 170px">Student Details</th>
+                                                <th scope="col" style="min-width: 120px">Created At</th>
+                                                <th scope="col" style="min-width: 120px">Status</th>
 
                                             </tr>
                                         </thead>

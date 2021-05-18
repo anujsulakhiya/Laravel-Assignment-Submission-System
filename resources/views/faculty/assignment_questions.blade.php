@@ -10,13 +10,14 @@
                     </div>
                     {{-- {{ $Assignment_question }} --}}
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                             @if (!empty($Assignment_question[0]->id))
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller ">
 
                                 <table class='table'>
                                     <thead>
                                         <th>S No.</th>
-                                        <th>Questions</th>
+                                        <th style="min-width: 170px">Questions</th>
                                         <th></th>
                                     </thead>
                                     <tbody>
@@ -35,7 +36,7 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong></strong> No Question Created

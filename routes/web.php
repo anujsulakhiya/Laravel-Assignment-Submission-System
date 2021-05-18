@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use Spatie\Activitylog\Models\Activity;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/home', ['middleware' => 'auth', 'uses' => 'HomeController@index'])->name('home');
+
+// Route::get('/','HomeController@welcome');
+
 Route::get('/', function () {
-    return view('welcome');
-});
+        return view('welcome');
+    });
+
+
 
 
 Auth::routes();
@@ -29,6 +37,14 @@ Route::get('google', function () {
 Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
 
 Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+//Activity Log Routes
+
+Route::get('add-to-log', 'HomeController@myTestAddToLog');
+
+Route::get('logActivity', 'HomeController@logActivity');
+
+
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -46,6 +62,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Global Classes
     Route::get('global_class', 'faculty\StudentBatchController@global_class');
     Route::get('sendjoningrequest_from_global/{batch_id}', 'student\ClassController@global_joinclassrequest');
+    Route::get('/view_batch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
+
 
     //
     Route::get('truncate_batch', 'faculty\DashboardController@truncate_batch');
@@ -59,12 +77,25 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('enroll_student', 'faculty\StudentBatchController@enrollstudent');
         Route::get('createbatch', 'faculty\StudentBatchController@createbatchpage');
         Route::post('/create_batch', 'faculty\StudentBatchController@createbatch')->name('createbatch');
-        Route::get('/view_batch/{batch_id}', 'faculty\StudentBatchController@viewbatch');
+
         Route::get('/dbatch/{batch_id}', 'faculty\StudentBatchController@deletebatch');
-        Route::get('/dstudent/{enrollment}', 'faculty\StudentBatchController@deletestudent');
+        Route::get('/dstudent/{enrollment}/{id}', 'faculty\StudentBatchController@deletestudent');
+
+
+        Route::get('/all_class_joining_request', 'faculty\StudentBatchController@allclassjoiningrequest');
         Route::get('/class_joining_request/{batch_id}', 'faculty\StudentBatchController@classjoiningrequest');
+
+        Route::post('/batch_joining_request', 'faculty\StudentBatchController@perticuler_batch_joining_request');
+
+
         Route::get('/approvestudent/{id}', 'faculty\StudentBatchController@approvestudent');
+        Route::get('/approvestudentdirectly/{id}', 'faculty\StudentBatchController@aprrovestudent_directly');
         Route::get('/rejectstudent/{id}', 'faculty\StudentBatchController@rejectstudent');
+        Route::get('/rejectestudent_directly/{id}', 'faculty\StudentBatchController@aprrovestudent_directly');
+
+        Route::get('/deactive_batch/{batch_id}', 'faculty\StudentBatchController@deactive_batch');
+        Route::get('/active_batch/{batch_id}', 'faculty\StudentBatchController@active_batch');
+
 
         //Faculty Routes --> Create Assignment Routes
         Route::get('create_assignment', 'faculty\AssignmentController@createassignmentpage');
@@ -80,10 +111,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/update_assignment_details/{id}', 'faculty\AssignmentController@update_assignment_details');
         Route::post('/update_assignment', 'faculty\AssignmentController@update_assignment');
 
-        Route::get('/update_assignment_questions/{id}','faculty\AssignmentController@update_assignment_questions');
+        Route::get('/update_assignment_questions/{id}', 'faculty\AssignmentController@update_assignment_questions');
         Route::post('/update_questions', 'faculty\AssignmentController@update_questions');
 
-        Route::get('/dassignment/{id}', 'faculty\AssignmentController@classjoiningrequest  ');
+        Route::get('/dassignment/{id}', 'faculty\AssignmentController@deleteassignment');
 
         //Faculty Routes --> Assignment Submission Routes
         Route::get('/assignment_questions/{id}', 'faculty\SubmissionController@viewassignmentquestions');
@@ -114,6 +145,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mysubmission', 'student\SubmissionController@viewmyoldbatched')->name('view_mysubmission');
         Route::get('/view_submitted_assignment/{id}', 'student\SubmissionController@old_submissions');
 
+        Route::get('/old_submisstion_detail/{id}', 'student\SubmissionController@showoldassignmentquestion');
     });
     //***********************************   Admin Routes   ***********************************//
 

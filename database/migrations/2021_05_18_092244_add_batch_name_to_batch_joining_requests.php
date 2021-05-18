@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToBatchDetails extends Migration
+class AddBatchNameToBatchJoiningRequests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStatusToBatchDetails extends Migration
      */
     public function up()
     {
-        Schema::table('batch_details', function (Blueprint $table) {
-            $table->string('status')->nullable();
+        Schema::table('batch_joining_requests', function (Blueprint $table) {
+            $table->string('batch_name');
         });
     }
 
@@ -25,7 +25,7 @@ class AddStatusToBatchDetails extends Migration
      */
     public function down()
     {
-        Schema::table('batch_details', function (Blueprint $table) {
+        Schema::table('batch_joining_requests', function (Blueprint $table) {
             //
         });
     }

@@ -106,7 +106,7 @@
                             class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                                 class="fa fa-tachometer mr-2"></i> Enroll Students</a>
 
-                        <a href="/enroll_student"
+                        <a href="/all_class_joining_request"
                             class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                                 class="fa fa-tachometer mr-2"></i> Class Joining Requests </a>
 

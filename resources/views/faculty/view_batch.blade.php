@@ -77,47 +77,58 @@
                     </div>
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
-
-                            <table class='table text-center '>
-                                <thead class=''>
-                                    <tr>
-                                        <th>S No.</th>
-                                        <th>Student Name</th>
-                                        <th>Enrollment</th>
-                                        @if ($user->role_id == '1')
-                                            <th></th>
-                                        @endif
-
-                                    </tr>
-                                </thead>
-                                <tbody class=''>
-                                    <?php $i = 1; ?>
-                                    @foreach ($batchstudents as $batch)
-
+                        <div class="table-responsive scroll-pane scrollbar-primary scroller">
+                            @if (!empty($batchstudents[0]->id))
+                                <table class='table text-center '>
+                                    <thead class=''>
                                         <tr>
-                                            <td>{{ @$i }}</td>
-                                            <td>{{ @$batch->student_name }}</td>
-                                            <td>{{ @$batch->enrollment }}</td>
-
+                                            <th style="min-width: 70px">S No.</th>
+                                            <th style="min-width: 170px">Student Name</th>
+                                            <th style="min-width: 170px">Enrollment</th>
                                             @if ($user->role_id == '1')
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="/viewbatch/{{ $batch->id }}"
-                                                            class="btn btn-primary btn-sm">Edit</a>
-                                                        <button class="btn btn-secondary btn-sm "><a class="text-white"
-                                                                href="/dstudent/{{ $batch->enrollment }}/{{ $batch_detail->id }}">Remove</a>
-                                                        </button>
-                                                    </div>
-                                                </td>
-
+                                                <th style="min-width: 150px"></th>
                                             @endif
-                                        </tr>
-                                        <?php $i++; ?>
-                                    @endforeach
 
-                                </tbody>
-                            </table>
+                                        </tr>
+                                    </thead>
+                                    {{-- {{$batchstudents}} --}}
+                                    <tbody class=''>
+                                        <?php $i = 1; ?>
+                                        @foreach ($batchstudents as $batch)
+
+                                            <tr>
+                                                <td>{{ @$i }}</td>
+                                                <td>{{ @$batch->student_name }}</td>
+                                                <td>{{ @$batch->enrollment }}</td>
+
+                                                @if ($user->role_id == '1')
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="/viewbatch/{{ $batch->id }}"
+                                                                class="btn btn-primary btn-sm">Edit</a>
+                                                            <button class="btn btn-secondary btn-sm "><a
+                                                                    class="text-white"
+                                                                    href="/dstudent/{{ $batch->enrollment }}/{{ $batch_detail->id }}">Remove</a>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+
+                                                @endif
+                                            </tr>
+                                            <?php $i++; ?>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-warning">
+                                    <div class="alert alert-warning">
+                                        No Student Joined Yet !
+                                    </div>
+
+                                </div>
+
+                            @endif
 
                         </div>
                         <br>

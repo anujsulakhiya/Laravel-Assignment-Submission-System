@@ -120,7 +120,7 @@
 <script>
     $(document).ready(function() {
         set_my_ajax_link_in_mainpage();
-
+        document.getElementById("batch_name").focus();
     });
 
 </script>

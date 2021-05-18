@@ -5,13 +5,13 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/assignment_questions/{{ $Assignment_question->assignment_id }}" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Assignment Details</h3>
+                        <h3 class="h5"><a href="/assignment_questions/{{ $Assignment_question->assignment_id }}" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Submission Details</h3>
                     </div>
                     <div class="card-header d-flex align-items-center">
                         <h3 class="h5"> Q . {{ $Assignment_question->questions }}</h3>
                     </div>
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h" style="text-align: none">
+                        <div class="table-stats order-table table-responsive scroll-pane scrollbar-primary scroller  " style="text-align: none">
                             <table class='table'>
                                 <thead>
                                     <th>Answers</th>

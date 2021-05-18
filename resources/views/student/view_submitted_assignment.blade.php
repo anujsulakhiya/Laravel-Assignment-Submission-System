@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="card-body--">
-                        <div class="table-stats order-table ov-h">
+                        <div class="table-stats order-table ">
                             @if (!empty($batchassignmentdetail[0]->id))
 
                                 <table class='table text-center '>
