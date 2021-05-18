@@ -69,8 +69,18 @@ class AssignmentController extends Controller
                 $assignmentquestion->save();
             }
         }
-
         $user = Auth::user();
+
+        $req1 = array(
+            'username' => $user->email ,
+            'description' => $user->email ,
+            'detail' => $user->email ,
+            'properties' => $user->email
+        );
+
+        $a = $this->user_log_activity($req1);
+
+
 
         $createdassignmentdetail = Assignment::select('*')
             ->where('email', $user->email)

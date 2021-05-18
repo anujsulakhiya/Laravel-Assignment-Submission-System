@@ -40,14 +40,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-
-        if (Auth::check() && Auth::user()->role_id == 1) {
-            $this->redirectTo = view('faculty.home_page');
-        } elseif (Auth::check() && Auth::user()->role_id == 2) {
-            $this->redirectTo = view('student.home_page');
-        } elseif (Auth::check() && Auth::user()->role_id == 3) {
-            $this->redirectTo = view('admin.home_page');
-        }
+        return redirect('/home');
+        // if (Auth::check() && Auth::user()->role_id == 1) {
+        //     $this->redirectTo = route('home');
+        // } elseif (Auth::check() && Auth::user()->role_id == 2) {
+        //     $this->redirectTo = route('home');
+        // } elseif (Auth::check() && Auth::user()->role_id == 3) {
+        //     $this->redirectTo = route('home');
+        // }
 
 
         $this->middleware('guest')->except('logout');

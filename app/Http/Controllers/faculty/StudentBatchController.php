@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\faculty;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,23 +41,23 @@ class StudentBatchController extends Controller
 
         $exists = Batch_joining_request::select('batch_id', 'status')->where('email', $user->email)->get();
 
-        $batch_id =  array();
-        $batch_status =  array();
-        $r_status =  array();
+        // $batch_id =  array();
+        // $batch_status =  array();
+        // $r_status =  array();
         $student_count =  array();
 
-        $batch_id = array_fill(0, $batchdetail->count(), 0);
-        $batch_status = array_fill(0, $batchdetail->count(), 0);
-        $r_status = array_fill(0, $batchdetail->count(), 0);
+        // $batch_id = array_fill(0, $batchdetail->count(), 0);
+        // $batch_status = array_fill(0, $batchdetail->count(), 0);
+        // $r_status = array_fill(0, $batchdetail->count(), 0);
         $student_count = array_fill(0, $batchdetail->count(), 0);
 
 
-        foreach ($exists as $e) {
+        // foreach ($exists as $e) {
 
-            $k = $e->batch_id - 1;
-            $batch_id[$k] = $e->batch_id;
-            $batch_status[$k] = $e->status;
-        }
+        //     $k = $e->batch_id - 1;
+        //     $batch_id[$k] = $e->batch_id;
+        //     $batch_status[$k] = $e->status;
+        // }
 
         $plucked_batch_id = $batchdetail->pluck('id')->toArray();
         $plucked_batch_request =$exists->pluck('batch_id')->toArray();
@@ -84,7 +85,7 @@ class StudentBatchController extends Controller
 
         // dd($student_count);
 
-        return view('faculty.global_class', compact('batchdetail', 'batch_id', 'batch_status' ,'student_count'))->with('user_role', $user->role_id);;
+        return view('common.global_class', compact('batchdetail', 'batch_id', 'batch_status' ,'student_count'))->with('user_role', $user->role_id);
     }
 
     public function enrollstudent()
@@ -230,7 +231,7 @@ class StudentBatchController extends Controller
         $batchstudents = Studentbatch::select('id', 'batch_name', 'enrollment')->where('batch_id', $req->batch_id)->where('is_deleted', '0')->get();
 
         $batch_detail = Batch_detail::select('batch_name', 'id')->where('id', $req->batch_id)->first();
-        return view('faculty.view_batch', compact('batchstudents', 'batch_detail'));
+        return view('faculty.view_batch', compact('batchstudents', 'batch_detail' ,'user'));
     }
 
     public function deletebatch(Request $req)

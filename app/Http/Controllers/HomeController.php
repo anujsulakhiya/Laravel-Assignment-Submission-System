@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
@@ -46,7 +48,10 @@ class HomeController extends Controller
             return view('welcome');
         }
     }
+    public function welcome(){
 
+        return view('welcome');
+    }
     public function dashboard()
     {
         $user = Auth::user();
@@ -57,5 +62,12 @@ class HomeController extends Controller
         if($user->role_id == '2'){
             return view('student.home_page', compact('user'));
         }
+    }
+
+    public function logActivity(){
+
+        $log = Activity::all();
+
+        return view('faculty.logActivity' , compact('log'));
     }
 }
