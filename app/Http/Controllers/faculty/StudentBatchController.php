@@ -222,9 +222,9 @@ class StudentBatchController extends Controller
 
         $user = Auth::user();
 
-        $Batch_joining_request = Batch_joining_request::select('*')->where('creater_email', $user->email)->where('status', 'P')->get();
+        $Batch_joining_request = Batch_joining_request::select('*')->where('creater_email', $user->email)->where('status', 'P')->latest()->get();
 
-        $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->get();
+        $batchdetail = Batch_detail::select('id', 'batch_name')->where('creater_email', $user->email)->where('is_deleted', '0')->latest()->get();
         // $batch_detail = Batch_detail::select('batch_name', 'id')->where('id', $req->batch_id)->first();
 
 

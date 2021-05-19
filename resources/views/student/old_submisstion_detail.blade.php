@@ -14,50 +14,52 @@
                     <div class="card-body--">
                         {{-- {{ $submitted }} --}}
                         <div class="table-stats order-table " style="text-align: none">
-                            <table class='table'>
-                                <?php $i = 1;  ?>
-                                @foreach ($createdassignmentquestion as $submission_details)
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller">
+                                <table class='table'>
+                                    <?php $i = 1; ?>
+                                    @foreach ($createdassignmentquestion as $submission_details)
 
-                                    <thead>
-                                        <th><span
-                                                class="mx-2">{{ $i }}</span>{{ $submission_details->questions }}
-                                        </th>
-                                    </thead>
-                                    @foreach ($submitted as $submitted_answer)
+                                        <thead>
+                                            <th><span
+                                                    class="mx-2">{{ $i }}</span>{{ $submission_details->questions }}
+                                            </th>
+                                        </thead>
+                                        @foreach ($submitted as $submitted_answer)
 
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    @if ($submission_details->id ==$submitted_answer->question_id)
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        @if ($submission_details->id == $submitted_answer->question_id)
 
-                                                        <label class="float-right" id="status" for="">Status :
-                                                        </label>
-                                                        <input type="hidden" name="submission_id"
-                                                            value="{{ $submitted_answer->id }}">
-                                                        <textarea type="text" id="qanswer" name="qanswer"
-                                                            class="form-control" oncopy="return false"
-                                                            onpaste="return false" oncut="return false"
-                                                            readonly>{{ $submitted_answer->qanswer }}</textarea>
+                                                            <label class="float-right" id="status" for="">Status :
+                                                            </label>
+                                                            <input type="hidden" name="submission_id"
+                                                                value="{{ $submitted_answer->id }}">
+                                                            <textarea type="text" id="qanswer" name="qanswer"
+                                                                class="form-control" oncopy="return false"
+                                                                onpaste="return false" oncut="return false"
+                                                                readonly>{{ $submitted_answer->qanswer }}</textarea>
 
-                                                        <div class="mt-2">
-                                                            <a target="_blank"
-                                                                href="{{ Storage::url(@$submitted_answer->filename) }}"
-                                                                class="btn btn-secondary btn-sm">View pdf</a>
+                                                            <div class="mt-2">
+                                                                <a target="_blank"
+                                                                    href="{{ Storage::url(@$submitted_answer->filename) }}"
+                                                                    class="btn btn-secondary btn-sm">View pdf</a>
 
 
-                                                        </div>
-                                                    @else
-                                                        123
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                                            </div>
+                                                        @else
+                                                            123
+                                                        @endif
+                                                    </td>
+                                                </tr>
 
-                                        </tbody>
+                                            </tbody>
 
+                                        @endforeach
+                                        <?php $i++; ?>
                                     @endforeach
-                                    <?php $i++; ?>
-                                @endforeach
-                            </table>
+                                </table>
+                            </div>
                         </div>
                         <br>
                     </div>

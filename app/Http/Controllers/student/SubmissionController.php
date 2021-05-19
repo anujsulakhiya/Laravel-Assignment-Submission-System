@@ -15,7 +15,6 @@ use App\Studentbatch;
 use Carbon\Carbon;
 
 
-
 class SubmissionController extends Controller
 {
     public function submissionpage(Request $req)
@@ -101,11 +100,9 @@ class SubmissionController extends Controller
 
     public function submitanswer(Request $req)
     {
-        // dd($req->all());
-        // return ;
 
 
-
+        // dd();
         $user = Auth::user();
 
         $validator = Validator::make($req->all(), [

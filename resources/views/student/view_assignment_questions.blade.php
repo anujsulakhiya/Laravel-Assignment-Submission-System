@@ -13,10 +13,10 @@
                     <div class="card-body--">
                         <div class="table-stats order-table ">
                             @if (!empty($createdassignmentquestion[0]->id))
-
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller">
                                 <table class='table'>
                                     <thead>
-                                        <th scope="col">Questions</th>
+                                        <th scope="col" style="min-width: 300px">Questions</th>
                                         <th scope="col"></th>
                                         <th>Status</th>
                                     </thead>
@@ -68,7 +68,7 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong>Sorry !</strong> No Question Created For This Assignment .

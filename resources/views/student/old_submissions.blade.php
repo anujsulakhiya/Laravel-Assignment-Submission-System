@@ -13,14 +13,14 @@
                     <div class="card-body--">
                         <div class="table-stats order-table ">
                             @if (!empty($studentbatch))
-
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller">
                                 <table class='table text-center '>
                                     <thead>
                                         <th>No.</th>
-                                        <th>Class Name</th>
-                                        <th>Faculty Name</th>
-                                        <th>Faculty Email</th>
-                                        <th></th>
+                                        <th style="min-width: 170px">Class Name</th>
+                                        <th style="min-width: 170px">Faculty Name</th>
+                                        <th style="min-width: 170px">Faculty Email</th>
+                                        <th  style="min-width: 170px"></th>
                                     </thead>
                                     <tbody>
                                         {{-- {{$batchdetail}} --}}
@@ -43,7 +43,7 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong>Sorry !</strong> No Submission Done By You .

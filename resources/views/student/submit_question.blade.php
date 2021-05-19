@@ -42,19 +42,20 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                        <label for="">Only Pdf</label>
-                                                        <input type="file" name="myfile" class="mt-2" value="" required>
-                                                        <div class="mb-2 mx-3">
 
-                                                            {{-- <input class="btn btn-primary btn-sm" type="submit" name="submitanswer" onclick="checkLength()" /> --}}
+                                                        <label class="mt-2" for="">Only Pdf</label>
+                                                        <input type="file" name="myfile" class="mt-1" value="" required>
+
+                                                        <div class="mb-2 mx-3 my-3">
                                                             <button class="btn btn-primary btn-sm" type="submit"
                                                                 name="submitanswer">Submit</button>
                                                             <a href="" class="btn btn-secondary btn-sm">Back</a>
                                                         </div>
-                                                        {{-- <input type="hidden" name="question_id" value=""> --}}
+
                                                         <input type="hidden" name="assignment_id"
                                                             value="{{ $createdassignmentquestion->first()->assignment_id }}">
                                                         <input type="hidden" name="email" value="{{ $user->email }}">
+
                                                     </div>
 
                                                 </td>

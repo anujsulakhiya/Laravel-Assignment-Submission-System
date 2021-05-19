@@ -57,9 +57,6 @@
                                                         <div class="btn-group mr-2" role="group"
                                                             aria-label="First group">
 
-                                                            <a href="/view_batch/{{ $batch->id }}"
-                                                                class="btn btn-primary btn-sm my-1 my_mainpage_link">View
-                                                                Class</a>
                                                             <form action="/batch_joining_request"
                                                                 onsubmit="return post_request(this)">
                                                                 @csrf
@@ -70,6 +67,10 @@
                                                                     Joining
                                                                     Request</button>
                                                             </form>
+                                                            <a href="/view_batch/{{ $batch->id }}"
+                                                                class="btn btn-primary btn-sm my-1 my_mainpage_link">View
+                                                                Class</a>
+
                                                         </div>
                                                         <div class="btn-group mr-2" role="group"
                                                             aria-label="Second group">

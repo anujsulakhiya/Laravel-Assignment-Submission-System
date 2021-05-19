@@ -43,7 +43,7 @@
                                                 <th scope="col">Faculty</th>
                                                 <th scope="col" style="min-width: 170px">Student Details</th>
                                                 <th scope="col" style="min-width: 120px">Created At</th>
-                                                <th scope="col" style="min-width: 120px">Status</th>
+                                                <th scope="col" style="min-width: 250px">Status</th>
 
                                             </tr>
                                         </thead>
@@ -58,7 +58,9 @@
                                                     <td scope="row">{{ @$i }}</td>
                                                     <td>{{ @$batch->batch_name }}</td>
                                                     <td>{{ @$batch->creater_email }}</td>
-                                                    <td class="">Students Joined  :  <span class="badge badge-success">{{$student_count[$j]}}</span> </td>
+                                                    <td class="">Students Joined : <span
+                                                            class="badge badge-success">{{ $student_count[$j] }}</span>
+                                                    </td>
                                                     <td class="">
                                                         {{ date('F d, Y', strtotime($batch->created_at)) }}</td>
                                                     <td class="my-1">
@@ -67,17 +69,7 @@
                                                             class="btn btn-primary btn-sm my-1 mx-1 my_mainpage_link">View
                                                             Class</a>
 
-                                                        {{-- <a href="/sendjoningrequest_from_global/{{ $batch->id }}"
-                                                            class="btn btn-success btn-sm my-1 my_mainpage_link">
-                                                            Send Joining Request</a> --}}
-                                                        {{-- @if (isset(@$batch->id) && @$batch->id == @$exists[$j]->batch_id))
-                                                            <span>Yes</span>
-                                                        @else
-                                                            <span>No</span>
-                                                        @endif --}}
-                                                        {{-- {{$user_role}} --}}
                                                         @if ($user_role == 2)
-                                                            {{-- {{ $batch->request_status }} --}}
 
                                                             @if ($batch->status == 'Active')
 
@@ -105,16 +97,8 @@
                                                             @else
                                                                 <span class="text-danger">Class Deactivated</span>
                                                             @endif
-                                                            {{-- {{-- @else --}}
 
                                                         @endif
-
-
-                                                        {{-- <a href="/createbatchassignment/{{ $batch->id }}"
-                                                        class="btn btn-success btn-sm my-1 my_mainpage_link">Create Assignment</a> --}}
-
-                                                        {{-- {{ $items[$j] }} --}}
-
 
                                                     </td>
                                                 </tr>

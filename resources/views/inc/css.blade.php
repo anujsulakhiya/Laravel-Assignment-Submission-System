@@ -573,7 +573,7 @@
     .content {
         margin-left: 240px;
         margin-top: 110px;
-        margin-right: 10px;
+        margin-right: 0px;
         width: auto;
         position: relative;
         overflow: auto;
@@ -583,33 +583,10 @@
     @media (max-width:600px) {
 
         .content {
-            margin-left: 25px;
+            margin-left: 5px;
         }
     }
 
-    .modal {
-        display: none;
-        vertical-align: right;
-        position: relative;
-        z-index: 1;
-        max-width: 70%;
-        max-height: 70%;
-        box-sizing: border-box;
-        width: 90%;
-        background: #fff;
-        padding: 15px 30px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -o-border-radius: 8px;
-        -ms-border-radius: 8px;
-        border-radius: 0px;
-        -webkit-box-shadow: 0 0 10px #000;
-        -moz-box-shadow: 0 0 10px #000;
-        -o-box-shadow: 0 0 10px #000;
-        -ms-box-shadow: 0 0 10px #000;
-        box-shadow: 0 0 10px #000;
-        text-align: left;
-        margin-left: 25%
-    }
+
 
 </style>

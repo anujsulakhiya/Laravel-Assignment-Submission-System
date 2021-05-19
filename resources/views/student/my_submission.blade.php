@@ -13,37 +13,42 @@
                     <div class="card-body--">
                         <div class="table-stats order-table ">
                             @if (!empty($studentbatch))
+                                <div class="table-responsive scroll-pane scrollbar-primary scroller">
 
-                                <table class='table text-center '>
-                                    <thead>
-                                        <th>No.</th>
-                                        <th>Class Name</th>
-                                        <th>Faculty Name</th>
-                                        <th>Faculty Email</th>
-                                        <th></th>
-                                    </thead>
-                                    <tbody>
-                                        {{-- {{$batchdetail}} --}}
+                                    <table class='table text-center '>
+                                        <thead>
+                                            <th>No.</th>
+                                            <th>Class Name</th>
+                                            <th>Faculty Name</th>
+                                            <th>Faculty Email</th>
+                                            <th></th>
+                                        </thead>
+                                        <tbody>
+                                            {{-- {{$batchdetail}} --}}
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @foreach ($studentbatch as $batch)
 
-                                        @foreach ($studentbatch as $batch)
+                                                <tr>
+                                                    <td>{{$i}}</td>
+                                                    <td style="min-width: 170px">{{ @$batch->batch_name }}</td>
+                                                    <td style="min-width: 170px">{{ @$batch->name }}</td>
+                                                    <td style="min-width: 170px">{{ @$batch->creater_email }}</td>
+                                                    <td style="min-width: 170px">
+                                                        <a href="/viewassignment/{{ $batch->batch_id }}"
+                                                            class="btn btn-primary btn-sm my_mainpage_link">
+                                                            View Assignment</a>
+                                                    </td>
+                                                </tr>
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                            @endforeach
 
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>{{ @$batch->batch_name }}</td>
-                                                <td>{{ @$batch->name }}</td>
-                                                <td>{{ @$batch->creater_email }}</td>
-                                                <td>
-                                                    <a href="/viewassignment/{{ $batch->batch_id }}"
-                                                        class="btn btn-primary btn-sm my_mainpage_link">
-                                                        View Assignment</a>
-                                                </td>
-                                            </tr>
-
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-
+                                        </tbody>
+                                    </table>
+                                </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong>Sorry !</strong> No Submission Done By You .

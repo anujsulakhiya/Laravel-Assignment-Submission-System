@@ -13,13 +13,13 @@
                     <div class="card-body--">
                         <div class="table-stats order-table ">
                             @if (!empty($batchassignmentdetail[0]->id))
-
+                            <div class="table-responsive scroll-pane scrollbar-primary scroller">
                                 <table class='table text-center '>
                                     <thead>
-                                        <th scope="col">Assignment Name</th>
-                                        <th scope="col">Subject</th>
-                                        <th scope="col">Last Date</th>
-                                        <th scope="col"> Update Status</th>
+                                        <th scope="col " style="min-width: 170px">Assignment Name</th>
+                                        <th scope="col" style="min-width: 170px">Subject</th>
+                                        <th scope="col" style="min-width: 170px">Last Date</th>
+                                        <th scope="col" style="min-width: 170px"> Update Status</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($batchassignmentdetail as $assignmentdetail)
@@ -38,7 +38,7 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
                             @else
                                 <div class="alert alert-warning">
                                     <strong>Sorry !</strong> No Submission Done By You .
