@@ -3,6 +3,11 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use App\User;
+
+use Illuminate\Support\Facades\Auth;
+
+
 
 class Authenticate extends Middleware
 {
@@ -17,5 +22,10 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+
+        // if (Auth::user()->role_id == NULL) {
+        //     return redirect()->route('/set_profile');
+        // }
+
     }
 }

@@ -9,9 +9,12 @@
             <div class="card-body">
               <h1>Login</h1>
 
-              {{-- <a href="{{ url('auth/google') }}" class="btn btn-lg btn-primary btn-block">
+              <a href="{{ url('auth/google') }}" class="btn btn-lg btn-primary btn-block">
 
-                <strong>Login With Google</strong></a> --}}
+                <strong>Login With Google</strong></a>
+
+                <div class="g-signin2" data-onsuccess="onSignIn">123</div>
+
 
               <p class="text-muted">Sign In to your account</p>
               <form method="POST" action="{{ route('login') }}">

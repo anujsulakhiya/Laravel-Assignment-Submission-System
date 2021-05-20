@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 use Spatie\Activitylog\Models\Activity;
 
@@ -21,18 +22,24 @@ Route::get('/home', ['middleware' => 'auth', 'uses' => 'HomeController@index'])-
 // Route::get('/','HomeController@welcome');
 
 Route::get('/', function () {
-        return view('welcome');
-    });
+    return view('welcome');
+});
 
 
 
-
+Route::get('/clear-cache', function () {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+});
 Auth::routes();
 
 Route::get('google', function () {
 
     return view('googleAuth');
 });
+
+Route::get('glogin', array('as' => 'glogin', 'uses' => 'Auth\LoginController@googleLogin'));
+Route::get('google-user', array('as' => 'user.glist', 'uses' => 'Auth\LoginController@listGoogleUser'));
 
 Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
 
@@ -55,7 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home_page', 'HomeController@dashboard')->name('dashboard');
     Route::get('/profile', 'ProfileController@profile');
     Route::get('/updateprofile', 'ProfileController@userprofile');
+    Route::get('/set_profile', 'ProfileController@set_profile')->name('set_profile');
     Route::post('/updateuserprofile', 'ProfileController@updateprofile');
+    Route::post('/set_new_profile', 'ProfileController@set_new_profile')->name('set_new_profile');
     Route::get('/changepassword', 'ChangePasswordController@index');
     Route::post('/change-password', 'ChangePasswordController@store')->name('change.password');
 
@@ -91,7 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/approvestudent/{id}', 'faculty\StudentBatchController@approvestudent');
         Route::get('/approvestudentdirectly/{id}', 'faculty\StudentBatchController@aprrovestudent_directly');
         Route::get('/rejectstudent/{id}', 'faculty\StudentBatchController@rejectstudent');
-        Route::get('/rejectestudent_directly/{id}', 'faculty\StudentBatchController@aprrovestudent_directly');
+        Route::get('/rejectestudent_directly/{id}', 'faculty\StudentBatchController@rejectestudent_directly');
 
         Route::get('/deactive_batch/{batch_id}', 'faculty\StudentBatchController@deactive_batch');
         Route::get('/active_batch/{batch_id}', 'faculty\StudentBatchController@active_batch');

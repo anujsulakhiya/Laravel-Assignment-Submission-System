@@ -252,8 +252,8 @@ class StudentBatchController extends Controller
 
     public function rejectestudent_directly(Request $req)
     {
-        $msg = $this->rejectstudent($req);
-        return $this->allclassjoiningrequest()->with('msg', $msg);
+        $rmessage = $this->rejectstudent($req);
+        return $this->allclassjoiningrequest()->with('rmessage', $rmessage);
     }
 
 

@@ -27,6 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+
+        if (Auth::check() && Auth::user()->role_id == NULL) {
+            return view('common.set_profile', compact('user'));
+        }
+
         if (Auth::user()->role_id == '1') {
             return view('layouts.layout', compact('user'));
         } elseif (Auth::user()->role_id == '2') {
