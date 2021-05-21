@@ -66,7 +66,8 @@
 
 </style>
 
-<body class="c-app ">
+<body class="c-app " style="background: #466368;
+background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
 
     {{-- c-sidebar-dark --}}
 

@@ -50,8 +50,14 @@ class ClassController extends Controller
 
             $joinclass->save();
 
+            // $req1 = new Request();
+            // $req1->batch_id = $req->batch_id;
+
+            // return $this->joinclass($req)->with('message', 'Joining Request Sent Successfully !');
             return redirect()->back()->with('message', 'Joining Request Sent Successfully !');
         }
+        // return $this->joinclass($req)->with('message', 'You Are Already Enrolled For This Class !');
+
         return redirect()->back()->with('message', 'You Are Already Enrolled For This Class !');
     }
 

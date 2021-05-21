@@ -2,74 +2,92 @@
 
 @section('content')
 
+    <section class="forms">
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
 
-    <table class="table" style="overflow-x:auto;">
-        <thead class="thead-light">
-            <tr>
-                <th class="col-md-2">Class Details</th>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h5">Join Class</h3>
+                        </div>
 
-                <th>
-                    {{-- <a href="" class="btn btn-sm btn-primary mr-2">Edit</a> --}}
-                </th>
+                        <!-- Modal HTML embedded directly into document -->
 
-            </tr>
-        </thead>
-        {{-- {{$createdassignmentdetail}} --}}
-        {{-- @foreach ($batch_detail as $b_detail) --}}
+                        <div class="card">
+                            <div class="card-body">
 
-        <tbody class="table-bordered" style="font-size: 14px;">
-            <tr>
-                <th scope="col">Faculty Name</th>
-                <th scope="col">{{ @$faculty_name->name }}</th>
-            </tr>
-            <tr>
-                <th scope="col">Faculty Email</th>
-                <th scope="col">{{ @$batch_detail->creater_email }}</th>
-            </tr>
-            <tr>
-                <th scope="col">Class Name</th>
-                <th scope="col">{{ @$batch_detail->batch_name }}</th>
-            </tr>
-            <tr>
-                <th scope="col">Description</th>
-                <th scope="col">{{ @$batch_detail->description }}</th>
-            </tr>
-            <tr>
-                <th scope="col">Created At</th>
-                <th scope="col">{{ date('F d, Y', strtotime(@$batch_detail->created_at)) }}
-                </th>
-            </tr>
-        </tbody>
-        {{-- @endforeach --}}
-    </table>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Faculty Name</h5>
+                                        <p class="card-text">{{ @$faculty_name->name }}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Faculty Email</h5>
+                                        <p class="card-text">{{ @$batch_detail->creater_email }}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Class Name</h5>
+                                        <p class="card-text">{{ @$batch_detail->batch_name }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Description</h5>
+                                        <p class="card-text">
+                                            @if (!empty($batch_detail->description))
+                                                {{ @$batch_detail->description }}
+                                            @else
+                                                {{ 'No Description' }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="card-title">Created At</h5>
+                                        <p class="card-text">
+                                            {{ date('F d, Y', strtotime(@$batch_detail->created_at)) }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <br>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @else
+
+                                    <a href="/sendjoningrequest/{{ @$batch_detail->id }}"
+                                        class="btn btn-primary btn-sm my_mainpage_link">Send Joining
+                                        Request</a>
+
+                                @endif
+
+                            </div>
+                        </div>
 
 
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
+
+
+                    </div>
+                </div>
+            </div>
         </div>
-    @else
+        </div>
 
-        <a href="/sendjoningrequest/{{ @$batch_detail->id }}" class="btn btn-primary btn-sm my_mainpage_link">Send Joining
-            Request</a>
-
-    @endif
-
-    {{-- {{$batch_detail}}
-{{$user}} --}}
+    </section>
 
 
+    <script>
+        $(document).ready(function() {
+            set_my_ajax_link_in_mainpage();
 
-    </div>
-    </div>
-    </div>
+
+        });
+
+    </script>
+
 @endsection
-<script>
 
-    $(document).ready(function() {
-
-        set_my_ajax_link_in_mainpage();
-
-    });
-
-</script>
