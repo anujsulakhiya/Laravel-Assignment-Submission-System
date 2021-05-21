@@ -35,8 +35,11 @@ class ClassController extends Controller
 
         $faculty_email = Batch_detail::select('batch_name','creater_email')->where('id', $req->batch_id)->first();
         // dd($faculty_email);
-        $exists = Batch_joining_request::select('*')->where('email', $user->email)->where('batch_id', $req->batch_id)->where('status', 'A')->get();
+        $exists = Batch_joining_request::select('*')->where('email', $user->email)
+        ->where('batch_id', $req->batch_id)->where('status', 'A')->orWhere('status', 'P')->get()->toArray();
 
+        // $e = DB::statement('drop table users')
+        // dd($exists);
         if (!count($exists)) {
 
             $joinclass = new Batch_joining_request;

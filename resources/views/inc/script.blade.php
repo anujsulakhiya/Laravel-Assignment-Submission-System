@@ -59,8 +59,9 @@
 
     function load_ajax_page(page_name = "/home_page") {
 
-        page_name = localStorage.getItem("last_loaded");
 
+        page_name = localStorage.getItem("last_loaded");
+        // alert(page_name);
         CONTENT_WRAPPER.load(page_name, () => {
             set_my_ajax_link_listner();
         });

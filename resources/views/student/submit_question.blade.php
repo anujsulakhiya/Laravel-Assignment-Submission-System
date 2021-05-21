@@ -5,21 +5,37 @@
                 <div class="card">
 
                     <div class="card-header d-flex align-items-center ">
-                        <h3 class="h5">Assignment Details</h3>
-                        <h6 class="ml-3 text-dark">( Note : Select Class to See Assignments )</h6>
+                        <h3 class="h5">Submit Your Answer</h3>
+                        <h6 class="ml-3 text-dark"></h6>
 
                     </div>
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"> Q . {{ $createdassignmentquestion->first()->questions }}</h3>
-                    </div>
 
-                    <div class="card-body--">
-                        <div class="table-stats order-table ">
+                    @if (session()->has('msg'))
+                        <div class="alert alert-success">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @elseif (!empty($exists))
+
+                        <div class="alert alert-success">
+                            Successfully Submitted <a href="/submitassignment" class="my_mainpage_link">Go For New Submition</a>
+                        </div>
+
+                    @else
+
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h5"> Q . {{ @$createdassignmentquestion->first()->questions }}</h3>
+                        </div>
+
+
+
+                        <div class="card-body--">
+                            <div class="table-stats order-table ">
                                 <form class="" action="/submitans" method="POST" enctype="multipart/form-data"
                                     onsubmit="return post_request_with_file(this)">
 
                                     @csrf
-                                    <input type="hidden" name="question_id" value="{{ $createdassignmentquestion->first()->id }}">
+                                    <input type="hidden" name="question_id"
+                                        value="{{ $createdassignmentquestion->first()->id }}">
 
                                     <table class='table'>
                                         <thead>
@@ -67,9 +83,10 @@
                                     </table>
                                 </form>
 
+                            </div>
+                            <br>
                         </div>
-                        <br>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -85,5 +102,3 @@
     });
 
 </script>
-
-
