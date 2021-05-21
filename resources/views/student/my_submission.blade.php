@@ -21,12 +21,13 @@
                                             <th>Class Name</th>
                                             <th>Faculty Name</th>
                                             <th>Faculty Email</th>
+                                            <th>Assignment</th>
                                             <th></th>
                                         </thead>
                                         <tbody>
                                             {{-- {{$batchdetail}} --}}
                                             @php
-                                                $i = 1;
+                                                $i = 1; $j = 0;
                                             @endphp
                                             @foreach ($studentbatch as $batch)
 
@@ -35,6 +36,7 @@
                                                     <td style="min-width: 170px">{{ @$batch->batch_name }}</td>
                                                     <td style="min-width: 170px">{{ @$batch->name }}</td>
                                                     <td style="min-width: 170px">{{ @$batch->creater_email }}</td>
+                                                    <td style="min-width: 170px">Assignments  : <span class="badge badge-success p-2">{{@$assignment_count[$j]}}</span></td>
                                                     <td style="min-width: 170px">
                                                         <a href="/viewassignment/{{ $batch->batch_id }}"
                                                             class="btn btn-primary btn-sm my_mainpage_link">
@@ -42,7 +44,7 @@
                                                     </td>
                                                 </tr>
                                                 @php
-                                                    $i++;
+                                                    $i++; $j++;
                                                 @endphp
                                             @endforeach
 

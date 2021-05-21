@@ -1,7 +1,7 @@
 <?php $breadcrumb = 'User Profile'; ?>
 
 
-<div class="main-body" id="profilecontent">
+<div class="main-body mx-3" id="profilecontent">
     <div class="row gutters-sm my-3">
         <div class="col-md-4 ">
             <div class="card">

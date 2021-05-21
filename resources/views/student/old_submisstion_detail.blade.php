@@ -25,12 +25,10 @@
                                             </th>
                                         </thead>
                                         @foreach ($submitted as $submitted_answer)
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        @if ($submission_details->id == $submitted_answer->question_id)
-
+                                            @if ($submission_details->id == $submitted_answer->question_id)
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
                                                             <label class="float-right" id="status" for="">Status :
                                                             </label>
                                                             <input type="hidden" name="submission_id"
@@ -44,17 +42,13 @@
                                                                 <a target="_blank"
                                                                     href="{{ Storage::url(@$submitted_answer->filename) }}"
                                                                     class="btn btn-secondary btn-sm">View pdf</a>
-
-
                                                             </div>
-                                                        @else
-                                                            123
-                                                        @endif
-                                                    </td>
-                                                </tr>
 
-                                            </tbody>
+                                                        </td>
+                                                    </tr>
 
+                                                </tbody>
+                                            @endif
                                         @endforeach
                                         <?php $i++; ?>
                                     @endforeach

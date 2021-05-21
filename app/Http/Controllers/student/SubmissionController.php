@@ -189,7 +189,18 @@ class SubmissionController extends Controller
 
         $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->where('Batch_details.status', 'Active')->get();
 
-        return view('student.my_submission', compact('studentbatch'));
+        $assignment_count =  array();
+        $assignment_count = array_fill(0, $studentbatch->count(), 0);
+
+        $i = 0;
+
+        foreach ($studentbatch as $batch) {
+
+            $assignment_count[$i] = Assignment::where('batch_id', $batch->batch_id)->get()->count();
+            $i++;
+        }
+        // dd($assignment_count);
+        return view('student.my_submission', compact('studentbatch' , 'assignment_count'));
     }
 
     public function viewmyoldbatched()
@@ -198,7 +209,17 @@ class SubmissionController extends Controller
 
         $studentbatch = Studentbatch::select('Studentbatches.batch_id','Studentbatches.creater_email', 'Batch_details.batch_name' , 'users.name')->join('Batch_details', 'Batch_details.id', '=', 'Studentbatches.batch_id')->join('users', 'users.email', '=', 'Studentbatches.creater_email')->where('enrollment', $user->email)->where('Batch_details.is_deleted', '0')->get();
 
-        return view('student.old_submissions', compact('studentbatch'));
+        $assignment_count =  array();
+        $assignment_count = array_fill(0, $studentbatch->count(), 0);
+
+        $i = 0;
+
+        foreach ($studentbatch as $batch) {
+
+            $assignment_count[$i] = Assignment::where('batch_id', $batch->batch_id)->get()->count();
+            $i++;
+        }
+        return view('student.old_submissions', compact('studentbatch' , 'assignment_count'));
     }
 
     public function viewmysubmission()

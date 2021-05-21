@@ -21,25 +21,16 @@ Route::get('/home', ['middleware' => 'auth', 'uses' => 'HomeController@index'])-
 
 // Route::get('/','HomeController@welcome');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
 
 
 
-Route::get('/clear-cache', function () {
-    $exitCode = Artisan::call('cache:clear');
-    // return what you want
-});
+Route::get('/clear-cache', function () { $exitCode = Artisan::call('cache:clear'); });
 Auth::routes();
 
-Route::get('google', function () {
+    //***********************************   Google Login Routes   ***********************************//
 
-    return view('googleAuth');
-});
-
-Route::get('glogin', array('as' => 'glogin', 'uses' => 'Auth\LoginController@googleLogin'));
-Route::get('google-user', array('as' => 'user.glist', 'uses' => 'Auth\LoginController@listGoogleUser'));
+Route::get('google', function () {return view('googleAuth'); });
 
 Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
 
