@@ -33,7 +33,7 @@
                                         <tr>
                                             <th class="">No</th>
                                             <th style="min-width: 170px">Enrollemnt</th>
-                                            <th style="min-width: 300px">Submittion Status</th>
+                                            <th style="min-width: 150px">Submittion Status</th>
                                             @foreach ($assignment_questions as $key => $questions)
                                                 <th>Question : {{ ++$key }}</th>
                                             @endforeach
@@ -64,7 +64,7 @@
 
                                                             @if ($student->enrollment == $submission->enrollment)
                                                                 @if ($questions->id == $submission->question_id)
-                                                                    Submitted ({{ $submission->status }})
+                                                                <i class="fa fa-check" aria-hidden="true"></i>  ({{ $submission->status }})
                                                                 @endif
                                                             @endif
                                                         @endforeach
