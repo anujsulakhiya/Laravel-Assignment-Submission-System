@@ -30,6 +30,17 @@
                                                     <tr>
                                                         <td>
                                                             <label class="float-right" id="status" for="">Status :
+
+                                                                @if ($submitted_answer->status == 'P')
+                                                                    <span class="badge badge-warning p-2">Pending</span>
+                                                                @elseif ($submitted_answer->status == 'A')
+                                                                    <span
+                                                                        class="badge badge-success p-2">Accepted</span>
+                                                                @elseif ($submitted_answer->status == 'R')
+                                                                    <span class="badge badge-danger p-2">Rejected</span>
+
+                                                                @endif
+
                                                             </label>
                                                             <input type="hidden" name="submission_id"
                                                                 value="{{ $submitted_answer->id }}">
@@ -41,7 +52,14 @@
                                                             <div class="mt-2">
                                                                 <a target="_blank"
                                                                     href="{{ Storage::url(@$submitted_answer->filename) }}"
-                                                                    class="btn btn-secondary btn-sm">View pdf</a>
+                                                                    class="btn btn-primary btn-sm">View pdf</a>
+                                                                @if ($submitted_answer->status == 'R')
+                                                                    <a href="/submitquestion/{{ $submitted_answer->id }}"
+                                                                        class="btn btn-sm btn-danger my_mainpage_link">Submit
+                                                                        Again</a>
+
+                                                                @endif
+
                                                             </div>
 
                                                         </td>

@@ -69,6 +69,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('truncate_batch', 'faculty\DashboardController@truncate_batch');
     Route::get('truncate_assignment', 'faculty\DashboardController@truncate_assignment');
 
+    //pdf
+    Route::get('pdfview/{batch_id}/{assignment_id}',array('as'=>'pdfview','uses'=>'FileController@pdfview'));
+
+
+
     //***********************************   Faculty Routes   ***********************************//
 
     Route::group(['as' => 'faculty.', 'middleware' => ['auth', 'faculty']], function () {
@@ -115,6 +120,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update_questions', 'faculty\AssignmentController@update_questions');
 
         Route::get('/dassignment/{id}', 'faculty\AssignmentController@deleteassignment');
+
+        Route::get('/viewsubmittionreport/{batch_id}/{assignment_id}','faculty\AssignmentController@view_assignment_report');
+
 
         //Faculty Routes --> Assignment Submission Routes
         Route::get('/assignment_questions/{id}', 'faculty\SubmissionController@viewassignmentquestions');

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Assignment;
 use App\Assignment_question;
 use App\Batch_detail;
+use App\Studentbatch;
+use App\Submission;
 
 class AssignmentController extends Controller
 {
@@ -176,7 +178,9 @@ class AssignmentController extends Controller
             ->where('email', $user->email)->where('batch_id', $req->batch_id)
             ->where('is_deleted', '0')->get();
 
-        return view('faculty.view_batch_assignment', compact('user', 'batchassignmentdetail'));
+        $batch_detail = Batch_detail::select('id','batch_name')->where('id' , $req->batch_id)->where('is_deleted' , '0')->first();
+
+        return view('faculty.view_batch_assignment', compact('user', 'batchassignmentdetail' , 'batch_detail'));
     }
 
 
@@ -209,5 +213,20 @@ class AssignmentController extends Controller
         Assignment_question::where('email', $user->email)->where('assignment_id', $req->id)->update(["is_deleted" => '1']);
 
         return redirect()->back();
+    }
+
+    public function view_assignment_report(Request $request){
+
+        $Submittion_detail = Submission::select('name','enrollment','question_id','status' ,'created_at')->where('assignment_id' , $request->assignment_id)->where('is_deleted' , '0')->get();
+        $batch_detail = Batch_detail::select('id','batch_name')->where('id' , $request->batch_id)->first();
+        $batch_student_detail = Studentbatch::select('enrollment')->where('batch_id' , $request->batch_id)->get();
+        $assignment_id = $request->assignment_id;
+        $assignment_questions = $this->get_assignment_question_detail($request->assignment_id);
+
+
+
+        // dd($plucked_assignment_questions_id);
+        return view('common.assignment_submission_report', compact('Submittion_detail', 'batch_detail' , 'batch_student_detail' ,'assignment_id','assignment_questions','plucked_assignment_questions_id'));
+
     }
 }

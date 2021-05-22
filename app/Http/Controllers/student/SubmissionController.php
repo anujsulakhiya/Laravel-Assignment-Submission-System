@@ -51,7 +51,7 @@ class SubmissionController extends Controller
 
         $createdassignmentquestion = Assignment_question::select('*')->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
 
-        $submitted = Submission::select('question_id','qanswer','filename', 'status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->where('is_deleted', '0')->get();
+        $submitted = Submission::select('question_id','qanswer','filename', 'status')->where('enrollment', $user->email)->where('assignment_id', $req->id)->get();
 
         // $submitted1 = Assignment_question::select('Assignment_question.*' , 'Submission.question_id','Submission.qanswer','Submission.filename', 'Submission.status')
         // ->join('Submission', 'Submission.question_id', '=', 'Assignment_question.id')
