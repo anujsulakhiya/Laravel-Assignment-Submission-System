@@ -24,7 +24,8 @@
 <!-- styles needed by jScrollPane -->
 <link type="text/css" href="{{ asset('assets/css/jquery.jscrollpane.css') }}" rel="stylesheet" media="all" />
 
-
+<!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <style>
     html {
         scroll-behavior: smooth;
