@@ -60,9 +60,11 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <div class="col-md-6 font-weight-bold">
+                            <div class="col-md-4 font-weight-bold">
                                 <h5 class="text-uppercase">{{ $batch_detail->batch_name }}</h5>
                             </div>
+
+
                             <div class="row col-md-6 ">
 
                                 <input class="" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join"
@@ -149,6 +151,8 @@
         set_my_ajax_link_in_mainpage();
 
         serach_and_pagination();
+
+      
     });
 
 </script>

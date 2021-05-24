@@ -39,6 +39,7 @@
     var back_number = null;
 
     function set_my_ajax_link_listner() {
+
         $('.my_ajax_link').on('click', (e) => {
             e.preventDefault();
             const page_name = e.target.href;
@@ -179,8 +180,12 @@
         return false;
     }
 
+    // $("#wrapper").hide();
+
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
+        // $("#wrapper").show();
         $("#wrapper").toggleClass("toggled");
     });
 

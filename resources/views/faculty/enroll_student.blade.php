@@ -299,23 +299,23 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Class
+                        <h3 class="h5"><a href="/home_page" class="fa fa-arrow-left mr-2 my_mainpage_link"></a>Class
                             Details</h3>
                     </div>
 
                     <div class="card-body">
                         <h4 class="box-link" class="text-left"><a class="my_mainpage_link" href="/createbatch">
                                 Create New Class </a>
-                            <div class="col-md-6 mt-2 float-right">
+                            {{-- <div class="col-md-6 mt-2 float-right">
                                 <input class="form-control search" placeholder="Search by Class Name , Date etc"
-                                    type="text" name="search" id="search">
-                            </div>
+                                    type="text" name="search" id="searchbox-input">
+                            </div> --}}
                         </h4>
 
                     </div>
 
 
-                    <div class="row card-body m-0">
+                    <div class="row card-body m-0 search-body" id="card-body">
                         @if (!empty($batchdetail[0]->id))
 
                             @php
@@ -328,13 +328,13 @@
                                     <div class="card" style="width: 18rem;">
                                         <div class="card-header   align-items-center bg-dark text-white">
                                             <h3 class="h5">
-                                                <a class="my_mainpage_link text-white"
+                                                <a class="my_mainpage_link text-white card-title"
                                                     href="/view_batch/{{ $batch->id }}">{{ $batch->batch_name }}</a>
                                                 <h3>
                                         </div>
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Students : {{ @$student_count[$j] }}</h5>
+                                            <h5 class="card-title-1">Students : {{ @$student_count[$j] }}</h5>
 
                                             <br>
                                             <div class="btn-toolbar" role="toolbar"
@@ -482,6 +482,13 @@
         serach_and_pagination();
 
         $('[data-toggle="tooltip"]').tooltip();
+
+        $('.searchbox-input').change(function() {
+            $('.search-body').show();
+            var filter = $(this).val(); // get the value of the input, which we filter on
+            $('.search-body').find(".card-title:not(:contains(" + filter + "))").parent().css('display',
+                'none');
+        });
     });
 
 </script>
