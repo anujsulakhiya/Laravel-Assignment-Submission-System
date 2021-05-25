@@ -67,7 +67,7 @@
 
                             <div class="row col-md-6 ">
 
-                                <input class="" value="http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}?m=join"
+                                <input class="" value="{{config('app.url')}}joinclass/{{ $batch_detail->id }}?m=join"
                                     id="myInput" readonly>
                                 <button class="btn btn-primary btn-sm" onclick="myFunction()">Copy
                                     Link</button>

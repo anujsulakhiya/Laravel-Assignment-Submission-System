@@ -59,7 +59,7 @@
                                 <div class="alert alert-warning">
                                     <strong></strong> No Joining Request Found !
                                     {!! '&nbsp;' !!}{!! '&nbsp;' !!}{!! '&nbsp;' !!} Joining Link
-                                    {!! '&nbsp;' !!}-->{!! '&nbsp;' !!}{!! '&nbsp;' !!}http://127.0.0.1:8000/joinclass/{{ $batch_detail->id }}
+                                    {!! '&nbsp;' !!}-->{!! '&nbsp;' !!}{!! '&nbsp;' !!}{{config('app.url')}}joinclass/{{ $batch_detail->id }}
                                 </div>
 
 

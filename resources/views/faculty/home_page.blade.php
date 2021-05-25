@@ -46,6 +46,7 @@
 <div class="mx-5 mt-4">
     <div class="">
         <div class="row">
+            
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
@@ -54,7 +55,9 @@
                         </div>
                         <p class="card-category">Total Assignments</p>
                         <h3 class="card-title">
-
+                           
+                            {{-- {{ config('app.url') }} --}}
+                          
                             @if (!empty($assignment_count))
                                 {{ @$assignment_count }}
                             @else

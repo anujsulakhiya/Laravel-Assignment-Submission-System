@@ -36,7 +36,8 @@ return [
 
         'client_secret' => 'Bj2DX_VyVzlnfW-3ikZVFhvY',
 
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
+        'redirect' => env('GOOGLE_LOGIN_REDIRECTION'),
+        
 
     ],
 
