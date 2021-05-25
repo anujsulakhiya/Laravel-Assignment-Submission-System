@@ -203,6 +203,7 @@
         document.execCommand("copy");
         alert("Copied the Link: " + copyText.value);
     }
+    
 
     //table js for appending and deleting new tr in table for enrollment field
     function deleteRow(row) {

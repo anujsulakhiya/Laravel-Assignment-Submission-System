@@ -63,11 +63,14 @@
         overflow-y: scroll;
         scrollbar-width: thin;
     }
+    .card{
+        border: 1px;
+    }
 
 </style>
 
 <body class="c-app " style="background: #466368;
-background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
+background: linear-gradient( #d6d1d1, #ffffff) no-repeat;">
 
     {{-- c-sidebar-dark --}}
 
@@ -81,10 +84,10 @@ background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
         <div id="wrapper" class="nav " style="position: relative; box-shadow: -30px -5px 100px grey; ">
             <!-- Sidebar -->
             <div class="c-sidebar c-sidebar-light c-sidebar-fixed scroll-pane scrollbar-primary scroller"
-                id="sidebar-wrapper" style="overflow-y:auto">
-                <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold text-dark">
+                id="sidebar-wrapper" style="margin-top:72px; overflow-y:auto">
+                {{-- <div class="c-sidebar-brand d-lg-down-none text-uppercase text-weight-bold text-dark">
                     Assignment Submitter
-                </div>
+                </div> --}}
                 <div class="list-group-flush ">
 
                     <ul class="c-sidebar-nav ps ps--active-y">
@@ -117,7 +120,7 @@ background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
                                 class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
                                     class="fa fa-tachometer mr-2"></i> Class Joining Requests </a>
 
-                            <li class="c-sidebar-nav-title">Assignment</li>
+                            {{-- <li class="c-sidebar-nav-title">Assignment</li> --}}
 
                             <a href="/create_assignment"
                                 class="c-nav-link list-group-item list-group-item-action my_ajax_link"> <i
@@ -147,12 +150,12 @@ background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
 
                         <li class="c-sidebar-nav-title">Other</li>
 
-                        <li class="c-sidebar-nav-item ">
+                        {{-- <li class="c-sidebar-nav-item ">
                             <a class="c-nav-link list-group-item list-group-item-action" href="/">
                                 <i class="fa fa-recycle mr-2"></i>
                                 Recycle Bin
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="c-sidebar-nav-item ">
                             <a class="c-nav-link list-group-item list-group-item-action" href="{{ route('logout') }}"
@@ -174,7 +177,19 @@ background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
 
         <header class="c-header c-header-light  c-header-with-subheader navbar-fixed " style="position: ;">
 
-            <span class="c-header-toggler-icon navbar-toggler-icon m-3" id="menu-toggle" width="97" height="46"></span>
+            <span class="c-header-toggler-icon navbar-toggler-icon ml-4 mt-4" id="menu-toggle" width="150" height="50"></span>
+
+            {{-- <div class="img-responsive p-2" style="max-width: 100%; height: auto;display: block;">
+                
+            </div> --}}
+
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <a class="navbar-brand p-2" href="#">
+                    {{-- <img  class="img-responsive" src="{{ asset('assets/images/applogo.png') }}" alt="" srcset="" style="max-width: 100%; height: auto;display: block;"> --}}
+                    <img src="{{ asset('assets/images/l4.png') }}" class="img-fluid" alt="Responsive image">
+                </a>
+             
+              </nav> 
 
             <ul class="c-header-nav ml-auto mr-4">
 
@@ -193,18 +208,18 @@ background: linear-gradient( #d6d6d6, #ffffff) no-repeat;">
                 </li>
 
             </ul>
-
+{{-- 
             <div class="c-subheader justify-content-end  px-1 ">
-                {{-- <button class="back">go back</button> --}}
+                <button class="back">go back</button>
                 <!-- Breadcrumb-->
                 <x-breadcrumb breadcumb="{{ @$breadcrumb }}" breadcumb1="{{ @$breadcrumbnext }}" />
-            </div>
+            </div> --}}
 
         </header>
 
-        <div class=" content ">
+        <div class=" content " style="">
 
-            <main id="mainpage">
+            <main id="mainpage" style="">
 
                 @yield('content')
 
