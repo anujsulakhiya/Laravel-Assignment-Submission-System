@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.StudentLayout')
 
 @section('content')
 
-<x-studentsidebar studentbreadcumb=" " studentbreadcumb1="" />
 
 <div  style="padding-right:0px; padding-left: 0px;" class="container">
     <div class="row justify-content-center">

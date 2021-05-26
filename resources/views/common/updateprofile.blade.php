@@ -1,41 +1,58 @@
-@extends('layouts.app')
+<section class="forms">
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
 
-@section('content')
+                    <div class="card-header d-flex align-items-center ">
 
-    @if ($user->role_id == '1')
+                        <div class="col-md-6 float-left m-0 p-0">
+                            <h3 class="h5"><a href="/home_page" class=" fa fa-arrow-left mr-2 my_mainpage_link"></a>Edit
+                                Profile Details</h3>
+                        </div>
 
-    <x-facultysidebar breadcumb="Profile" breadcumb1="Update Profile" />
+                    </div>
 
-    @elseif ($user->role_id == '2')
+                    <div class="card-body--">
+                        <div class="table-stats order-table ">
+                            <form action="/updateuserprofile" id="" onsubmit="return post_request(this)">
+                                @csrf
+                                <table class='table'>
 
-    <x-studentsidebar studentbreadcumb="Profile " studentbreadcumb1="Update Profile" />
+                                    <tbody class=''>
+                                        <tr>
+                                            <td class='col-md-4'>Name</td>
+                                            <td><input id="name" type="text"
+                                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                                    value="{{ @$user->name }}" autocomplete="name"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <input type="hidden" name="email" value="{{ @$user->email }}">
+                                            <td>{{ @$user->email }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="submit" name="nameupdate"
+                                    class="btn btn-primary btn-sm mt-3 mx-3">Update</button>
+                            </form>
 
-    @endif
+                        </div>
+                        <br>
 
+                    </div>
 
-    <form action="updateuserprofile" method="POST" class="">
-        @csrf
-    <table class='table'>
-        <thead class='thead-light'>
-            <th>Manage {{ @$user->role}} Profile</th>
-            <th></th>
-        </thead>
-        <tbody class=' table-bordered'>
-            <tr>
-                <th class='col-md-4'>Name</th>
-                <td><input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$user->name}}" autocomplete="name"></td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <input type="hidden" name="email" value="{{ @$user->email}}">
-                <td>{{ @$user->email}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <button type="submit" name="nameupdate" class="btn btn-primary btn-sm mt-3">Update</button>
-    </form>
-</div>
-</div>
-</div>
-</div>
-@endsection
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function() {
+        set_my_ajax_link_in_mainpage();
+    });
+
+</script>
